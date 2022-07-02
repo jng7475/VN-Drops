@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "787809164588",
+    "project_id": "vn-drops",
+    "storage_bucket": "vn-drops.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:787809164588:android:0728cd223a7a8b64096089",
+        "android_client_info": {
+          "package_name": "com.vndrops"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "787809164588-1at23pcpbjoejjirkuff11sns6nnnapn.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCs24Z5GmYLYc3se3QEremraxAz0ZNQo5s"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "787809164588-1at23pcpbjoejjirkuff11sns6nnnapn.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
