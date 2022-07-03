@@ -55,48 +55,55 @@ const LoginScreen = () => {
     <KeyboardAvoidingView
       style={styles.container}
       behavior={Platform.OS === 'ios' ? 'padding' : 'height'}>
-      <View>
+      <View style={styles.top}>
         <Image style={styles.logo} source={require('../../assets/logo.png')} />
+        <Text style={styles.welcomeText}>welcome to</Text>
+        <Text style={styles.VNDropText}>VN Drops</Text>
       </View>
-      <View style={styles.InputContainer}>
-        <TextInput
-          placeholder="Email"
-          value={email}
-          onChangeText={text => setEmail(text)}
-          style={styles.input}
-        />
-        <TextInput
-          placeholder="Password"
-          value={password}
-          onChangeText={text => setPassword(text)}
-          style={styles.input}
-          secureTextEntry
-        />
+      <View style={styles.middle}>
+        <View style={styles.InputContainer}>
+          <TextInput
+            placeholder="Email"
+            value={email}
+            onChangeText={text => setEmail(text)}
+            style={styles.input}
+          />
+          <TextInput
+            placeholder="Password"
+            value={password}
+            onChangeText={text => setPassword(text)}
+            style={styles.input}
+            secureTextEntry
+          />
+        </View>
+        <View style={styles.forgotPassword}>
+          <Text style={styles.forgotPasswordText}>Forgot Password ?</Text>
+        </View>
       </View>
-      <View style={styles.forgotPassword}>
-        <Text style={styles.forgotPasswordText}>Forgot Passwords ?</Text>
-      </View>
-      <View style={styles.buttonContainer}>
-        <TouchableOpacity onPress={handleLogIn} style={styles.button}>
-          <Text style={styles.buttonText}>Login</Text>
-        </TouchableOpacity>
-      </View>
-      <View style={{ marginTop: 50 }}>
-        <Text>or connect using</Text>
-      </View>
-      <View style={styles.loginWith}>
-        <TouchableOpacity style={styles.loginWithButton}>
-          <Text>Google</Text>
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.loginWithButton}>
-          <Text>Facebook</Text>
-        </TouchableOpacity>
-      </View>
-      <View style={styles.signUp}>
-        <Text>Don't have an account ? </Text>
-        <TouchableOpacity onPress={handleSignUp}>
-          <Text>Sign up</Text>
-        </TouchableOpacity>
+
+      <View style={styles.bottom}>
+        <View style={styles.buttonContainer}>
+          <TouchableOpacity onPress={handleLogIn} style={styles.button}>
+            <Text style={styles.buttonText}>Login</Text>
+          </TouchableOpacity>
+        </View>
+        <View style={{ marginTop: 20 }}>
+          <Text>or connect using</Text>
+        </View>
+        <View style={styles.loginWith}>
+          <TouchableOpacity style={styles.loginWithButton}>
+            <Text>Google</Text>
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.loginWithButton}>
+            <Text>Facebook</Text>
+          </TouchableOpacity>
+        </View>
+        <View style={styles.signUp}>
+          <Text>Don't have an account ? </Text>
+          <TouchableOpacity onPress={handleSignUp}>
+            <Text>Sign up</Text>
+          </TouchableOpacity>
+        </View>
       </View>
     </KeyboardAvoidingView>
   );

@@ -2,30 +2,51 @@ import { StyleSheet } from 'react-native';
 
 const styles = StyleSheet.create({
   container: {
-    paddingTop: 200,
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
     backgroundColor: '#F5F5F5',
   },
-  InputContainer: {
-    justifyContent: 'center',
+  top: {
+    flex: 1.3,
     alignItems: 'center',
+    justifyContent: 'center',
+  },
+  welcomeText: {
+    fontSize: 50,
+    color: '#723838',
+  },
+  VNDropText: {
+    fontSize: 40,
+    color: '#DE2121',
+  },
+  middle: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  bottom: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+
+  InputContainer: {
+    flex: 1,
     width: '100%',
+    alignItems: 'center',
+    justifyContent: 'center',
   },
   input: {
+    marginTop: 10,
     borderRadius: 50,
     backgroundColor: '#DCD6D0',
     paddingHorizontal: 15,
     paddingVertical: 10,
-    marginTop: 5,
     width: '80%',
   },
   buttonContainer: {
     width: '40%',
     justifyContent: 'center',
     alignItems: 'center',
-    marginTop: 40,
   },
   button: {
     alignItems: 'center',
@@ -38,16 +59,13 @@ const styles = StyleSheet.create({
   buttonText: {
     color: '#450B0B',
     fontWeight: '700',
-    fontSize: 16,
+    fontSize: 33,
   },
   buttonOutline: {
-    alignItems: 'center',
-    justifyContent: 'center',
     backgroundColor: '#0782f9',
     width: '100%',
     padding: 15,
     borderRadius: 15,
-    marginTop: 5,
     borderColor: 'green',
     borderWidth: 1,
   },
@@ -57,15 +75,16 @@ const styles = StyleSheet.create({
     color: 'white',
   },
   forgotPassword: {
-    marginTop: 15,
-    marginRight: 70,
+    flex: 0.5,
     width: '95%',
     alignItems: 'flex-end',
+    justifyContent: 'flex-start',
   },
   forgotPasswordText: {
     fontWeight: 'bold',
     color: 'black',
     opacity: 0.5,
+    paddingRight: 10,
   },
   loginWith: {
     width: '80%',
