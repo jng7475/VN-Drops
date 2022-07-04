@@ -1,4 +1,3 @@
-import { useNavigation } from '@react-navigation/core';
 import {
   Text,
   View,
@@ -8,47 +7,22 @@ import {
   Image,
   Platform,
 } from 'react-native';
-import React, { useEffect, useState } from 'react';
-// import { auth } from '../firebase';
+import React, { useContext, useState } from 'react';
 import styles from './styles';
-// import logo from "..assets/icon"
+import { AuthContext } from '../../navigations/AuthProvider';
 
 const LoginScreen = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const navigation = useNavigation();
-  // useEffect(() => {
-  //   const unsubscribe = auth.onAuthStateChanged((user) => {
-  //     if (user) {
-  //       navigation.replace('home');
-  //     }
-  //   });
 
-  //   return unsubscribe;
-  // }, ['']);
+  const { login, register } = useContext(AuthContext);
+
+  const handleLogIn = () => {
+    login(email, password);
+  };
 
   const handleSignUp = () => {
-    // auth
-    //   .createUserWithEmailAndPassword(email, password)
-    //   .then((userCredentials) => {
-    //     const user = userCredentials.user;
-    //     console.log('successfully registered');
-    //   })
-    //   .catch((error) => {
-    //     alert(error.message), console.log(email + password);
-    //   });
-  };
-  const handleLogIn = () => {
-    // auth
-    //   .signInWithEmailAndPassword(email, password)
-    //   .then((userCredentials) => {
-    //     const user = userCredentials.user;
-    //     console.log('login with: ', email);
-    //   })
-    //   .catch((error) => {
-    //     alert(error.message), console.log(email + password);
-    //   });
-    navigation.replace('home');
+    register(email, password);
   };
 
   return (
