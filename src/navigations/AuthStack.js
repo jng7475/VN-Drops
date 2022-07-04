@@ -4,6 +4,7 @@ import LoginScreen from '../screens/Login';
 
 const Stack = createNativeStackNavigator();
 
+// Screens Stack for authentication
 const AuthStack = () => {
   return (
     <Stack.Navigator>
