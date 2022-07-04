@@ -27,6 +27,7 @@ const signOut = async () => {
   }
 };
 
+// Provider to provide states and functions to other modules as context
 export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
 

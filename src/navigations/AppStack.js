@@ -5,6 +5,7 @@ import { Image } from 'react-native';
 
 const Stack = createNativeStackNavigator();
 
+// Screens Stack for App
 const AppStack = () => {
   return (
     <Stack.Navigator>
