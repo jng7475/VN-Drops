@@ -1,5 +1,6 @@
 import React, { createContext, useState } from 'react';
 import auth from '@react-native-firebase/auth';
+import { postUserDetails } from '../api/SignUp';
 
 export const AuthContext = createContext();
 
@@ -11,11 +12,20 @@ const login = async (email, password) => {
   }
 };
 
-const register = async (email, password) => {
+const register = async (email, password, fullname, phoneNumber) => {
   try {
-    await auth().createUserWithEmailAndPassword(email, password);
+    await auth()
+      .createUserWithEmailAndPassword(email, password)
+      .then(value => {
+        const user = {
+          email: email,
+          fullname: fullname,
+          phoneNumber: phoneNumber,
+        };
+        postUserDetails(user);
+      });
   } catch (error) {
-    console.log('login error', error);
+    console.log('signup error', error);
   }
 };
 
