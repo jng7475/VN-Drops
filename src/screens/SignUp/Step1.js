@@ -7,22 +7,27 @@ import {
   Image,
   Platform,
 } from 'react-native';
-import React, { useContext, useState } from 'react';
+import React, { useState } from 'react';
 import styles from './styles';
-import { AuthContext } from '../../navigations/AuthProvider';
 
-const LoginScreen = ({ navigation }) => {
+const Step1 = ({ navigation, setStep, setUserDetails }) => {
   const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-
-  const { login } = useContext(AuthContext);
+  const [fullname, setFullname] = useState('');
+  const [phone, setPhone] = useState('');
 
   const handleLogIn = () => {
-    login(email, password);
+    navigation.navigate('Login');
   };
 
-  const handleSignUp = () => {
-    navigation.navigate('SignUp');
+  const handleNext = () => {
+    if (email && fullname && phone) {
+      setUserDetails({
+        email: email,
+        fullname: fullname,
+        phoneNumber: phone,
+      });
+      setStep(step => step + 1);
+    }
   };
 
   return (
@@ -31,11 +36,16 @@ const LoginScreen = ({ navigation }) => {
       behavior={Platform.OS === 'ios' ? 'padding' : 'height'}>
       <View style={styles.top}>
         <Image style={styles.logo} source={require('../../assets/logo.png')} />
-        <Text style={styles.welcomeText}>welcome to</Text>
-        <Text style={styles.VNDropText}>VN Drops</Text>
+        <Text style={styles.welcomeText}>SIGN UP</Text>
       </View>
       <View style={styles.middle}>
         <View style={styles.InputContainer}>
+          <TextInput
+            placeholder="Fullname"
+            value={fullname}
+            onChangeText={text => setFullname(text)}
+            style={styles.input}
+          />
           <TextInput
             placeholder="Email"
             value={email}
@@ -43,22 +53,19 @@ const LoginScreen = ({ navigation }) => {
             style={styles.input}
           />
           <TextInput
-            placeholder="Password"
-            value={password}
-            onChangeText={text => setPassword(text)}
+            placeholder="Phone Number"
+            value={phone}
+            onChangeText={text => setPhone(text)}
             style={styles.input}
             secureTextEntry
           />
-        </View>
-        <View style={styles.forgotPassword}>
-          <Text style={styles.forgotPasswordText}>Forgot Password ?</Text>
         </View>
       </View>
 
       <View style={styles.bottom}>
         <View style={styles.buttonContainer}>
-          <TouchableOpacity onPress={handleLogIn} style={styles.button}>
-            <Text style={styles.buttonText}>Login</Text>
+          <TouchableOpacity onPress={handleNext} style={styles.button}>
+            <Text style={styles.buttonText}>Next</Text>
           </TouchableOpacity>
         </View>
         <View style={{ marginTop: 20 }}>
@@ -73,9 +80,9 @@ const LoginScreen = ({ navigation }) => {
           </TouchableOpacity>
         </View>
         <View style={styles.signUp}>
-          <Text>Don't have an account ? </Text>
-          <TouchableOpacity onPress={handleSignUp}>
-            <Text>Sign up</Text>
+          <Text>Already had an account? </Text>
+          <TouchableOpacity onPress={handleLogIn}>
+            <Text>Sign in</Text>
           </TouchableOpacity>
         </View>
       </View>
@@ -83,4 +90,4 @@ const LoginScreen = ({ navigation }) => {
   );
 };
 
-export default LoginScreen;
+export default Step1;
