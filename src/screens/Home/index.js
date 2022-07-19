@@ -15,10 +15,7 @@ const HomeScreen = ({ navigation }) => {
 
   return (
     <View style={styles.container}>
-      <Image
-        style={{ width: 50, height: 50 }}
-        source={require('../../assets/logo.png')}
-      />
+      <Image style={styles.image} source={require('../../assets/logo.png')} />
       <Text style={styles.text}>Your account:</Text>
       <TouchableOpacity style={styles.button} onPress={handleSignOut}>
         <Text style={styles.buttonText}>Sign out </Text>

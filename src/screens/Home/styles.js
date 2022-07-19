@@ -24,6 +24,7 @@ const styles = StyleSheet.create({
     fontWeight: '700',
     fontSize: 16,
   },
+  image: { width: 50, height: 50 },
 });
 
 export default styles;
