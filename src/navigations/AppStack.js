@@ -2,6 +2,7 @@ import React from 'react';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import HomeScreen from '../screens/Home';
 import { Image } from 'react-native';
+import ChatScreen from '../screens/Chat';
 
 const Stack = createNativeStackNavigator();
 
@@ -27,6 +28,7 @@ const AppStack = () => {
         }}
         component={HomeScreen}
       />
+      <Stack.Screen name="Chat" component={ChatScreen} />
     </Stack.Navigator>
   );
 };
