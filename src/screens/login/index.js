@@ -6,15 +6,10 @@ import {
   TouchableOpacity,
   Image,
   Platform,
-  ScrollView,
 } from 'react-native';
 import React, { useContext, useState } from 'react';
 import styles from './styles';
 import { AuthContext } from '../../navigations/AuthProvider';
-import { Dimensions } from 'react-native';
-
-const screenWidth = Dimensions.get('screen').width;
-const screenHeight = Dimensions.get('screen').height;
 
 const LoginScreen = ({ navigation }) => {
   const [email, setEmail] = useState('');
@@ -67,16 +62,14 @@ const LoginScreen = ({ navigation }) => {
           </TouchableOpacity>
         </View>
         <View style={{ marginTop: 20 }}>
-          <Text style={{fontFamily: 'HindMadurai-Regular', fontSize: 20}}>
-            or connect using
-          </Text>
+          <Text>or connect using</Text>
         </View>
         <View style={styles.loginWith}>
           <TouchableOpacity style={styles.loginWithButton}>
-            <Text style={{fontSize: 20, fontFamily: 'Kadwa-Regular'}}>Google</Text>
+            <Text>Google</Text>
           </TouchableOpacity>
           <TouchableOpacity style={styles.loginWithButton}>
-            <Text style={{fontSize: 20, fontFamily: 'Kadwa-Regular'}}>Facebook</Text>
+            <Text>Facebook</Text>
           </TouchableOpacity>
         </View>
         <View style={styles.signUp}>
