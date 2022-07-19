@@ -6,6 +6,7 @@ import { AuthContext } from './AuthProvider';
 import AuthStack from './AuthStack';
 import AppStack from './AppStack';
 
+
 const Routes = () => {
   const { user, setUser } = useContext(AuthContext);
   const [initializing, setInitializing] = useState(true);
