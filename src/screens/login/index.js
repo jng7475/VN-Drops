@@ -66,10 +66,10 @@ const LoginScreen = ({ navigation }) => {
         </View>
         <View style={styles.loginWith}>
           <TouchableOpacity style={styles.loginWithButton}>
-            <Text>Google</Text>
+            <Text style={styles.loginStyleText}>Google</Text>
           </TouchableOpacity>
           <TouchableOpacity style={styles.loginWithButton}>
-            <Text>Facebook</Text>
+            <Text style={styles.loginStyleText}>Facebook</Text>
           </TouchableOpacity>
         </View>
         <View style={styles.signUp}>

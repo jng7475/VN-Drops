@@ -12,10 +12,12 @@ const styles = StyleSheet.create({
   },
   welcomeText: {
     fontSize: 50,
+    fontFamily: 'Buenard-Bold',
     color: '#723838',
   },
   VNDropText: {
-    fontSize: 40,
+    fontSize: 45,
+    fontFamily: 'Khand-Medium',
     color: '#DE2121',
   },
   middle: {
@@ -24,9 +26,9 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   bottom: {
-    flex: 1,
+    flex: 1.1,
     alignItems: 'center',
-    justifyContent: 'center',
+    justifyContent: 'flex-start',
   },
 
   InputContainer: {
@@ -53,26 +55,13 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     backgroundColor: '#EBE4DC',
     width: '100%',
-    padding: 15,
-    borderRadius: 15,
+    padding: 10,
+    borderRadius: 25,
   },
   buttonText: {
     color: '#450B0B',
-    fontWeight: '700',
+    fontFamily: 'HindMadurai-Bold',
     fontSize: 33,
-  },
-  buttonOutline: {
-    backgroundColor: '#0782f9',
-    width: '100%',
-    padding: 15,
-    borderRadius: 15,
-    borderColor: 'green',
-    borderWidth: 1,
-  },
-  buttonOutlineText: {
-    fontWeight: '700',
-    fontSize: 16,
-    color: 'white',
   },
   forgotPassword: {
     flex: 0.5,
@@ -81,9 +70,8 @@ const styles = StyleSheet.create({
     justifyContent: 'flex-start',
   },
   forgotPasswordText: {
-    fontWeight: 'bold',
-    color: 'black',
-    opacity: 0.5,
+    fontFamily: 'HindMadurai-Regular',
+    color: '#2C2727',
     paddingRight: 10,
   },
   loginWith: {
@@ -92,6 +80,10 @@ const styles = StyleSheet.create({
     display: 'flex',
     flexDirection: 'row',
     justifyContent: 'space-around',
+  },
+  loginStyleText: {
+    color: '#000000',
+    fontFamily: 'Kadwa-Regular',
   },
   loginWithButton: {
     alignItems: 'center',

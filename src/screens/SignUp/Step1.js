@@ -63,26 +63,27 @@ const Step1 = ({ navigation, setStep, setUserDetails }) => {
       </View>
 
       <View style={styles.bottom}>
-        <View style={styles.buttonContainer}>
-          <TouchableOpacity onPress={handleNext} style={styles.button}>
-            <Text style={styles.buttonText}>Next</Text>
-          </TouchableOpacity>
-        </View>
+   
         <View style={{ marginTop: 20 }}>
           <Text>or connect using</Text>
         </View>
         <View style={styles.loginWith}>
           <TouchableOpacity style={styles.loginWithButton}>
-            <Text>Google</Text>
+            <Text style={styles.loginStyleText}>Google</Text>
           </TouchableOpacity>
           <TouchableOpacity style={styles.loginWithButton}>
-            <Text>Facebook</Text>
+            <Text style={styles.loginStyleText}>Facebook</Text>
           </TouchableOpacity>
         </View>
         <View style={styles.signUp}>
           <Text>Already had an account? </Text>
           <TouchableOpacity onPress={handleLogIn}>
-            <Text>Sign in</Text>
+            <Text>Login</Text>
+          </TouchableOpacity>
+        </View>
+        <View style={styles.buttonContainer}>
+          <TouchableOpacity onPress={handleNext} style={styles.button}>
+            <Text style={styles.buttonText}>next</Text>
           </TouchableOpacity>
         </View>
       </View>
