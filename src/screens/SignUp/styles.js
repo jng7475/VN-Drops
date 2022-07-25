@@ -6,27 +6,24 @@ const styles = StyleSheet.create({
     backgroundColor: '#F5F5F5',
   },
   top: {
-    flex: 1.3,
+    flex: 1,
     alignItems: 'center',
-    justifyContent: 'center',
+    justifyContent: 'space-between',
   },
   welcomeText: {
     fontSize: 50,
-    color: '#723838',
-  },
-  VNDropText: {
-    fontSize: 40,
-    color: '#DE2121',
+    fontFamily: 'Buenard-Bold',
+    color: 'black',
   },
   middle: {
-    flex: 1,
+    flex: 1.5,
     alignItems: 'center',
     justifyContent: 'center',
   },
   bottom: {
-    flex: 1,
+    flex: 1.5,
     alignItems: 'center',
-    justifyContent: 'center',
+    justifyContent: 'flex-start',
   },
 
   InputContainer: {
@@ -52,28 +49,18 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     backgroundColor: '#EBE4DC',
-    width: '100%',
-    padding: 15,
-    borderRadius: 15,
+    width: '80%',
+    padding: 10,
+    borderRadius: 25,
+    position: 'absolute',
+    top: 45,
   },
   buttonText: {
-    color: '#450B0B',
-    fontWeight: '700',
-    fontSize: 33,
+    color: 'black',
+    fontFamily: 'HindMadurai-Regular',
+    fontSize: 25,
   },
-  buttonOutline: {
-    backgroundColor: '#0782f9',
-    width: '100%',
-    padding: 15,
-    borderRadius: 15,
-    borderColor: 'green',
-    borderWidth: 1,
-  },
-  buttonOutlineText: {
-    fontWeight: '700',
-    fontSize: 16,
-    color: 'white',
-  },
+
   forgotPassword: {
     flex: 0.5,
     width: '95%',
@@ -81,9 +68,8 @@ const styles = StyleSheet.create({
     justifyContent: 'flex-start',
   },
   forgotPasswordText: {
-    fontWeight: 'bold',
-    color: 'black',
-    opacity: 0.5,
+    fontFamily: 'HindMadurai-Regular',
+    color: '#2C2727',
     paddingRight: 10,
   },
   loginWith: {
@@ -93,12 +79,17 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-around',
   },
+  loginStyleText: {
+    color: '#000000',
+    fontFamily: 'Kadwa-Regular',
+    fontSize: 20,
+  },
   loginWithButton: {
     alignItems: 'center',
     // justifyContent: 'space-around',
     backgroundColor: '#EBE4DC',
     width: '40%',
-    padding: 15,
+    padding: 10,
     borderRadius: 5,
   },
   signUp: {
