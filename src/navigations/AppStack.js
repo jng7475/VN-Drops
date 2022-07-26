@@ -12,20 +12,21 @@ const AppStack = () => {
     <Stack.Navigator>
       <Stack.Screen
         name="home"
-        options={{
-          headerLeft: () => {
-            () => <Image source={require('../assets/logo.png')} />;
-          },
-          title: 'My home',
-          headerTitleAlign: 'center',
-          headerStyle: {
-            backgroundColor: '#f4511e',
-          },
-          headerTintColor: '#fff',
-          headerTitleStyle: {
-            fontWeight: 'bold',
-          },
-        }}
+        // options={{
+        //   heanderLeft: () => {
+        //     () => <Image source={require('../assets/logo.png')} />;
+        //   },
+        //   title: 'My home',
+        //   headerTitleAlign: 'center',
+        //   headerStyle: {
+        //     backgroundColor: '#f4511e',
+        //   },
+        //   headerTintColor: '#fff',
+        //   headerTitleStyle: {
+        //     fontWeight: 'bold',
+        //   },
+        // }}
+        options={{ headerShown: false }}
         component={HomeScreen}
       />
       <Stack.Screen name="Chat" component={ChatScreen} />
