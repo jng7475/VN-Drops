@@ -1,9 +1,12 @@
 import { View, Text, TouchableOpacity, StyleSheet, Image } from 'react-native';
 import React from 'react';
 
-export default function CustomBigButton() {
+export default function CustomBigButton({ navigation }) {
+  const handleOnPress = () => {
+    navigation.navigate('Appointment');
+  };
   return (
-    <TouchableOpacity style={styles.container}>
+    <TouchableOpacity style={styles.container} onPress={handleOnPress}>
       <Image source={require('../../../assets/schedule.png')} />
       <Text style={styles.text}>Đăng ký - đặt lịch</Text>
     </TouchableOpacity>
