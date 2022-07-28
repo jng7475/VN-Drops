@@ -30,7 +30,7 @@ const styles = StyleSheet.create({
     width: '20%',
     height: '85%',
     position: 'absolute',
-    bottom: -25,
+    bottom: -30,
     left: '40%',
     borderRadius: 35,
     backgroundColor: 'white',
@@ -64,11 +64,13 @@ const styles = StyleSheet.create({
     justifyContent: 'space-around',
     width: '90%',
   },
-  news: {
-    width: '100%',
-    backgroundColor: 'lightblue',
-    flex: 1.3,
+  newsContainer: {
+    alignItems: 'flex-start',
+    justifyContent: 'flex-start',
   },
+  // news: {
+  //   flex: 1.3,
+  // },
   button: {
     backgroundColor: '#0782f9',
     width: '30%',
