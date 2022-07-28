@@ -1,37 +1,27 @@
 import React from 'react';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import HomeScreen from '../screens/Home';
-import { Image } from 'react-native';
-import ChatScreen from '../screens/Chat';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { NavBarButtons } from '../utilities/NavBarDetails';
 
-const Stack = createNativeStackNavigator();
+const Tab = createBottomTabNavigator();
 
-// Screens Stack for App
+// Screens Tab for App
 const AppStack = () => {
-  return (
-    <Stack.Navigator>
-      <Stack.Screen
-        name="home"
-        // options={{
-        //   heanderLeft: () => {
-        //     () => <Image source={require('../assets/logo.png')} />;
-        //   },
-        //   title: 'My home',
-        //   headerTitleAlign: 'center',
-        //   headerStyle: {
-        //     backgroundColor: '#f4511e',
-        //   },
-        //   headerTintColor: '#fff',
-        //   headerTitleStyle: {
-        //     fontWeight: 'bold',
-        //   },
-        // }}
-        options={{ headerShown: false }}
-        component={HomeScreen}
+  const navBarButtons = NavBarButtons.map((button, index) => {
+    return (
+      <Tab.Screen
+        key={index}
+        name={button.name}
+        component={button.component}
+        options={{
+          headerShown: false,
+          tabBarLabel: button.title,
+          tabBarIcon: button.icon,
+        }}
       />
-      <Stack.Screen name="Chat" component={ChatScreen} />
-    </Stack.Navigator>
-  );
+    );
+  });
+
+  return <Tab.Navigator initialRouteName="Home">{navBarButtons}</Tab.Navigator>;
 };
 
 export default AppStack;
