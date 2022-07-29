@@ -17,13 +17,9 @@ export default function NewsPieces(props) {
   return (
     <TouchableOpacity
       style={styles.container}
-      onPress={() =>
-        Linking.openURL(
-          'https://baohatinh.vn/nui-hong-song-la/bi-thu-chi-doan-khuyet-mot-canh-tay-va-35-lan-hien-mau-cuu-nguoi/234440.htm',
-        )
-      }>
+      onPress={() => Linking.openURL(props.link)}>
       <View style={styles.imgContainer}>
-        <Image style={styles.img} source={require('.../../assets/news1.jpg')} />
+        <Image style={styles.img} source={props.imageLink} />
       </View>
       <View style={styles.titleTextContainer}>
         <Text style={styles.titleText}>{props.title}</Text>

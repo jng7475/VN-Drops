@@ -7,8 +7,15 @@ import NewsPieces from './component/NewsPieces';
 import { NewsInfo } from '../../utilities/newsInfo';
 
 const MainHomeScreen = ({ navigation }) => {
-  const NewsPiece = NewsInfo.map(index => {
-    return <NewsPieces title={index.title} description={index.description} />;
+  const NewsPiece = NewsInfo.map(newPiece => {
+    return (
+      <NewsPieces
+        title={newPiece.title}
+        description={newPiece.description}
+        link={newPiece.link}
+        imageLink={newPiece.imageLink}
+      />
+    );
   });
   return (
     <View style={styles.container}>
