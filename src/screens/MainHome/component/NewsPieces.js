@@ -25,7 +25,7 @@ export default function NewsPieces(props) {
         <Text style={styles.titleText}>{props.title}</Text>
       </View>
       <View style={styles.descriptionTextContainer}>
-        <Text>{props.description}</Text>
+        <Text style={styles.descriptionText}>{props.description}</Text>
       </View>
     </TouchableOpacity>
   );
@@ -36,10 +36,9 @@ const styles = StyleSheet.create({
     width: windowWidth,
     height: '90%',
     marginHorizontal: 10,
-    backgroundColor: 'lightgray',
+    // backgroundColor: '#E3242B',
+    backgroundColor: '#C9F5D9',
     borderRadius: 15,
-    // alignItems: 'center',
-    // justifyContent: 'center',
   },
   imgContainer: {
     position: 'absolute',
@@ -59,11 +58,17 @@ const styles = StyleSheet.create({
   },
   titleText: {
     fontSize: 15,
+    color: 'black',
+
     fontFamily: 'RobotoSlab-Bold',
   },
   descriptionTextContainer: {
     marginVertical: 5,
     marginLeft: 10,
-    width: '60%',
+    width: '62%',
+  },
+  descriptionText: {
+    color: 'black',
+    fontFamily: 'RobotoSlab-Light',
   },
 });
