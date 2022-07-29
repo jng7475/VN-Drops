@@ -4,8 +4,12 @@ import styles from './styles';
 import CustomBigButton from './component/CustomBigButton';
 import CustomSmallButton from './component/CustomSmallButton';
 import NewsPieces from './component/NewsPieces';
+import { NewsInfo } from '../../utilities/newsInfo';
 
 const MainHomeScreen = ({ navigation }) => {
+  const NewsPiece = NewsInfo.map(index => {
+    return <NewsPieces title={index.title} description={index.description} />;
+  });
   return (
     <View style={styles.container}>
       <View style={styles.curvedLine} />
@@ -51,20 +55,17 @@ const MainHomeScreen = ({ navigation }) => {
           </View>
         </View>
         <View style={{ flex: 1.6 }}>
-          <View style={{margin: 10}}>
+          <View style={{ margin: 10 }}>
             <Text style={{ fontSize: 20, fontFamily: 'RobotoSlab-Medium' }}>
-            Tin Tức
-          </Text>
+              Tin Tức
+            </Text>
           </View>
-          
+
           <ScrollView
             horizontal
             contentContainerStyle={styles.newsContainer}
             style={{ flex: 1 }}>
-            <NewsPieces text={'Một bệnh nhân tử vong sau khi hiến máu'} />
-            <NewsPieces text={'Hai học sinh Skyline đc giải nhất KHKT'} />
-            <NewsPieces text={'VN Drops'} />
-            <NewsPieces text={'Hello'} />
+            {NewsPiece}
           </ScrollView>
         </View>
       </View>
