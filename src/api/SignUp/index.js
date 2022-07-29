@@ -6,8 +6,9 @@ export const postUserDetails = async user => {
   if (currentUserID) {
     await firestore().collection('users').doc(currentUserID).set({
       email: user.email,
-      fullname: user.fullname,
+      fullName: user.fullname,
       phoneNumber: user.phoneNumber,
+      accountType: user.accountType,
     });
   }
 };

@@ -21,6 +21,7 @@ const register = async (email, password, fullname, phoneNumber) => {
           email: email,
           fullname: fullname,
           phoneNumber: phoneNumber,
+          accountType: 'user',
         };
         postUserDetails(user);
       });
