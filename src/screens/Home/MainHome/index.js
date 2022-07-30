@@ -4,7 +4,7 @@ import styles from './styles';
 import CustomBigButton from './component/CustomBigButton';
 import CustomSmallButton from './component/CustomSmallButton';
 import NewsPieces from './component/NewsPieces';
-import { NewsInfo } from '../../utilities/newsInfo';
+import { NewsInfo } from '../../../utilities/newsInfo';
 
 const MainHomeScreen = ({ navigation }) => {
   const NewsPiece = NewsInfo.map(newPiece => {
@@ -27,7 +27,7 @@ const MainHomeScreen = ({ navigation }) => {
         </View>
         <Image
           style={styles.image}
-          source={require('../../assets/profile.jpg')}
+          source={require('../../../assets/profile.jpg')}
         />
       </View>
       {/* middle (main function*/}
@@ -39,13 +39,13 @@ const MainHomeScreen = ({ navigation }) => {
             </View>
             <View style={styles.bottomWrapper}>
               <CustomSmallButton
-                image={require('../../assets/question.png')}
+                image={require('../../../assets/question.png')}
                 text={'Hỏi Đáp'}
                 navigation={navigation}
                 route={'Forum'}
               />
               <CustomSmallButton
-                image={require('../../assets/achievement.png')}
+                image={require('../../../assets/achievement.png')}
                 text={'Thành tích'}
                 navigation={navigation}
                 route={'Achievement'}

@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import HospitalAppStack from './HospitalAppStack';
 import UserAppStack from './UserAppStack';
 import firestore from '@react-native-firebase/firestore';
+import { ActivityIndicator } from 'react-native';
 
 const AppNavigation = ({ user }) => {
   const [userInfo, setUserInfo] = useState({});
@@ -23,7 +24,7 @@ const AppNavigation = ({ user }) => {
   } else if (userInfo.accountType === 'hospital') {
     return <HospitalAppStack />;
   }
-  return null;
+  return <ActivityIndicator size="large" />;
 };
 
 export default AppNavigation;

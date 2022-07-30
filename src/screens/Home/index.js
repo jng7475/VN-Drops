@@ -1,10 +1,10 @@
 import { View, Text } from 'react-native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import React from 'react';
-import MainHomeScreen from '../MainHome';
-import Appointment from '../Appointment';
-import Forum from '../Forum';
-import Achievement from '../Achievement';
+import MainHomeScreen from './MainHome/index';
+import Appointment from './Appointment';
+import Forum from './Forum';
+import Achievement from './Achievement';
 
 const HomeStack = createNativeStackNavigator();
 

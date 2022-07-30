@@ -7,7 +7,7 @@ export default function CustomBigButton({ navigation }) {
   };
   return (
     <TouchableOpacity style={styles.container} onPress={handleOnPress}>
-      <Image source={require('../../../assets/schedule.png')} />
+      <Image source={require('../../../../assets/schedule.png')} />
       <Text style={styles.text}>Đăng ký - đặt lịch</Text>
     </TouchableOpacity>
   );
