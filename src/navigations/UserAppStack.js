@@ -5,7 +5,7 @@ import { NavBarButtons } from '../utilities/NavBarDetails';
 const Tab = createBottomTabNavigator();
 
 // Screens Tab for App
-const AppStack = () => {
+const UserAppStack = () => {
   const navBarButtons = NavBarButtons.map((button, index) => {
     return (
       <Tab.Screen
@@ -25,4 +25,4 @@ const AppStack = () => {
   return <Tab.Navigator initialRouteName="Home">{navBarButtons}</Tab.Navigator>;
 };
 
-export default AppStack;
+export default UserAppStack;
