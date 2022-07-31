@@ -10,7 +10,6 @@
     "lint": "eslint ."
   },
   "dependencies": {
-    "@google-cloud/firestore": "^5.0.2",
     "@react-native-firebase/app": "^15.2.0",
     "@react-native-firebase/auth": "^15.2.0",
     "@react-native-firebase/firestore": "^15.2.0",
@@ -18,7 +17,6 @@
     "@react-navigation/bottom-tabs": "^6.3.2",
     "@react-navigation/native": "^6.0.10",
     "@react-navigation/native-stack": "^6.6.2",
-    "firebase-admin": "^11.0.1",
     "global": "^4.4.0",
     "react": "18.0.0",
     "react-native": "^0.69.3",

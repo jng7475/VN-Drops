@@ -13,7 +13,6 @@ const UserAppStack = () => {
     messaging()
       .getToken()
       .then(token => {
-        console.log('tk', token);
         return postFCMToken(token);
       })
       .catch(err => {

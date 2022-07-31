@@ -5,7 +5,7 @@ import { handleHospitalPost } from '../../api/HandleHospitalPost';
 const AddPost = () => {
   const [content, setContent] = useState('');
   const handlePost = () => {
-    handleHospitalPost();
+    handleHospitalPost(content);
   };
 
   return (
