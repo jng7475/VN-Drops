@@ -1,80 +1,66 @@
-import { Text, View, TouchableOpacity, Image, ScrollView } from 'react-native';
-import React from 'react';
+import {
+  Text,
+  View,
+  TouchableOpacity,
+  Image,
+  ScrollView,
+  Dimensions,
+} from 'react-native';
+import React, { useState } from 'react';
 import styles from './styles';
-import CustomBigButton from './component/CustomBigButton';
-import CustomSmallButton from './component/CustomSmallButton';
 import NewsPieces from './component/NewsPieces';
 import { NewsInfo } from '../../../utilities/newsInfo';
+import CustomButton from './component/CustomButton';
+import { mainButtonData } from '../../../utilities/mainButtonData';
+import { scheduleButtonData } from '../../../utilities/mainButtonData';
+
+const windowWidth = Dimensions.get('window').width - 20;
+const windowHeight = Dimensions.get('window').height;
 
 const MainHomeScreen = ({ navigation }) => {
-  const NewsPiece = NewsInfo.map(newPiece => {
+  const MainButton = mainButtonData.map(value => {
+    return <CustomButton text={value.text} imageLink={value.imageLink} />;
+  });
+  const NewsPiece = NewsInfo.map(value => {
     return (
       <NewsPieces
-        title={newPiece.title}
-        description={newPiece.description}
-        link={newPiece.link}
-        imageLink={newPiece.imageLink}
+        link={value.link}
+        title={value.title}
+        imageLink={value.imageLink}
       />
     );
   });
   return (
     <View style={styles.container}>
       <View style={styles.curvedLine} />
-      {/* top (name and profile image*/}
       <View style={styles.top}>
-        <View style={{ marginBottom: 15 }}>
-          <Text style={styles.userName}>Nguyen Thanh Trung</Text>
+        <View style={styles.homeTitleWrapper}>
+          <Text style={styles.homeTitleText}>VN Drops</Text>
+          <Text style={styles.homeSloganText}>Giọt máu cho sự sống</Text>
         </View>
-        <Image
-          style={styles.image}
-          source={require('../../../assets/profile.jpg')}
-        />
+        <View style={styles.importantNewsWrapper}>
+          <Text style={styles.importantNewsText}>Thông tin quan trọng !!!</Text>
+          <View style={styles.importantNews}>
+            <Text>bla bla</Text>
+          </View>
+        </View>
       </View>
-      {/* middle (main function*/}
       <View style={styles.mid}>
-        <View style={styles.mainFunc}>
-          <View style={styles.mainButtonWrapper}>
-            <View style={styles.topWrapper}>
-              <CustomBigButton navigation={navigation} />
-            </View>
-            <View style={styles.bottomWrapper}>
-              <CustomSmallButton
-                image={require('../../../assets/question.png')}
-                text={'Hỏi Đáp'}
-                navigation={navigation}
-                route={'Forum'}
-              />
-              <CustomSmallButton
-                image={require('../../../assets/achievement.png')}
-                text={'Thành tích'}
-                navigation={navigation}
-                route={'Achievement'}
-              />
-            </View>
-
-            {/* <View style={styles.mainButtonTopWrapper}>
-              <CustomMainButton />
-            </View>
-            <View style={styles.mainButtonBottomWrapper}>
-              <CustomMainButton />
-              <CustomMainButton />
-            </View> */}
-          </View>
+        <View style={styles.midLine1}>
+          <CustomButton
+            text={scheduleButtonData.text}
+            imageLink={scheduleButtonData.imageLink}
+          />
         </View>
-        <View style={{ flex: 1.6 }}>
-          <View style={{ margin: 10 }}>
-            <Text style={{ fontSize: 20, fontFamily: 'RobotoSlab-Medium' }}>
-              Tin Tức
-            </Text>
-          </View>
-
-          <ScrollView
-            horizontal
-            contentContainerStyle={styles.newsContainer}
-            style={{ flex: 1 }}>
-            {NewsPiece}
-          </ScrollView>
-        </View>
+        <View style={styles.midOthers}>{MainButton}</View>
+      </View>
+      <View style={styles.bottom}>
+        <Text style={styles.newsText}>Tin tức</Text>
+        <ScrollView
+          horizontal={true}
+          style={{ marginTop: '20%', width: windowWidth * 5 }}>
+          {NewsPiece}
+        </ScrollView>
       </View>
     </View>
   );

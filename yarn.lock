@@ -6035,6 +6035,13 @@ react-native-communications@2.2.1:
   resolved "https://registry.npmjs.org/react-native-communications/-/react-native-communications-2.2.1.tgz"
   integrity sha512-5+C0X9mopI0+qxyQHzOPEi5v5rxNBQjxydPPiKMQSlX1RBIcJ8uTcqUPssQ9Mo8p6c1IKIWJUSqCj4jAmD0qVQ==
 
+react-native-drop-shadow@^0.0.5:
+  version "0.0.5"
+  resolved "https://registry.yarnpkg.com/react-native-drop-shadow/-/react-native-drop-shadow-0.0.5.tgz#7a0e8aee7f54224b198a284ee46400227f5e5a69"
+  integrity sha512-JK0LGYVrd8ARqutEk+bP4H/B3ZdjcGYnj/Q2gom1drBMRyKqCxAl8IImqcFuSO92diFpSicPXJSP2VvxO3iuUg==
+  dependencies:
+    logkitty "^0.7.1"
+
 react-native-gifted-chat@^1.0.3:
   version "1.0.4"
   resolved "https://registry.npmjs.org/react-native-gifted-chat/-/react-native-gifted-chat-1.0.4.tgz"

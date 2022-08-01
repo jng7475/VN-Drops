@@ -34,8 +34,11 @@ const UserAppStack = () => {
         options={{
           headerShown: false,
           tabBarLabel: button.title,
-          tabBarLabelStyle: { fontFamily: 'HindMadurai-Medium', fontSize: 12 },
+          tabBarLabelStyle: { fontFamily: 'RobotoSlab-Medium', fontSize: 12 },
           tabBarIcon: button.icon,
+          tabBarStyle: {
+            height: '7%',
+          },
         }}
       />
     );
