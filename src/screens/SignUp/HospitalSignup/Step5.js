@@ -8,23 +8,18 @@ import {
   Platform,
 } from 'react-native';
 import React, { useState, useContext } from 'react';
-import { AuthContext } from '../../navigations/AuthProvider';
+import { AuthContext } from '../../../navigations/AuthProvider';
 import styles from './styles';
 
-const Step2 = ({ userDetails }) => {
+const Step5 = ({ userDetails }) => {
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
 
   const { register } = useContext(AuthContext);
 
   const handleSignUp = () => {
-    if (userDetails) {
-      register(
-        userDetails.email,
-        password,
-        userDetails.fullname,
-        userDetails.phoneNumber,
-      );
+    if (userDetails && password) {
+      register(userDetails, password, 'hospital');
     }
   };
 
@@ -33,7 +28,10 @@ const Step2 = ({ userDetails }) => {
       style={styles.container}
       behavior={Platform.OS === 'ios' ? 'padding' : 'height'}>
       <View style={styles.top}>
-        <Image style={styles.logo} source={require('../../assets/logo.png')} />
+        <Image
+          style={styles.logo}
+          source={require('../../../assets/logo.png')}
+        />
         <Text style={styles.welcomeText}>SIGN UP</Text>
       </View>
       <View style={styles.middle}>
@@ -66,4 +64,4 @@ const Step2 = ({ userDetails }) => {
   );
 };
 
-export default Step2;
+export default Step5;

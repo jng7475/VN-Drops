@@ -8,7 +8,7 @@ import {
   Platform,
 } from 'react-native';
 import React, { useState } from 'react';
-import styles from './styles';
+import { step1Styles } from './styles';
 
 const Step1 = ({ navigation, setStep, setUserDetails }) => {
   const [email, setEmail] = useState('');
@@ -32,58 +32,60 @@ const Step1 = ({ navigation, setStep, setUserDetails }) => {
 
   return (
     <KeyboardAvoidingView
-      style={styles.container}
+      style={step1Styles.container}
       behavior={Platform.OS === 'ios' ? 'padding' : 'height'}>
-      <View style={styles.top}>
-        <Image style={styles.logo} source={require('../../assets/logo.png')} />
-        <Text style={styles.welcomeText}>SIGN UP</Text>
+      <View style={step1Styles.top}>
+        <Image
+          style={step1Styles.logo}
+          source={require('../../../assets/logo.png')}
+        />
+        <Text style={step1Styles.welcomeText}>SIGN UP</Text>
       </View>
-      <View style={styles.middle}>
-        <View style={styles.InputContainer}>
+      <View style={step1Styles.middle}>
+        <View style={step1Styles.InputContainer}>
           <TextInput
             placeholder="Fullname"
             value={fullname}
             onChangeText={text => setFullname(text)}
-            style={styles.input}
+            style={step1Styles.input}
           />
           <TextInput
             placeholder="Email"
             value={email}
             onChangeText={text => setEmail(text)}
-            style={styles.input}
+            style={step1Styles.input}
           />
           <TextInput
             placeholder="Phone Number"
             value={phone}
             onChangeText={text => setPhone(text)}
-            style={styles.input}
+            style={step1Styles.input}
             secureTextEntry
           />
         </View>
       </View>
 
-      <View style={styles.bottom}>
-   
+      <View style={step1Styles.bottom}>
         <View style={{ marginTop: 20 }}>
           <Text>or connect using</Text>
         </View>
-        <View style={styles.loginWith}>
-          <TouchableOpacity style={styles.loginWithButton}>
-            <Text style={styles.loginStyleText}>Google</Text>
+        <View style={step1Styles.loginWith}>
+          <TouchableOpacity style={step1Styles.loginWithButton}>
+            <Text style={step1Styles.loginStyleText}>Google</Text>
           </TouchableOpacity>
-          <TouchableOpacity style={styles.loginWithButton}>
-            <Text style={styles.loginStyleText}>Facebook</Text>
+          <TouchableOpacity style={step1Styles.loginWithButton}>
+            <Text style={step1Styles.loginStyleText}>Facebook</Text>
           </TouchableOpacity>
         </View>
-        <View style={styles.signUp}>
+        <View style={step1Styles.signUp}>
           <Text>Already had an account? </Text>
           <TouchableOpacity onPress={handleLogIn}>
             <Text>Login</Text>
           </TouchableOpacity>
         </View>
-        <View style={styles.buttonContainer}>
-          <TouchableOpacity onPress={handleNext} style={styles.button}>
-            <Text style={styles.buttonText}>next</Text>
+        <View style={step1Styles.buttonContainer}>
+          <TouchableOpacity onPress={handleNext} style={step1Styles.button}>
+            <Text style={step1Styles.buttonText}>next</Text>
           </TouchableOpacity>
         </View>
       </View>
