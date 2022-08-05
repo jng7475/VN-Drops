@@ -21,9 +21,10 @@ const MainHomeScreen = ({ navigation }) => {
   const MainButton = mainButtonData.map(value => {
     return <CustomButton text={value.text} imageLink={value.imageLink} />;
   });
-  const NewsPiece = NewsInfo.map(value => {
+  const NewsPiece = NewsInfo.map((value, index) => {
     return (
       <NewsPieces
+        key={index}
         link={value.link}
         title={value.title}
         imageLink={value.imageLink}

@@ -106,24 +106,38 @@ const styles = StyleSheet.create({
 
 export default styles;
 
-export const step0Styles = StyleSheet.create({
-  button: {
-    alignItems: 'center',
-    // justifyContent: 'space-around',
-    backgroundColor: '#EBE4DC',
-    width: '40%',
-    padding: 10,
-    borderRadius: 5,
+export const step1Styles = StyleSheet.create({});
+
+export const step2Styles = StyleSheet.create({});
+
+export const step3Styles = StyleSheet.create({
+  camera: {
+    width: '50%',
+    height: '50%',
   },
-  buttonChosen: {
-    alignItems: 'center',
-    // justifyContent: 'space-around',
-    backgroundColor: 'red',
-    width: '40%',
-    padding: 10,
-    borderRadius: 5,
+  img: {
+    width: '30%',
+    height: '30%',
   },
-  question: {
-    color: 'black',
+  cameraButton: {
+    marginTop: 10,
+    marginBottom: 20,
   },
 });
+
+export const step4Styles = StyleSheet.create({
+  camera: {
+    width: '50%',
+    height: '50%',
+  },
+  img: {
+    width: '30%',
+    height: '30%',
+  },
+  cameraButton: {
+    marginTop: 10,
+    marginBottom: 20,
+  },
+});
+
+export const step5Styles = StyleSheet.create({});

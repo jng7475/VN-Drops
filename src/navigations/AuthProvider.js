@@ -12,18 +12,18 @@ const login = async (email, password) => {
   }
 };
 
-const register = async (email, password, fullname, phoneNumber) => {
+const register = async (userDetails, password, accountType) => {
   try {
     await auth()
-      .createUserWithEmailAndPassword(email, password)
+      .createUserWithEmailAndPassword(userDetails.email, password)
       .then(value => {
-        const user = {
-          email: email,
-          fullname: fullname,
-          phoneNumber: phoneNumber,
-          accountType: 'user',
-        };
-        postUserDetails(user);
+        // const user = {
+        //   email: email,
+        //   fullname: fullname,
+        //   phoneNumber: phoneNumber,
+        //   accountType: accountType,
+        // };
+        postUserDetails(userDetails, accountType);
       });
   } catch (error) {
     console.log('signup error', error);
