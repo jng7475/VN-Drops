@@ -3,8 +3,11 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import React from 'react';
 import MainHomeScreen from './MainHome/index';
 import Appointment from './Appointment';
-import Forum from './Forum';
+import Activity from './Activity';
 import Achievement from './Achievement';
+import Nearby from './Nearby';
+import UpdateInfo from './UpdateInfo';
+import { headerStyle, getHeaderOptions } from './styles';
 
 const HomeStack = createNativeStackNavigator();
 
@@ -21,23 +24,29 @@ const HomeScreen = () => {
       <HomeStack.Screen
         name="Appointment"
         component={Appointment}
-        options={{
-          headerShown: false,
-        }}
+        options={getHeaderOptions('Đặt Lịch')}
       />
       <HomeStack.Screen
-        name="Forum"
-        component={Forum}
+        name="UpdateInfo"
+        component={UpdateInfo}
+        options={getHeaderOptions('Cập Nhật Thông Tin')}
+      />
+      <HomeStack.Screen
+        name="Activity"
+        component={Activity}
+        options={getHeaderOptions('Hoạt Động')}
+      />
+      <HomeStack.Screen
+        name="Nearby"
+        component={Nearby}
         options={{
-          headerShown: false,
+          headerStyle: headerStyle,
         }}
       />
       <HomeStack.Screen
         name="Achievement"
         component={Achievement}
-        options={{
-          headerShown: false,
-        }}
+        options={getHeaderOptions('Thành Tích')}
       />
     </HomeStack.Navigator>
   );

@@ -44,7 +44,13 @@ const UserAppStack = () => {
     );
   });
 
-  return <Tab.Navigator initialRouteName="Home">{navBarButtons}</Tab.Navigator>;
+  return (
+    <Tab.Navigator
+      initialRouteName="Home"
+      screenOptions={{ tabBarHideOnKeyboard: true }}>
+      {navBarButtons}
+    </Tab.Navigator>
+  );
 };
 
 export default UserAppStack;
