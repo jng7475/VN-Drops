@@ -11,12 +11,15 @@ import React from 'react';
 const windowWidth = Dimensions.get('window').width;
 const windowHeight = Dimensions.get('window').height;
 
-const CustomButton = props => {
+const CustomButton = ({ imageLink, text, id, navigation }) => {
+  const handleNavigate = () => {
+    navigation.navigate(id);
+  };
   return (
-    <TouchableOpacity style={styles.container}>
-      <Image style={{ maxHeight: 40, maxWidth: 40 }} source={props.imageLink} />
+    <TouchableOpacity style={styles.container} onPress={handleNavigate}>
+      <Image style={{ maxHeight: 40, maxWidth: 40 }} source={imageLink} />
       <View style={{ width: '80%' }}>
-        <Text style={styles.text}>{props.text}</Text>
+        <Text style={styles.text}>{text}</Text>
       </View>
     </TouchableOpacity>
   );

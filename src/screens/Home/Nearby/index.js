@@ -1,12 +1,12 @@
 import { View, Text } from 'react-native';
 import React from 'react';
 
-const Forum = () => {
+const Nearby = () => {
   return (
     <View>
-      <Text>Forum</Text>
+      <Text>Nearby</Text>
     </View>
   );
 };
 
-export default Forum;
+export default Nearby;

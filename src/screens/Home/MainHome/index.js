@@ -18,8 +18,16 @@ const windowWidth = Dimensions.get('window').width - 20;
 const windowHeight = Dimensions.get('window').height;
 
 const MainHomeScreen = ({ navigation }) => {
-  const MainButton = mainButtonData.map(value => {
-    return <CustomButton text={value.text} imageLink={value.imageLink} />;
+  const MainButton = mainButtonData.map((value, index) => {
+    return (
+      <CustomButton
+        key={index}
+        text={value.text}
+        imageLink={value.imageLink}
+        id={value.id}
+        navigation={navigation}
+      />
+    );
   });
   const NewsPiece = NewsInfo.map((value, index) => {
     return (
@@ -51,6 +59,8 @@ const MainHomeScreen = ({ navigation }) => {
           <CustomButton
             text={scheduleButtonData.text}
             imageLink={scheduleButtonData.imageLink}
+            id="Appointment"
+            navigation={navigation}
           />
         </View>
         <View style={styles.midOthers}>{MainButton}</View>
