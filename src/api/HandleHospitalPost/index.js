@@ -8,7 +8,7 @@ export async function handleHospitalPost(message) {
       querySnapshot.docs.map(documentSnapshot => {
         const tokens = documentSnapshot.data().tokens;
         // console.log(tokens);
-        fetch('https://bb46-42-112-79-186.ngrok.io/hospital-post', {
+        fetch('https://radiant-garden-75217.herokuapp.com/hospital-post', {
           method: 'post',
           headers: {
             'Content-Type': 'application/json',
