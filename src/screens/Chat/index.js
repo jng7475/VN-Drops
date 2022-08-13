@@ -9,14 +9,56 @@ import styles from './styles';
 
 const ChatScreen = ({ navigation }) => {
   const [messages, setMessages] = useState([]);
+  // console.log(messages);
   const user = firebase.auth().currentUser;
   const userID = user.uid;
   const BOT_ID = 'bot_id';
 
+  const handleSend = async (name, msg) => {
+    // console.log(msg);
+    await fetch(
+      'https://rasa-server-jng7475.cloud.okteto.net/webhooks/rest/webhook',
+      {
+        method: 'POST',
+        headers: {
+          Accept: 'application/json',
+          'Content-Type': 'application/json',
+          charset: 'UTF-8',
+        },
+        credentials: 'same-origin',
+        body: JSON.stringify({ sender: name, message: msg }),
+      },
+    )
+      .then(response => response.json())
+      .then(response => {
+        if (response !== []) {
+          console.log(response);
+          const text = response !== undefined ? response[0].text : '...';
+          console.log(text);
+          const newMessage = {
+            _id: messages.length + 1,
+            text: text,
+            createdAt: new Date(),
+            user: {
+              _id: BOT_ID,
+              name: 'User',
+              avatar: 'https://placeimg.com/140/140/any',
+            },
+          };
+          setMessages(previousMessages =>
+            GiftedChat.append(previousMessages, newMessage),
+          );
+        }
+      })
+      .catch(err => {
+        console.log('error ', err);
+      });
+  };
+
   useEffect(() => {
     setMessages([
       {
-        _id: 1,
+        _id: 0,
         text: 'Hello! How can I help you?',
         createdAt: new Date(),
         user: {
@@ -29,9 +71,11 @@ const ChatScreen = ({ navigation }) => {
   }, [user]);
 
   const onSend = useCallback((messages = []) => {
+    console.log(messages);
     setMessages(previousMessages =>
       GiftedChat.append(previousMessages, messages),
     );
+    handleSend('trung', messages[0].text);
   }, []);
 
   const renderSend = props => {
