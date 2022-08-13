@@ -4,6 +4,7 @@ import { Bubble, GiftedChat, Send } from 'react-native-gifted-chat';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import { firebase } from '@react-native-firebase/auth';
+import { sendMessageToRasa } from '../../api/RasaApi';
 
 import styles from './styles';
 
@@ -15,44 +16,41 @@ const ChatScreen = ({ navigation }) => {
   const BOT_ID = 'bot_id';
 
   const handleSend = async (name, msg) => {
-    // console.log(msg);
-    await fetch(
-      'https://rasa-server-jng7475.cloud.okteto.net/webhooks/rest/webhook',
-      {
-        method: 'POST',
-        headers: {
-          Accept: 'application/json',
-          'Content-Type': 'application/json',
-          charset: 'UTF-8',
+    await sendMessageToRasa(name, msg).then(response => {
+      console.log(response);
+      if (response.status === 'error') {
+        const newMessage = {
+          _id: messages.length + 1,
+          text: '...',
+          createdAt: new Date(),
+          user: {
+            _id: BOT_ID,
+            name: 'User',
+            avatar: 'https://placeimg.com/140/140/any',
+          },
+        };
+        setMessages(previousMessages =>
+          GiftedChat.append(previousMessages, newMessage),
+        );
+        return;
+      }
+
+      const text = response.response[0].text;
+      console.log(text);
+      const newMessage = {
+        _id: messages.length + 1,
+        text: text,
+        createdAt: new Date(),
+        user: {
+          _id: BOT_ID,
+          name: 'User',
+          avatar: 'https://placeimg.com/140/140/any',
         },
-        credentials: 'same-origin',
-        body: JSON.stringify({ sender: name, message: msg }),
-      },
-    )
-      .then(response => response.json())
-      .then(response => {
-        if (response !== []) {
-          console.log(response);
-          const text = response !== undefined ? response[0].text : '...';
-          console.log(text);
-          const newMessage = {
-            _id: messages.length + 1,
-            text: text,
-            createdAt: new Date(),
-            user: {
-              _id: BOT_ID,
-              name: 'User',
-              avatar: 'https://placeimg.com/140/140/any',
-            },
-          };
-          setMessages(previousMessages =>
-            GiftedChat.append(previousMessages, newMessage),
-          );
-        }
-      })
-      .catch(err => {
-        console.log('error ', err);
-      });
+      };
+      setMessages(previousMessages =>
+        GiftedChat.append(previousMessages, newMessage),
+      );
+    });
   };
 
   useEffect(() => {
@@ -68,14 +66,14 @@ const ChatScreen = ({ navigation }) => {
         },
       },
     ]);
-  }, [user]);
+  }, []);
 
-  const onSend = useCallback((messages = []) => {
-    console.log(messages);
+  const onSend = useCallback((newMessage = []) => {
+    console.log(newMessage);
     setMessages(previousMessages =>
-      GiftedChat.append(previousMessages, messages),
+      GiftedChat.append(previousMessages, newMessage),
     );
-    handleSend('trung', messages[0].text);
+    handleSend('trung', newMessage[0].text);
   }, []);
 
   const renderSend = props => {
@@ -118,7 +116,7 @@ const ChatScreen = ({ navigation }) => {
   return (
     <GiftedChat
       messages={messages}
-      onSend={messages => onSend(messages)}
+      onSend={newMessage => onSend(newMessage)}
       user={{
         _id: userID,
       }}
