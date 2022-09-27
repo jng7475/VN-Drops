@@ -39,9 +39,7 @@ const HomeScreen = () => {
       <HomeStack.Screen
         name="Nearby"
         component={Nearby}
-        options={{
-          headerStyle: headerStyle,
-        }}
+        options={getHeaderOptions('Nhu cầu nhận máu gần bạn')}
       />
       <HomeStack.Screen
         name="Achievement"
