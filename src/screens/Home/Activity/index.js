@@ -8,6 +8,8 @@ const Activity = () => {
   return (
     <View style={{ flex: 1 }}>
       <BeforeDonationScreen style={{ flex: 1 }} />
+      {/* <DuringDonationScreen style={{ flex: 1 }} /> */}
+      {/* <AfterDonationScreen style={{ flex: 1 }} /> */}
     </View>
   );
 };
