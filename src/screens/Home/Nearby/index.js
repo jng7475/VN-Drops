@@ -1,12 +1,28 @@
-import { View, Text } from 'react-native';
+import {
+  View,
+  Text,
+  Image,
+  ScrollView,
+  TouchableOpacity,
+  Linking,
+} from 'react-native';
 import React from 'react';
-
+import styles from './styles';
+import HospitalsNearby from '../../../utilities/HospitalsNearby';
 const Nearby = () => {
-  return (
-    <View>
-      <Text>Nearby</Text>
-    </View>
-  );
+  const hospitals = HospitalsNearby.map(i => {
+    return (
+      <TouchableOpacity
+        style={styles.hostipalInfoWrapper}
+        onPress={() => Linking.openURL(i.link)}>
+        <View style={styles.hosImage}>{i.image}</View>
+        <View style={styles.hosInfor}>
+          <Text style={styles.heading}>{i.name}</Text>
+        </View>
+      </TouchableOpacity>
+    );
+  });
+  return <ScrollView style={styles.container}>{hospitals}</ScrollView>;
 };
 
 export default Nearby;
