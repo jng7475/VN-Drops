@@ -29,7 +29,7 @@ const HomeScreen = () => {
       <HomeStack.Screen
         name="UpdateInfo"
         component={UpdateInfo}
-        options={getHeaderOptions('Cập Nhật Thông Tin')}
+        options={getHeaderOptions('Khai báo')}
       />
       <HomeStack.Screen
         name="Activity"
@@ -44,7 +44,7 @@ const HomeScreen = () => {
       <HomeStack.Screen
         name="Achievement"
         component={Achievement}
-        options={getHeaderOptions('Thành Tích')}
+        options={getHeaderOptions('Thành Tích - Vinh danh')}
       />
     </HomeStack.Navigator>
   );
