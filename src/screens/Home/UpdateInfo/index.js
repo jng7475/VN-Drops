@@ -7,7 +7,6 @@ import { RadioButton } from 'react-native-paper';
 import Survey from './component/survey';
 import Claim from './component/claim';
 import { YesNoBox } from './component/yesNoBox';
-import { captureScreen } from 'react-native-view-shot';
 
 const UpdateInfo = () => {
   const [checked, setChecked] = React.useState(1);
