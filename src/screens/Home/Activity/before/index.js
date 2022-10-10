@@ -8,6 +8,9 @@ export default function BeforeDonationScreen() {
   const moveToBloodDemand = () => {
     navigation.navigate('Nearby');
   };
+  const moveToAppointment = () => {
+    navigation.navigate('Appointment');
+  };
   const space = '   ';
   const YesNoBox = () => {
     return (
@@ -71,7 +74,9 @@ export default function BeforeDonationScreen() {
         <Text style={styles.slogan}>
           Mỗi giọt máu cho đi, một cuộc đời ở lại
         </Text>
-        <TouchableOpacity style={styles.signForDonation}>
+        <TouchableOpacity
+          style={styles.signForDonation}
+          onPress={moveToAppointment}>
           <Text style={{ color: 'white' }}>Nhấn vào để đặt lịch hiến máu</Text>
         </TouchableOpacity>
       </View>
