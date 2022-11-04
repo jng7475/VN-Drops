@@ -9,14 +9,14 @@ const styles = StyleSheet.create({
   },
   top: {
     width: '100%',
-    flex: 1.8,
+    flex: 1,
     justifyContent: 'flex-end',
     alignItems: 'center',
     // backgroundColor: 'black',
   },
   mid: {
     width: '100%',
-    flex: 2.5,
+    flex: 0.5,
     justifyContent: 'center',
     alignItems: 'center',
     // backgroundColor: 'blue',
@@ -24,14 +24,14 @@ const styles = StyleSheet.create({
   bottom: {
     width: '100%',
     flexDirection: 'row',
-    flex: 1.3,
+    flex: 0.45,
     // backgroundColor: 'lightgreen',
   },
   curvedLine: {
     width: '135%',
     height: '70%',
     position: 'absolute',
-    top: '-25%',
+    top: '-10%',
     borderRadius: 180,
     backgroundColor: '#E82323',
     transform: [{ scaleX: 1.1 }, { scaleY: 1 }],
@@ -57,9 +57,12 @@ const styles = StyleSheet.create({
   },
   importantNewsWrapper: {
     width: '80%',
-    flex: 1.5,
+    flex: 2.5,
     backgroundColor: '#EEEDEB',
     borderRadius: 22,
+    marginBottom: '10%',
+    alignItems: 'center',
+    justifyContent: 'center',
   },
   importantNewsText: {
     fontFamily: 'RobotoSlab-Bold',
@@ -68,10 +71,11 @@ const styles = StyleSheet.create({
     textAlign: 'center',
   },
   importantNews: {
-    width: '100%',
+    width: '90%',
     flex: 1,
     backgroundColor: '#EEEDEB',
     borderRadius: 22,
+    marginVertical: '5%',
   },
 
   midLine1: {

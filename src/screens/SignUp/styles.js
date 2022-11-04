@@ -4,12 +4,13 @@ import { StyleSheet } from 'react-native';
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#F5F5F5',
+    backgroundColor: 'white',
   },
   top: {
-    flex: 1,
+    flex: 0.8,
     alignItems: 'center',
     justifyContent: 'space-between',
+    paddingVertical: '12%',
   },
   welcomeText: {
     fontSize: 50,
@@ -22,7 +23,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   bottom: {
-    flex: 1.5,
+    flex: 2,
     alignItems: 'center',
     justifyContent: 'flex-start',
   },
@@ -43,7 +44,7 @@ const styles = StyleSheet.create({
   },
   buttonContainer: {
     width: '40%',
-    justifyContent: 'center',
+    justifyContent: 'flex-start',
     alignItems: 'center',
   },
   button: {
@@ -54,7 +55,7 @@ const styles = StyleSheet.create({
     padding: 10,
     borderRadius: 25,
     position: 'absolute',
-    top: 45,
+    marginTop: '40%',
   },
   buttonText: {
     color: 'black',
@@ -74,11 +75,12 @@ const styles = StyleSheet.create({
     paddingRight: 10,
   },
   loginWith: {
-    width: '80%',
-    marginTop: 20,
+    width: '150%',
+    marginVertical: 20,
     display: 'flex',
-    flexDirection: 'row',
-    justifyContent: 'space-around',
+    flexDirection: 'column',
+    justifyContent: 'space-between',
+    alignItems: 'center',
   },
   loginStyleText: {
     color: '#000000',
@@ -94,13 +96,13 @@ const styles = StyleSheet.create({
     borderRadius: 5,
   },
   signUp: {
-    marginTop: 10,
+    marginTop: '10%',
     display: 'flex',
     flexDirection: 'row',
   },
   logo: {
-    width: 136,
-    height: 135,
+    width: 126,
+    height: 125,
   },
 });
 
@@ -110,18 +112,20 @@ export const step0Styles = StyleSheet.create({
   button: {
     alignItems: 'center',
     // justifyContent: 'space-around',
-    backgroundColor: '#EBE4DC',
-    width: '40%',
-    padding: 10,
-    borderRadius: 5,
+    backgroundColor: '#D9D9D9',
+    width: '50%',
+    paddingVertical: '5%',
+    borderRadius: 15,
+    marginBottom: 10,
   },
   buttonChosen: {
     alignItems: 'center',
     // justifyContent: 'space-around',
-    backgroundColor: 'red',
-    width: '40%',
-    padding: 10,
-    borderRadius: 5,
+    backgroundColor: '#E95A5A',
+    width: '50%',
+    padding: '5%',
+    borderRadius: 15,
+    marginBottom: 10,
   },
   question: {
     color: 'black',

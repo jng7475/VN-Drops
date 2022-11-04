@@ -29,7 +29,8 @@ const Step1 = ({ setStep, setUserDetails }) => {
   return (
     <KeyboardAvoidingView
       style={styles.container}
-      behavior={Platform.OS === 'ios' ? 'padding' : 'height'}>
+      behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
+      enabled={false}>
       <View style={styles.top}>
         <Image
           style={styles.logo}
@@ -63,7 +64,7 @@ const Step1 = ({ setStep, setUserDetails }) => {
       <View style={styles.bottom}>
         <View style={styles.buttonContainer}>
           <TouchableOpacity onPress={handleNext} style={styles.button}>
-            <Text style={styles.buttonText}>next</Text>
+            <Text style={styles.buttonText}>Next</Text>
           </TouchableOpacity>
         </View>
       </View>

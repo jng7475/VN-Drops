@@ -26,7 +26,8 @@ const Step2 = ({ userDetails }) => {
   return (
     <KeyboardAvoidingView
       style={step2Styles.container}
-      behavior={Platform.OS === 'ios' ? 'padding' : 'height'}>
+      behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
+      enabled={false}>
       <View style={step2Styles.top}>
         <Image
           style={step2Styles.logo}

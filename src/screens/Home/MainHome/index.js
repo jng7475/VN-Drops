@@ -13,6 +13,7 @@ import { NewsInfo } from '../../../utilities/newsInfo';
 import CustomButton from './component/CustomButton';
 import { mainButtonData } from '../../../utilities/mainButtonData';
 import { scheduleButtonData } from '../../../utilities/mainButtonData';
+import MyText from '../../../components/text';
 
 const windowWidth = Dimensions.get('window').width - 20;
 const windowHeight = Dimensions.get('window').height;
@@ -50,19 +51,32 @@ const MainHomeScreen = ({ navigation }) => {
         <View style={styles.importantNewsWrapper}>
           <Text style={styles.importantNewsText}>Thông tin quan trọng !!!</Text>
           <View style={styles.importantNews}>
-            <Text>bla bla</Text>
+            <MyText
+              text="- Có người gần bạn đang cần gấp 500ml máu nhóm O để thực hiện phẩu
+              thuật."
+              size={17}
+              family="RobotoSlab-Medium"
+              color="black"
+            />
+            <MyText
+              text="- Bạn có thể giúp họ. Vào “Huy động máu SOS” ngayy!"
+              size={17}
+              family="RobotoSlab-Medium"
+              color="black"
+            />
+            <Image source={require('../../../assets/sosImages.png')} />
           </View>
         </View>
       </View>
       <View style={styles.mid}>
-        <View style={styles.midLine1}>
+        {/* <View style={styles.midLine1}>
           <CustomButton
             text={scheduleButtonData.text}
             imageLink={scheduleButtonData.imageLink}
             id="Appointment"
             navigation={navigation}
           />
-        </View>
+        </View> */}
         <View style={styles.midOthers}>{MainButton}</View>
       </View>
       <View style={styles.bottom}>
