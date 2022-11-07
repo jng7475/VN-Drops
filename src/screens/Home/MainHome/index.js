@@ -12,8 +12,10 @@ import NewsPieces from './component/NewsPieces';
 import { NewsInfo } from '../../../utilities/newsInfo';
 import CustomButton from './component/CustomButton';
 import { mainButtonData } from '../../../utilities/mainButtonData';
-import { scheduleButtonData } from '../../../utilities/mainButtonData';
+import { SosButton } from '../../../utilities/mainButtonData';
 import MyText from '../../../components/text';
+import SosCustomButton from './component/SosCustomButton';
+import ImportantInfo from './component/ImportantInfo';
 
 const windowWidth = Dimensions.get('window').width - 20;
 const windowHeight = Dimensions.get('window').height;
@@ -51,39 +53,33 @@ const MainHomeScreen = ({ navigation }) => {
         <View style={styles.importantNewsWrapper}>
           <Text style={styles.importantNewsText}>Thông tin quan trọng !!!</Text>
           <View style={styles.importantNews}>
-            <MyText
-              text="- Có người gần bạn đang cần gấp 500ml máu nhóm O để thực hiện phẩu
-              thuật."
-              size={17}
-              family="RobotoSlab-Medium"
-              color="black"
-            />
-            <MyText
-              text="- Bạn có thể giúp họ. Vào “Huy động máu SOS” ngayy!"
-              size={17}
-              family="RobotoSlab-Medium"
-              color="black"
-            />
-            <Image source={require('../../../assets/sosImages.png')} />
+            <ImportantInfo />
+            {/* <Image source={require('../../../assets/sosImages.png')} /> */}
           </View>
         </View>
       </View>
       <View style={styles.mid}>
-        {/* <View style={styles.midLine1}>
-          <CustomButton
-            text={scheduleButtonData.text}
-            imageLink={scheduleButtonData.imageLink}
-            id="Appointment"
+        <View style={styles.midLine1}>
+          {/* <CustomButton
+            text={SosButton[0].text}
+            imageLink={SosButton[0].imageLink}
+            id="Sos"
+            navigation={navigation}
+          /> */}
+          <SosCustomButton
+            text={SosButton[0].text}
+            imageLink={SosButton[0].imageLink}
+            id="Sos"
             navigation={navigation}
           />
-        </View> */}
+        </View>
         <View style={styles.midOthers}>{MainButton}</View>
       </View>
       <View style={styles.bottom}>
         <Text style={styles.newsText}>Tin tức</Text>
         <ScrollView
           horizontal={true}
-          style={{ marginTop: '20%', width: windowWidth * 5 }}>
+          style={{ marginTop: '8%', width: windowWidth * 5 }}>
           {NewsPiece}
         </ScrollView>
       </View>

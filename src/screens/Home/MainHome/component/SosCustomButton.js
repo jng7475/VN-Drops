@@ -17,7 +17,10 @@ const CustomButton = ({ imageLink, text, id, navigation }) => {
   };
   return (
     <TouchableOpacity style={styles.container} onPress={handleNavigate}>
-      <Image style={{ maxHeight: 40, maxWidth: 40 }} source={imageLink} />
+      <Image
+        style={{ maxHeight: 60, maxWidth: 60, marginBottom: 12 }}
+        source={imageLink}
+      />
       <View style={{ width: '80%' }}>
         <Text style={styles.text}>{text}</Text>
       </View>
@@ -27,12 +30,14 @@ const CustomButton = ({ imageLink, text, id, navigation }) => {
 
 const styles = StyleSheet.create({
   container: {
-    width: (windowWidth * 4) / 10,
-    height: (windowHeight * 1) / 10,
+    width: (windowWidth * 4.8) / 10,
+    height: (windowHeight * 1.4) / 10,
     borderRadius: 15,
-    backgroundColor: '#F5F5F5',
-    elevation: 15,
-    shadowColor: '#000000',
+    borderWidth: 3,
+    borderColor: 'white',
+    backgroundColor: '#D13F3F',
+    elevation: 25,
+    shadowColor: 'black',
     shadowOpacity: 0.5,
     alignItems: 'center',
     justifyContent: 'center',
@@ -40,7 +45,8 @@ const styles = StyleSheet.create({
   },
   text: {
     fontFamily: 'RobotoSlab-SemiBold',
-    fontSize: 14,
+    fontSize: 15,
+    color: 'white',
     textAlign: 'center',
   },
 });

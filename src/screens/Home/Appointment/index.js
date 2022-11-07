@@ -50,17 +50,17 @@ const Appointment = ({ navigation }) => {
       />
     );
   });
-  const scheduleButton = scheduleButtonData.map((value, index) => {
-    return (
-      <CustomButton
-        key={index}
-        text={value.text}
-        imageLink={value.imageLink}
-        id={value.id}
-        navigation={navigation}
-      />
-    );
-  });
+  // const scheduleButton = scheduleButtonData.map((value, index) => {
+  //   return (
+  //     <CustomButton
+  //       key={index}
+  //       text={value.text}
+  //       imageLink={value.imageLink}
+  //       id={value.id}
+  //       navigation={navigation}
+  //     />
+  //   );
+  // });
   return (
     <View style={styles.container}>
       <ScrollView contentContainerStyle={contentContainerStyle}>
@@ -70,7 +70,7 @@ const Appointment = ({ navigation }) => {
           style={styles.genderInput}
           setPatientDetails={setPatientDetails}
         /> */}
-        <View style={styles.buttonWrapper}>{scheduleButton}</View>
+        {/* <View style={styles.buttonWrapper}>{scheduleButton}</View> */}
         <View style={{ width: '100%', height: '5%' }} />
         <Text style={styles.title}>Đặt lịch</Text>
         <LocationInput setPatientDetails={setPatientDetails} />
