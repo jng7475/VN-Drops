@@ -30,7 +30,8 @@ const Step2 = ({ setStep, setUserDetails }) => {
   return (
     <KeyboardAvoidingView
       style={styles.container}
-      behavior={Platform.OS === 'ios' ? 'padding' : 'height'}>
+      behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
+      enabled={false}>
       <View style={styles.top}>
         <Image
           style={styles.logo}

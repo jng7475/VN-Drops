@@ -9,14 +9,14 @@ const styles = StyleSheet.create({
   },
   top: {
     width: '100%',
-    flex: 1.8,
+    flex: 1.1,
     justifyContent: 'flex-end',
     alignItems: 'center',
     // backgroundColor: 'black',
   },
   mid: {
     width: '100%',
-    flex: 2.5,
+    flex: 1.5,
     justifyContent: 'center',
     alignItems: 'center',
     // backgroundColor: 'blue',
@@ -24,7 +24,7 @@ const styles = StyleSheet.create({
   bottom: {
     width: '100%',
     flexDirection: 'row',
-    flex: 1.3,
+    flex: 0.5,
     // backgroundColor: 'lightgreen',
   },
   curvedLine: {
@@ -57,9 +57,12 @@ const styles = StyleSheet.create({
   },
   importantNewsWrapper: {
     width: '80%',
-    flex: 1.5,
+    flex: 2.5,
     backgroundColor: '#EEEDEB',
     borderRadius: 22,
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginTop: '10%',
   },
   importantNewsText: {
     fontFamily: 'RobotoSlab-Bold',
@@ -68,14 +71,16 @@ const styles = StyleSheet.create({
     textAlign: 'center',
   },
   importantNews: {
-    width: '100%',
+    width: '90%',
     flex: 1,
     backgroundColor: '#EEEDEB',
     borderRadius: 22,
+    marginVertical: '5%',
   },
 
   midLine1: {
-    marginTop: '9%',
+    marginBottom: '3%',
+    marginTop: '2%',
     width: '100%',
     // justifyContent: 'center',
     alignItems: 'center',
@@ -92,7 +97,7 @@ const styles = StyleSheet.create({
   },
   newsText: {
     position: 'absolute',
-    top: '30%',
+    top: 0,
     left: 10,
     fontFamily: 'RobotoSlab-Medium',
     fontSize: 15,

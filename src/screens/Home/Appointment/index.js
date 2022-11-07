@@ -1,4 +1,4 @@
-import { Text, View, ScrollView } from 'react-native';
+import { Text, View, ScrollView, TouchableOpacity } from 'react-native';
 import React, { useEffect, useState } from 'react';
 import { AppointmentInputs } from '../../../utilities/AppointmentInputs';
 import { styles } from './styles';
@@ -10,6 +10,9 @@ import DateInput from './components/DateInput';
 import SubmitButton from './components/SubmitButton';
 import { postAppointmentDetails } from '../../../api/PostAppointment';
 import ResponseModal from './components/ResponseModal';
+import { scheduleButtonData } from '../../../utilities/mainButtonData';
+import CustomButton from '../MainHome/component/CustomButton';
+import { ImportantNews } from './components/importantNews';
 
 const Appointment = ({ navigation }) => {
   const [patientDetails, setPatientDetails] = useState({});
@@ -47,29 +50,43 @@ const Appointment = ({ navigation }) => {
       />
     );
   });
-
+  // const scheduleButton = scheduleButtonData.map((value, index) => {
+  //   return (
+  //     <CustomButton
+  //       key={index}
+  //       text={value.text}
+  //       imageLink={value.imageLink}
+  //       id={value.id}
+  //       navigation={navigation}
+  //     />
+  //   );
+  // });
   return (
     <View style={styles.container}>
       <ScrollView contentContainerStyle={contentContainerStyle}>
-        <Text style={styles.title}>Thông tin người đặt lịch</Text>
+        {/* <Text style={styles.title}>Thông tin người đặt lịch</Text>
         <View style={styles.textInput}>{Inputs}</View>
         <GenderInput
           style={styles.genderInput}
           setPatientDetails={setPatientDetails}
-        />
+        /> */}
+        {/* <View style={styles.buttonWrapper}>{scheduleButton}</View> */}
+        <View style={{ width: '100%', height: '5%' }} />
+        <Text style={styles.title}>Đặt lịch</Text>
         <LocationInput setPatientDetails={setPatientDetails} />
         <DateInput setPatientDetails={setPatientDetails} />
+
+        <SubmitButton
+          handleScheduleAppointment={handleScheduleAppointment}
+          title="Đặt hẹn"
+        />
+        <ResponseModal
+          modalVisible={modalVisible}
+          setModalVisible={setModalVisible}
+          modalText={modalText}
+          navigation={navigation}
+        />
       </ScrollView>
-      <SubmitButton
-        handleScheduleAppointment={handleScheduleAppointment}
-        title="Đặt hẹn"
-      />
-      <ResponseModal
-        modalVisible={modalVisible}
-        setModalVisible={setModalVisible}
-        modalText={modalText}
-        navigation={navigation}
-      />
     </View>
   );
 };
@@ -78,5 +95,5 @@ export default Appointment;
 
 const contentContainerStyle = {
   flexGrow: 1,
-  paddingBottom: 10,
+  paddingVertical: 20,
 };

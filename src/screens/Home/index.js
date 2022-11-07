@@ -7,6 +7,7 @@ import Activity from './Activity';
 import Achievement from './Achievement';
 import Nearby from './Nearby';
 import UpdateInfo from './UpdateInfo';
+import Sos from './Sos';
 import { headerStyle, getHeaderOptions } from './styles';
 
 const HomeStack = createNativeStackNavigator();
@@ -25,6 +26,11 @@ const HomeScreen = () => {
         name="Appointment"
         component={Appointment}
         options={getHeaderOptions('Đặt Lịch')}
+      />
+      <HomeStack.Screen
+        name="Sos"
+        component={Sos}
+        options={getHeaderOptions('Huy động máu SOS')}
       />
       <HomeStack.Screen
         name="UpdateInfo"

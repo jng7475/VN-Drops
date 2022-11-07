@@ -12,4 +12,14 @@ export const styles = StyleSheet.create({
     fontSize: 20,
     height: 31,
   },
+  buttonWrapper: {
+    marginTop: '10%',
+    flex: 1,
+    width: '100%',
+    justifyContent: 'space-evenly',
+    alignItems: 'center',
+    flexDirection: 'row',
+    // backgroundColor: 'blue',
+    flexWrap: 'wrap',
+  },
 });

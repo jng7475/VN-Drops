@@ -9,12 +9,12 @@ import {
 } from 'react-native';
 import React, { useState } from 'react';
 import { step1Styles } from './styles';
+import { useNavigation } from '@react-navigation/native';
 
 const Step1 = ({ navigation, setStep, setUserDetails }) => {
   const [email, setEmail] = useState('');
   const [fullname, setFullname] = useState('');
   const [phone, setPhone] = useState('');
-
   const handleLogIn = () => {
     navigation.navigate('Login');
   };
@@ -33,7 +33,8 @@ const Step1 = ({ navigation, setStep, setUserDetails }) => {
   return (
     <KeyboardAvoidingView
       style={step1Styles.container}
-      behavior={Platform.OS === 'ios' ? 'padding' : 'height'}>
+      behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
+      enabled={false}>
       <View style={step1Styles.top}>
         <Image
           style={step1Styles.logo}
