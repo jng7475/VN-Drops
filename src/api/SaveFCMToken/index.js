@@ -13,19 +13,19 @@ export const postFCMToken = async token => {
         existed = true;
       }
     });
-  if (existed) {
-    await firestore()
-      .collection('FCMToken')
-      .doc(currentUserID)
-      .update({
-        tokens: firestore.FieldValue.arrayUnion(token),
-      });
-  } else {
-    await firestore()
-      .collection('FCMToken')
-      .doc(currentUserID)
-      .set({
-        tokens: firestore.FieldValue.arrayUnion(token),
-      });
-  }
+  // if (existed) {
+  //   await firestore()
+  //     .collection('FCMToken')
+  //     .doc(currentUserID)
+  //     .update({
+  //       tokens: firestore.FieldValue.arrayUnion(token),
+  //     });
+  // } else {
+  await firestore()
+    .collection('FCMToken')
+    .doc(currentUserID)
+    .set({
+      tokens: firestore.FieldValue.arrayUnion(token),
+    });
+  // }
 };
