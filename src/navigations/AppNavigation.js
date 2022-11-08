@@ -2,7 +2,8 @@ import React, { useEffect, useState } from 'react';
 import HospitalAppStack from './HospitalAppStack';
 import UserAppStack from './UserAppStack';
 import firestore from '@react-native-firebase/firestore';
-import { ActivityIndicator } from 'react-native';
+import { ActivityIndicator, Alert } from 'react-native';
+import messaging from '@react-native-firebase/messaging';
 
 const AppNavigation = ({ user }) => {
   const [userInfo, setUserInfo] = useState({});
@@ -18,6 +19,13 @@ const AppNavigation = ({ user }) => {
     };
     getUserInfo();
   }, [user]);
+  useEffect(() => {
+    const unsubscribe = messaging().onMessage(async remoteMessage => {
+      Alert.alert('A new FCM message arrived!', JSON.stringify(remoteMessage));
+    });
+
+    return unsubscribe;
+  }, []);
 
   if (userInfo.accountType === 'user') {
     return <UserAppStack />;
