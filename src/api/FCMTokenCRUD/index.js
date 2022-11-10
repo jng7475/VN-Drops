@@ -29,3 +29,8 @@ export const postFCMToken = async token => {
     });
   // }
 };
+
+export const deleteFCMToken = async () => {
+  const currentUserID = firebase.auth().currentUser?.uid;
+  await firestore().collection('FCMToken').doc(currentUserID).delete();
+};

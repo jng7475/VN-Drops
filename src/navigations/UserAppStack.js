@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import messaging from '@react-native-firebase/messaging';
 import { Alert } from 'react-native';
-import { postFCMToken } from '../api/SaveFCMToken';
+import { postFCMToken } from '../api/FCMTokenCRUD';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { NavBarButtons } from '../utilities/UserAppDetails';
 

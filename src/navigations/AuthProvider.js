@@ -1,6 +1,7 @@
 import React, { createContext, useState } from 'react';
 import auth from '@react-native-firebase/auth';
 import { postUserDetails } from '../api/SignUp';
+import { deleteFCMToken } from '../api/FCMTokenCRUD';
 
 export const AuthContext = createContext();
 
@@ -32,6 +33,7 @@ const register = async (userDetails, password, accountType) => {
 
 const signOut = async () => {
   try {
+    await deleteFCMToken();
     await auth().signOut();
   } catch (error) {
     console.log('login error', error);
