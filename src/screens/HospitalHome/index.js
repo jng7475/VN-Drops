@@ -1,7 +1,7 @@
 import { View, Text } from 'react-native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import React from 'react';
-import AddPost from '../AddPost';
+import HospitalBloodCall from '../HospitalBloodCall';
 
 const HospitalHomeStack = createNativeStackNavigator();
 
@@ -10,7 +10,7 @@ const HospitalHome = () => {
     <HospitalHomeStack.Navigator initialRouteName="AddPost">
       <HospitalHomeStack.Screen
         name="AddPost"
-        component={AddPost}
+        component={HospitalBloodCall}
         options={{
           headerShown: false,
         }}

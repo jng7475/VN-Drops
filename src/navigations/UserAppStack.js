@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import messaging from '@react-native-firebase/messaging';
+import { Alert } from 'react-native';
 import { postFCMToken } from '../api/SaveFCMToken';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { NavBarButtons } from '../utilities/UserAppDetails';
@@ -23,6 +24,17 @@ const UserAppStack = () => {
     return messaging().onTokenRefresh(token => {
       postFCMToken(token);
     });
+  }, []);
+
+  useEffect(() => {
+    const unsubscribe = messaging().onMessage(async remoteMessage => {
+      const message =
+        remoteMessage.notification.body +
+        '\nVui lòng vào tính năng Huy động máu SOS để có thêm thông tin!';
+      Alert.alert(remoteMessage.notification.title, message);
+    });
+
+    return unsubscribe;
   }, []);
 
   const navBarButtons = NavBarButtons.map((button, index) => {
