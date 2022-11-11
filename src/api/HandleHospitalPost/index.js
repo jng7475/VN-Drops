@@ -15,19 +15,19 @@ export async function handleHospitalPost(message, bloodType) {
       querySnapshot.docs.map(documentSnapshot => {
         if (eligibleUsers[documentSnapshot.id] === 1) {
           const tokens = documentSnapshot.data().tokens;
-          // fetch('https://radiant-garden-75217.herokuapp.com/hospital-post', {
-          //   method: 'post',
-          //   headers: {
-          //     'Content-Type': 'application/json',
-          //   },
-          //   body: JSON.stringify({
-          //     tokens: tokens,
-          //     message: {
-          //       title: messageTitle,
-          //       body: message,
-          //     },
-          //   }),
-          // });
+          fetch('https://radiant-garden-75217.herokuapp.com/hospital-post', {
+            method: 'post',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+              tokens: tokens,
+              message: {
+                title: messageTitle,
+                body: message,
+              },
+            }),
+          });
         }
       });
     });
