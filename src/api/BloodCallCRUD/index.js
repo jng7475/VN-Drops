@@ -1,7 +1,7 @@
 import firestore from '@react-native-firebase/firestore';
 import { firebase } from '@react-native-firebase/auth';
 
-export const createBloodCall = async (bloodType, hospitalName) => {
+export const createBloodCall = async (bloodType, message, hospitalName) => {
   const currentUserID = firebase.auth().currentUser?.uid;
   let existed = false;
   await firestore()
@@ -20,6 +20,7 @@ export const createBloodCall = async (bloodType, hospitalName) => {
       .collection('calls')
       .add({
         bloodType: bloodType,
+        message: message,
       });
   } else {
     await firestore()
@@ -32,6 +33,7 @@ export const createBloodCall = async (bloodType, hospitalName) => {
       .collection('calls')
       .add({
         bloodType: bloodType,
+        message: message,
       });
   }
 };
@@ -43,37 +45,40 @@ export const getBloodCalls = async () => {
   await firestore()
     .collection('bloodCalls')
     .get()
-    .then(querySnapshot => {
-      querySnapshot.docs.forEach(async documentSnapshot => {
-        let bloodCallDetails = {};
-        const data = documentSnapshot.data();
-        // const hospitalName = data.hospitalName;
-        bloodCallDetails.hospitalName = data.hospitalName;
-        bloodCallDetails.calls = [];
-        const id = documentSnapshot.id;
-        await firestore()
-          .collection('bloodCalls')
-          .doc(id)
-          .collection('calls')
-          .get()
-          .then(detailsQuerySnapshot => {
-            detailsQuerySnapshot.docs.forEach(callDocumentSnapshot => {
-              const callData = callDocumentSnapshot.data();
-              const callID = callDocumentSnapshot.id;
-              /*NEED WORK HERE*/
-              // pass blood type through args
-              // console.log(callData, callID);
-              bloodCallDetails.calls.push({
-                callData: callData,
-                callID: callID,
-              });
-              bloodCalls.push(bloodCallDetails);
-            });
-            // console.log(bloodCallDetails.calls[0].callData);
-            console.log('from', bloodCalls);
-          });
+    .then(async querySnapshot => {
+      const data = await Promise.all(
+        querySnapshot.docs.map(async documentSnapshot => {
+          let bloodCallDetails = {};
+          const hospitalData = documentSnapshot.data();
+          bloodCallDetails.hospitalName = hospitalData.hospitalName;
+          // bloodCallDetails.calls = [];
+          const id = documentSnapshot.id;
+          // let details = [];
+          bloodCallDetails.calls = await getBloodCallDetails(id);
+          return bloodCallDetails;
+        }),
+      );
+      bloodCalls = data;
+    });
+
+  return bloodCalls;
+};
+const getBloodCallDetails = async id => {
+  let bloodCallDetails = [];
+  await firestore()
+    .collection('bloodCalls')
+    .doc(id)
+    .collection('calls')
+    .get()
+    .then(detailsQuerySnapshot => {
+      detailsQuerySnapshot.docs.forEach(callDocumentSnapshot => {
+        const callData = callDocumentSnapshot.data();
+        const callID = callDocumentSnapshot.id;
+        bloodCallDetails.push({
+          callData: callData,
+          callID: callID,
+        });
       });
     });
-  // .then(console.log(bloodCalls));
-  return bloodCalls;
+  return bloodCallDetails;
 };
