@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useState, useEffect, useCallback, useRef } from 'react';
 import { View } from 'react-native';
 import { Bubble, GiftedChat, Send } from 'react-native-gifted-chat';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
@@ -10,6 +10,8 @@ import styles from './styles';
 
 const ChatScreen = ({ navigation }) => {
   const [messages, setMessages] = useState([]);
+  // const [messageID, setMessageID] = useState(0);
+  let messageID = useRef(0);
   // console.log(messages);
   const user = firebase.auth().currentUser;
   const userID = user.uid;
@@ -17,15 +19,15 @@ const ChatScreen = ({ navigation }) => {
 
   const handleSend = async (name, msg) => {
     await sendMessageToRasa(name, msg).then(response => {
-      console.log(response);
+      // console.log('send message', response);
       if (response.status === 'error') {
         const newMessage = {
-          _id: messages.length + 1,
+          _id: messageID.current,
           text: '...',
           createdAt: new Date(),
           user: {
             _id: BOT_ID,
-            name: 'User',
+            name: 'bot',
             avatar: 'https://placeimg.com/140/140/any',
           },
         };
@@ -36,14 +38,15 @@ const ChatScreen = ({ navigation }) => {
       }
 
       const text = response.response[0].text;
-      console.log(text);
+      // console.log(text);
+      console.log('id', messageID);
       const newMessage = {
-        _id: messages.length + 1,
+        _id: messageID.current,
         text: text,
         createdAt: new Date(),
         user: {
           _id: BOT_ID,
-          name: 'User',
+          name: 'bot',
           avatar: 'https://placeimg.com/140/140/any',
         },
       };
@@ -61,20 +64,32 @@ const ChatScreen = ({ navigation }) => {
         createdAt: new Date(),
         user: {
           _id: BOT_ID,
-          name: 'React Native',
+          name: 'bot',
           avatar: 'https://placeimg.com/140/140/any',
         },
       },
     ]);
   }, []);
 
-  const onSend = useCallback((newMessage = []) => {
-    console.log(newMessage);
+  // const onSend = useCallback((newMessage = []) => {
+  //   console.log('on send', newMessage);
+  //   setMessageID(oldID => oldID + 1);
+  //   console.log('aaa', messageID);
+  //   setMessages(previousMessages =>
+  //     GiftedChat.append(previousMessages, newMessage),
+  //   );
+  //   handleSend('trung', newMessage[0].text);
+  // }, []);
+  const onSend = (newMessage = []) => {
+    console.log('bbb', messageID);
+    console.log('on send', newMessage);
+    messageID.current += 1;
+    console.log('aaa', messageID);
     setMessages(previousMessages =>
       GiftedChat.append(previousMessages, newMessage),
     );
     handleSend('trung', newMessage[0].text);
-  }, []);
+  };
 
   const renderSend = props => {
     return (
