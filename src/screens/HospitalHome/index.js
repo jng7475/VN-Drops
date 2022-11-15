@@ -19,24 +19,28 @@ const HospitalHome = () => {
         }}
       />
       <HospitalHomeStack.Screen
-        name="HospitalBloodCall"
+        name="Kêu gọi khẩn cấp"
         component={HospitalBloodCall}
         options={{
-          headerShown: false,
+          headerShown: true,
+          headerStyle: {
+            backgroundColor: 'red',
+          },
+          headerTintColor: '#fff',
         }}
       />
       <HospitalHomeStack.Screen
         name="HosManage"
         component={HosManage}
         options={{
-          headerShown: false,
+          headerShown: true,
         }}
       />
       <HospitalHomeStack.Screen
         name="HosSchedule"
         component={HosSchedule}
         options={{
-          headerShown: false,
+          headerShown: true,
         }}
       />
     </HospitalHomeStack.Navigator>
