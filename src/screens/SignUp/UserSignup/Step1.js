@@ -15,6 +15,7 @@ const Step1 = ({ navigation, setStep, setUserDetails }) => {
   const [email, setEmail] = useState('');
   const [fullname, setFullname] = useState('');
   const [phone, setPhone] = useState('');
+  const [homeAdress, setHomeAdress] = useState('');
   const handleLogIn = () => {
     navigation.navigate('Login');
   };
@@ -25,6 +26,7 @@ const Step1 = ({ navigation, setStep, setUserDetails }) => {
         email: email,
         fullname: fullname,
         phoneNumber: phone,
+        homeAdress: homeAdress,
       });
       setStep(step => step + 1);
     }
@@ -40,12 +42,12 @@ const Step1 = ({ navigation, setStep, setUserDetails }) => {
           style={step1Styles.logo}
           source={require('../../../assets/logo.png')}
         />
-        <Text style={step1Styles.welcomeText}>SIGN UP</Text>
+        <Text style={step1Styles.welcomeText}>Đăng ký</Text>
       </View>
       <View style={step1Styles.middle}>
         <View style={step1Styles.InputContainer}>
           <TextInput
-            placeholder="Fullname"
+            placeholder="Họ và tên"
             value={fullname}
             onChangeText={text => setFullname(text)}
             style={step1Styles.input}
@@ -57,11 +59,17 @@ const Step1 = ({ navigation, setStep, setUserDetails }) => {
             style={step1Styles.input}
           />
           <TextInput
-            placeholder="Phone Number"
+            placeholder="Số điện thoại"
             value={phone}
             onChangeText={text => setPhone(text)}
             style={step1Styles.input}
             secureTextEntry
+          />
+          <TextInput
+            placeholder="Địa chỉ thường trú (thành phố, quận, phường, số nhà)"
+            value={homeAdress}
+            onChangeText={text => setHomeAdress(text)}
+            style={step1Styles.input}
           />
         </View>
       </View>
@@ -86,7 +94,7 @@ const Step1 = ({ navigation, setStep, setUserDetails }) => {
         </View>
         <View style={step1Styles.buttonContainer}>
           <TouchableOpacity onPress={handleNext} style={step1Styles.button}>
-            <Text style={step1Styles.buttonText}>next</Text>
+            <Text style={step1Styles.buttonText}>Tiếp theo</Text>
           </TouchableOpacity>
         </View>
       </View>

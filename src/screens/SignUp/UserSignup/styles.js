@@ -8,11 +8,12 @@ export const step1Styles = StyleSheet.create({
   },
   top: {
     flex: 1,
+    paddingVertical: 30,
     alignItems: 'center',
     justifyContent: 'space-between',
   },
   welcomeText: {
-    fontSize: 50,
+    fontSize: 45,
     fontFamily: 'Buenard-Bold',
     color: 'black',
   },
@@ -202,7 +203,7 @@ export const step2Styles = StyleSheet.create({
     flexDirection: 'row',
   },
   logo: {
-    width: 136,
-    height: 135,
+    width: 100,
+    height: 100,
   },
 });

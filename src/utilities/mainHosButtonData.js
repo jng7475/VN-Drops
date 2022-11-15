@@ -4,7 +4,7 @@ export const mainHosButtonData = [
   {
     text: 'Kêu gọi máu khấn cấp SOS',
     image: require('../assets/SOS.png'),
-    id: 'HospitalBloodCall',
+    id: 'Kêu gọi khẩn cấp',
   },
   {
     text: 'Lên lịch hiến máu định kỳ',
