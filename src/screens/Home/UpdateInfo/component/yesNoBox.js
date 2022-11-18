@@ -2,45 +2,9 @@ import { View, ScrollView } from 'react-native';
 import React, { useState } from 'react';
 import { RadioButton } from 'react-native-paper';
 import { useEffect } from 'react';
+import { Box } from './Box';
 
 export const YesNoBox = ({ setResult }) => {
-  // const firstHandler = setChecked => {
-  //   setChecked('first');
-  //   // setResult((result.num = true));
-  // };
-  // const secondHandler = () => {
-  //   setChecked('second');
-  //   setResult(prevState => {
-  //     return { a: false };
-  //   });
-  // };
-  const Box = () => {
-    const [checked, setChecked] = React.useState('first');
-    return (
-      <View style={{ flexDirection: 'row' }}>
-        <RadioButton
-          value="first"
-          status={checked === 'first' ? 'checked' : 'unchecked'}
-          onPress={() => {
-            setChecked('first');
-            setResult(prevState => {
-              return { 1: true };
-            });
-          }}
-        />
-        <RadioButton
-          value="second"
-          status={checked === 'second' ? 'checked' : 'unchecked'}
-          onPress={() => {
-            setChecked('second');
-            setResult(prevState => {
-              return { 2: true };
-            });
-          }}
-        />
-      </View>
-    );
-  };
   return (
     <View
       style={{
@@ -48,22 +12,22 @@ export const YesNoBox = ({ setResult }) => {
         height: '100%',
       }}>
       <View style={{ marginTop: '10%' }}>
-        <Box />
-      </View>
-      <View style={{ marginTop: '8%' }}>
-        <Box />
-      </View>
-      <View style={{ marginTop: '33%' }}>
-        <Box />
-      </View>
-      <View style={{ marginTop: '195%' }}>
-        <Box />
+        <Box setResult={setResult} field={'3-month-donation'} />
       </View>
       <View style={{ marginTop: '110%' }}>
-        <Box />
+        <Box setResult={setResult} field={'disease-history'} />
+      </View>
+      <View style={{ marginTop: '8%' }}>
+        <Box setResult={setResult} field={'6-month-questions'} />
+      </View>
+      <View style={{ marginTop: '33%' }}>
+        <Box setResult={setResult} field={'1-week-question'} />
+      </View>
+      <View style={{ marginTop: '195%' }}>
+        <Box setResult={setResult} field={'disability'} />
       </View>
       <View style={{ marginTop: '65%' }}>
-        <Box />
+        <Box setResult={setResult} field={'female-question'} />
       </View>
     </View>
   );

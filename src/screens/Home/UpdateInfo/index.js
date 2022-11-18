@@ -14,7 +14,18 @@ const UpdateInfo = () => {
     console.log(result);
   }, [result]);
   const [checked, setChecked] = React.useState(1);
-  const [result, setResult] = useState({ 1: true, 2: true });
+  const [result, setResult] = useState({
+    '1-week-question': true,
+    '3-month-donation': true,
+    '6-month-questions': true,
+    // eslint-disable-next-line prettier/prettier
+    'disability': true,
+    'disease-history': true,
+    'female-question': true,
+  });
+  useEffect(() => {
+    console.log(result);
+  }, [result]);
   // const [result, setResult] = useState(true);
   const onPressHandler = () => {};
   //////////////////////////////////////////////////////
