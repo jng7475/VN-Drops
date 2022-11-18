@@ -64,12 +64,12 @@ const Appointment = ({ navigation }) => {
   return (
     <View style={styles.container}>
       <ScrollView contentContainerStyle={contentContainerStyle}>
-        <Text style={styles.title}>Thông tin người đặt lịch</Text>
+        {/* <Text style={styles.title}>Thông tin người đặt lịch</Text>
         <View style={styles.textInput}>{Inputs}</View>
         <GenderInput
           style={styles.genderInput}
           setPatientDetails={setPatientDetails}
-        />
+        /> */}
         {/* <View style={styles.buttonWrapper}>{scheduleButton}</View> */}
         <View style={{ width: '100%', height: '5%' }} />
         <Text style={styles.title}>Đặt lịch</Text>

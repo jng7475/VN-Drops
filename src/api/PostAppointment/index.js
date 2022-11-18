@@ -2,12 +2,12 @@ import firestore from '@react-native-firebase/firestore';
 
 export const postAppointmentDetails = async patientDetails => {
   if (
-    patientDetails.fullname &&
-    patientDetails.DOB &&
-    patientDetails.phoneNumber &&
-    patientDetails.email &&
-    patientDetails.bloodType &&
-    patientDetails.gender &&
+    // patientDetails.fullname &&
+    // patientDetails.DOB &&
+    // patientDetails.phoneNumber &&
+    // patientDetails.email &&
+    // patientDetails.bloodType &&
+    // patientDetails.gender &&
     patientDetails.hospital &&
     patientDetails.appointmentDate
   ) {

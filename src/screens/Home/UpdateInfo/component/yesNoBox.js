@@ -3,7 +3,17 @@ import React, { useState } from 'react';
 import { RadioButton } from 'react-native-paper';
 import { useEffect } from 'react';
 
-export const YesNoBox = () => {
+export const YesNoBox = ({ setResult }) => {
+  // const firstHandler = setChecked => {
+  //   setChecked('first');
+  //   // setResult((result.num = true));
+  // };
+  // const secondHandler = () => {
+  //   setChecked('second');
+  //   setResult(prevState => {
+  //     return { a: false };
+  //   });
+  // };
   const Box = () => {
     const [checked, setChecked] = React.useState('first');
     return (
@@ -11,12 +21,22 @@ export const YesNoBox = () => {
         <RadioButton
           value="first"
           status={checked === 'first' ? 'checked' : 'unchecked'}
-          onPress={() => setChecked('first')}
+          onPress={() => {
+            setChecked('first');
+            setResult(prevState => {
+              return { 1: true };
+            });
+          }}
         />
         <RadioButton
           value="second"
           status={checked === 'second' ? 'checked' : 'unchecked'}
-          onPress={() => setChecked('second')}
+          onPress={() => {
+            setChecked('second');
+            setResult(prevState => {
+              return { 2: true };
+            });
+          }}
         />
       </View>
     );

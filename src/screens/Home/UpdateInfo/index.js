@@ -7,9 +7,15 @@ import { RadioButton } from 'react-native-paper';
 import Survey from './component/survey';
 import Claim from './component/claim';
 import { YesNoBox } from './component/yesNoBox';
+import { useEffect } from 'react';
 
 const UpdateInfo = () => {
+  useEffect(() => {
+    console.log(result);
+  }, [result]);
   const [checked, setChecked] = React.useState(1);
+  const [result, setResult] = useState({ 1: true, 2: true });
+  // const [result, setResult] = useState(true);
   const onPressHandler = () => {};
   //////////////////////////////////////////////////////
   return (
@@ -36,7 +42,7 @@ const UpdateInfo = () => {
       </View>
       <View style={{ flexDirection: 'row' }}>
         <Survey />
-        <YesNoBox />
+        <YesNoBox setResult={setResult} />
       </View>
       <View style={styles.claimWrapper}>
         <View style={{ width: '85%' }}>
