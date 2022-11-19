@@ -8,6 +8,7 @@ import Survey from './component/survey';
 import Claim from './component/claim';
 import { YesNoBox } from './component/yesNoBox';
 import { useEffect } from 'react';
+import { HealthReport } from '../../../api/HealthReport';
 
 const UpdateInfo = () => {
   useEffect(() => {
@@ -19,7 +20,7 @@ const UpdateInfo = () => {
     '3-month-donation': true,
     '6-month-questions': true,
     // eslint-disable-next-line prettier/prettier
-    'disability': true,
+    disability: true,
     'disease-history': true,
     'female-question': true,
   });
@@ -27,7 +28,10 @@ const UpdateInfo = () => {
     console.log(result);
   }, [result]);
   // const [result, setResult] = useState(true);
-  const onPressHandler = () => {};
+  const onPressHandler = () => {
+    HealthReport(result);
+    console.log('call health report');
+  };
   //////////////////////////////////////////////////////
   return (
     <ScrollView style={styles.container}>

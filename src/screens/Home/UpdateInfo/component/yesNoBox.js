@@ -14,16 +14,16 @@ export const YesNoBox = ({ setResult }) => {
       <View style={{ marginTop: '10%' }}>
         <Box setResult={setResult} field={'3-month-donation'} />
       </View>
-      <View style={{ marginTop: '110%' }}>
+      <View style={{ marginTop: '10%' }}>
         <Box setResult={setResult} field={'disease-history'} />
       </View>
-      <View style={{ marginTop: '8%' }}>
+      <View style={{ marginTop: '30%' }}>
         <Box setResult={setResult} field={'6-month-questions'} />
       </View>
-      <View style={{ marginTop: '33%' }}>
+      <View style={{ marginTop: '195%' }}>
         <Box setResult={setResult} field={'1-week-question'} />
       </View>
-      <View style={{ marginTop: '195%' }}>
+      <View style={{ marginTop: '90%' }}>
         <Box setResult={setResult} field={'disability'} />
       </View>
       <View style={{ marginTop: '65%' }}>
