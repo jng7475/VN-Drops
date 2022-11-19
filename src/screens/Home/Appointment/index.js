@@ -13,15 +13,19 @@ import ResponseModal from './components/ResponseModal';
 import { scheduleButtonData } from '../../../utilities/mainButtonData';
 import CustomButton from '../MainHome/component/CustomButton';
 import { ImportantNews } from './components/importantNews';
+import { getPersonalInfo } from '../../../api/GetPersonalInfo';
 
 const Appointment = ({ navigation }) => {
   const [patientDetails, setPatientDetails] = useState({});
   const [modalVisible, setModalVisible] = useState(false);
   const [modalText, setModalText] = useState('');
+  const [personalInfo, setPersonalInfo] = useState([]);
 
   const handleScheduleAppointment = async () => {
-    console.log(patientDetails);
-    const status = await postAppointmentDetails(patientDetails);
+    setPersonalInfo(getPersonalInfo());
+    console.log(personalInfo); //thong tin ca nhan luc dang ky tai khoan
+    console.log(patientDetails); //thong tin dat lich
+    const status = await postAppointmentDetails(patientDetails, personalInfo);
     console.log('status ', status);
     if (status === 'success') {
       setModalText('Appointment Successfully Scheduled!');
@@ -75,7 +79,6 @@ const Appointment = ({ navigation }) => {
         <Text style={styles.title}>Đặt lịch</Text>
         <LocationInput setPatientDetails={setPatientDetails} />
         <DateInput setPatientDetails={setPatientDetails} />
-
         <SubmitButton
           handleScheduleAppointment={handleScheduleAppointment}
           title="Đặt hẹn"
