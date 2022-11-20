@@ -7,10 +7,35 @@ import { RadioButton } from 'react-native-paper';
 import Survey from './component/survey';
 import Claim from './component/claim';
 import { YesNoBox } from './component/yesNoBox';
+import { useEffect } from 'react';
+// import { HealthReport } from '../../../api/HealthReport';
+import { HealthReport } from '../../../api/HealthReport';
 
-const UpdateInfo = () => {
+const UpdateInfo = ({ navigation }) => {
+  useEffect(() => {
+    console.log(result);
+  }, [result]);
   const [checked, setChecked] = React.useState(1);
-  const onPressHandler = () => {};
+  const [modalText, setModalText] = useState('');
+  const [modalVisible, setModalVisible] = useState(false);
+  const [result, setResult] = useState({
+    '1-week-question': true,
+    '3-month-donation': true,
+    '6-month-questions': true,
+    // eslint-disable-next-line prettier/prettier
+    disability: true,
+    'disease-history': true,
+    'female-question': true,
+  });
+  useEffect(() => {
+    console.log(result);
+  }, [result]);
+  // const [result, setResult] = useState(true);
+  const onPressHandler = () => {
+    HealthReport(result);
+    console.log('call health report');
+    navigation.navigate('MainHome');
+  };
   //////////////////////////////////////////////////////
   return (
     <ScrollView style={styles.container}>
@@ -36,7 +61,7 @@ const UpdateInfo = () => {
       </View>
       <View style={{ flexDirection: 'row' }}>
         <Survey />
-        <YesNoBox />
+        <YesNoBox setResult={setResult} />
       </View>
       <View style={styles.claimWrapper}>
         <View style={{ width: '85%' }}>

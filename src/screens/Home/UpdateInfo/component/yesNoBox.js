@@ -2,25 +2,9 @@ import { View, ScrollView } from 'react-native';
 import React, { useState } from 'react';
 import { RadioButton } from 'react-native-paper';
 import { useEffect } from 'react';
+import { Box } from './Box';
 
-export const YesNoBox = () => {
-  const Box = () => {
-    const [checked, setChecked] = React.useState('first');
-    return (
-      <View style={{ flexDirection: 'row' }}>
-        <RadioButton
-          value="first"
-          status={checked === 'first' ? 'checked' : 'unchecked'}
-          onPress={() => setChecked('first')}
-        />
-        <RadioButton
-          value="second"
-          status={checked === 'second' ? 'checked' : 'unchecked'}
-          onPress={() => setChecked('second')}
-        />
-      </View>
-    );
-  };
+export const YesNoBox = ({ setResult }) => {
   return (
     <View
       style={{
@@ -28,22 +12,22 @@ export const YesNoBox = () => {
         height: '100%',
       }}>
       <View style={{ marginTop: '10%' }}>
-        <Box />
+        <Box setResult={setResult} field={'3-month-donation'} />
       </View>
-      <View style={{ marginTop: '8%' }}>
-        <Box />
+      <View style={{ marginTop: '10%' }}>
+        <Box setResult={setResult} field={'disease-history'} />
       </View>
-      <View style={{ marginTop: '33%' }}>
-        <Box />
+      <View style={{ marginTop: '30%' }}>
+        <Box setResult={setResult} field={'6-month-questions'} />
       </View>
       <View style={{ marginTop: '195%' }}>
-        <Box />
+        <Box setResult={setResult} field={'1-week-question'} />
       </View>
-      <View style={{ marginTop: '110%' }}>
-        <Box />
+      <View style={{ marginTop: '90%' }}>
+        <Box setResult={setResult} field={'disability'} />
       </View>
       <View style={{ marginTop: '65%' }}>
-        <Box />
+        <Box setResult={setResult} field={'female-question'} />
       </View>
     </View>
   );

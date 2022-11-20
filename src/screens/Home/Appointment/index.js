@@ -13,15 +13,30 @@ import ResponseModal from './components/ResponseModal';
 import { scheduleButtonData } from '../../../utilities/mainButtonData';
 import CustomButton from '../MainHome/component/CustomButton';
 import { ImportantNews } from './components/importantNews';
+import { getPersonalInfo } from '../../../api/GetPersonalInfo';
+import { getUserHealth } from '../../../api/GetUserHealth';
 
 const Appointment = ({ navigation }) => {
   const [patientDetails, setPatientDetails] = useState({});
   const [modalVisible, setModalVisible] = useState(false);
   const [modalText, setModalText] = useState('');
+  let personalInfo = {};
+  // const [personalInfo, setPersonalInfo] = useState({});
+  const [userHealth, setUserHealth] = useState();
 
   const handleScheduleAppointment = async () => {
     console.log(patientDetails);
-    const status = await postAppointmentDetails(patientDetails);
+    personalInfo = await getPersonalInfo();
+    // setPersonalInfo(await getPersonalInfo());
+    console.log(personalInfo);
+    setUserHealth(await getUserHealth());
+    // console.log(personalInfo.userDetails); //thong tin ca nhan luc dang ky tai khoan
+    // console.log(personalInfo); //thong tin dat lich
+    let allInfo = { ...patientDetails, personalInfo };
+    allInfo = { ...allInfo, userHealth };
+    // allInfo = { ...allInfo, userHealth };
+    const status = await postAppointmentDetails(allInfo);
+    console.log(allInfo);
     console.log('status ', status);
     if (status === 'success') {
       setModalText('Đã đặt hẹn thành công!');
@@ -64,18 +79,17 @@ const Appointment = ({ navigation }) => {
   return (
     <View style={styles.container}>
       <ScrollView contentContainerStyle={contentContainerStyle}>
-        <Text style={styles.title}>Thông tin người đặt lịch</Text>
+        {/* <Text style={styles.title}>Thông tin người đặt lịch</Text>
         <View style={styles.textInput}>{Inputs}</View>
         <GenderInput
           style={styles.genderInput}
           setPatientDetails={setPatientDetails}
-        />
+        /> */}
         {/* <View style={styles.buttonWrapper}>{scheduleButton}</View> */}
         <View style={{ width: '100%', height: '5%' }} />
         <Text style={styles.title}>Đặt lịch</Text>
         <LocationInput setPatientDetails={setPatientDetails} />
         <DateInput setPatientDetails={setPatientDetails} />
-
         <SubmitButton
           handleScheduleAppointment={handleScheduleAppointment}
           title="Đặt hẹn"
