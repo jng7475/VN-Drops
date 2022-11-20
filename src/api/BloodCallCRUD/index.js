@@ -1,7 +1,7 @@
 import firestore from '@react-native-firebase/firestore';
 import { firebase } from '@react-native-firebase/auth';
 
-export const createBloodCall = async (bloodType, message, hospitalName) => {
+export const createBloodCall = async (callDetails, hospitalName) => {
   const currentUserID = firebase.auth().currentUser?.uid;
   let existed = false;
   await firestore()
@@ -19,8 +19,12 @@ export const createBloodCall = async (bloodType, message, hospitalName) => {
       .doc(currentUserID)
       .collection('calls')
       .add({
-        bloodType: bloodType,
-        message: message,
+        date: callDetails.date,
+        time: callDetails.time,
+        bloodAmount: callDetails.bloodAmount,
+        address: callDetails.address,
+        bloodType: callDetails.bloodType,
+        note: callDetails.note,
       });
   } else {
     await firestore()
@@ -32,8 +36,12 @@ export const createBloodCall = async (bloodType, message, hospitalName) => {
       .doc(currentUserID)
       .collection('calls')
       .add({
-        bloodType: bloodType,
-        message: message,
+        date: callDetails.date,
+        time: callDetails.time,
+        bloodAmount: callDetails.bloodAmount,
+        address: callDetails.address,
+        bloodType: callDetails.bloodType,
+        note: callDetails.note,
       });
   }
 };

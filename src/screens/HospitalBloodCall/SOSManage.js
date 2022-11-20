@@ -6,7 +6,7 @@ import AdvancedText from '../../components/advancedText';
 import MyText from '../../components/text';
 import Time from './component/Time';
 
-export default function Step2() {
+export default function SOSManage() {
   const endHour = 16;
   const endMin = 30;
   // const currentTime = 'Bây giờ là' + { endHour } + 'h :' + { endMin };

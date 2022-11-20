@@ -28,9 +28,9 @@ const Appointment = ({ navigation }) => {
     const status = await postAppointmentDetails(patientDetails, personalInfo);
     console.log('status ', status);
     if (status === 'success') {
-      setModalText('Appointment Successfully Scheduled!');
+      setModalText('Đã đặt hẹn thành công!');
     } else {
-      setModalText('One or more fields missing!');
+      setModalText('Một hoặc nhiều chi tiết chưa được cung cấp!');
     }
     setModalVisible(true);
   };
