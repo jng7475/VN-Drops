@@ -8,13 +8,16 @@ import Survey from './component/survey';
 import Claim from './component/claim';
 import { YesNoBox } from './component/yesNoBox';
 import { useEffect } from 'react';
+// import { HealthReport } from '../../../api/HealthReport';
 import { HealthReport } from '../../../api/HealthReport';
 
-const UpdateInfo = () => {
+const UpdateInfo = ({ navigation }) => {
   useEffect(() => {
     console.log(result);
   }, [result]);
   const [checked, setChecked] = React.useState(1);
+  const [modalText, setModalText] = useState('');
+  const [modalVisible, setModalVisible] = useState(false);
   const [result, setResult] = useState({
     '1-week-question': true,
     '3-month-donation': true,
@@ -31,6 +34,7 @@ const UpdateInfo = () => {
   const onPressHandler = () => {
     HealthReport(result);
     console.log('call health report');
+    navigation.navigate('MainHome');
   };
   //////////////////////////////////////////////////////
   return (

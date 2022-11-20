@@ -8,7 +8,7 @@ export const HealthReport = async result => {
     await firestore()
       .collection('users')
       .doc(currentUserID)
-      .collection('medicalProfle')
+      .collection('medicalProfile')
       .doc(currentUserID)
       .set({
         result,

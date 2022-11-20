@@ -3,19 +3,18 @@ import React, { useState } from 'react';
 import firestore from '@react-native-firebase/firestore';
 import { firebase } from '@react-native-firebase/auth';
 
-export const getPersonalInfo = async () => {
+export const getUserHealth = async () => {
   const currentUserID = firebase.auth().currentUser?.uid;
-  let personalInfo = {};
+  let userHealth = {};
   await firestore()
     .collection('users')
     .doc(currentUserID)
-    .collection('details')
+    .collection('medicalProfile')
     .doc(currentUserID)
     .get()
     .then(querySnapshot => {
       const data = querySnapshot.data();
-      console.log(data.userDetails);
-      personalInfo = data.userDetails;
+      userHealth = data;
     });
-  return personalInfo;
+  return userHealth.result;
 };

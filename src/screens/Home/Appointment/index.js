@@ -14,18 +14,29 @@ import { scheduleButtonData } from '../../../utilities/mainButtonData';
 import CustomButton from '../MainHome/component/CustomButton';
 import { ImportantNews } from './components/importantNews';
 import { getPersonalInfo } from '../../../api/GetPersonalInfo';
+import { getUserHealth } from '../../../api/GetUserHealth';
 
 const Appointment = ({ navigation }) => {
   const [patientDetails, setPatientDetails] = useState({});
   const [modalVisible, setModalVisible] = useState(false);
   const [modalText, setModalText] = useState('');
-  const [personalInfo, setPersonalInfo] = useState([]);
+  let personalInfo = {};
+  // const [personalInfo, setPersonalInfo] = useState({});
+  const [userHealth, setUserHealth] = useState();
 
   const handleScheduleAppointment = async () => {
-    setPersonalInfo(getPersonalInfo());
-    console.log(personalInfo); //thong tin ca nhan luc dang ky tai khoan
-    console.log(patientDetails); //thong tin dat lich
-    const status = await postAppointmentDetails(patientDetails, personalInfo);
+    console.log(patientDetails);
+    personalInfo = await getPersonalInfo();
+    // setPersonalInfo(await getPersonalInfo());
+    console.log(personalInfo);
+    setUserHealth(await getUserHealth());
+    // console.log(personalInfo.userDetails); //thong tin ca nhan luc dang ky tai khoan
+    // console.log(personalInfo); //thong tin dat lich
+    let allInfo = { ...patientDetails, personalInfo };
+    allInfo = { ...allInfo, userHealth };
+    // allInfo = { ...allInfo, userHealth };
+    const status = await postAppointmentDetails(allInfo);
+    console.log(allInfo);
     console.log('status ', status);
     if (status === 'success') {
       setModalText('Đã đặt hẹn thành công!');
