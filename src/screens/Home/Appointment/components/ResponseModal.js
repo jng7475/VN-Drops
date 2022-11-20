@@ -9,8 +9,10 @@ const ResponseModal = ({
 }) => {
   const handleOnPress = () => {
     setModalVisible(!modalVisible);
-    if (modalText === 'Appointment Successfully Scheduled!') {
+    if (modalText === 'Đã đặt hẹn thành công!') {
       navigation.navigate('MainHome');
+    } else if (modalText === 'Đã kêu gọi thành công!') {
+      navigation.navigate('HospitalMainHome');
     }
   };
   return (

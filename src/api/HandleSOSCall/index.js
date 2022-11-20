@@ -2,12 +2,13 @@ import firestore from '@react-native-firebase/firestore';
 import { firebase } from '@react-native-firebase/auth';
 import { createBloodCall } from '../BloodCallCRUD';
 
-export async function handleHospitalPost(message, bloodType) {
+export async function handleSOSCall(callDetails) {
   // get eligible users based on blood type (for now)
-  const eligibleUsers = await getEligibleUsers(bloodType);
+  const eligibleUsers = await getEligibleUsers(callDetails.bloodType);
   const hospitalName = await getHospitalInfo();
   const messageTitle = 'Thông báo khẩn cấp từ bệnh viện ' + hospitalName;
-  await createBloodCall(bloodType, message, hospitalName);
+  const message = callDetails.note;
+  await createBloodCall(callDetails, hospitalName);
   await firestore()
     .collection('FCMToken')
     .get()
@@ -30,7 +31,12 @@ export async function handleHospitalPost(message, bloodType) {
           });
         }
       });
+    })
+    .catch(err => {
+      console.log(err);
+      return 'failed';
     });
+  return 'success';
 }
 
 const getEligibleUsers = async bloodType => {
