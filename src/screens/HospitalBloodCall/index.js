@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import Step1 from './Step1';
-import Step2 from './Step2';
+import SOSForm from './SOSForm';
+import SOSManage from './SOSManage';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 const SosScreensStack = createNativeStackNavigator();
@@ -13,15 +13,15 @@ const HospitalBloodCall = () => {
   return (
     <SosScreensStack.Navigator>
       <SosScreensStack.Screen
-        name="Step1"
-        component={Step1}
+        name="SOSForm"
+        component={SOSForm}
         options={{
           headerShown: false,
         }}
       />
       <SosScreensStack.Screen
-        name="Step2"
-        component={Step2}
+        name="SOSManage"
+        component={SOSManage}
         options={{
           headerShown: false,
         }}
