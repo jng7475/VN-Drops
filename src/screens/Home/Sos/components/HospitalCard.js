@@ -1,44 +1,54 @@
-import { View, Text, Image, StyleSheet } from 'react-native';
+import { View, Pressable, Text, Image, StyleSheet } from 'react-native';
 import React from 'react';
 
-const HospitalCard = ({ hospitalName, callData }) => {
+const HospitalCard = ({ hospitalName, callData, handlePress }) => {
   return (
     <View style={hospitalCardStyles.generalContainer}>
-      <View style={hospitalCardStyles.titleContainer}>
-        <Image
-          source={require('../../../../assets/icons/UserSOS/anonymousHospitalLogo.png')}
-        />
-        <View style={hospitalCardStyles.rightContainer}>
-          <Text style={hospitalCardStyles.titleText}>CẦN MÁU KHẨN CẤP</Text>
-          {/* <View style={hospitalCardStyles.break} /> */}
-          <Text style={hospitalCardStyles.bloodAmount}>
-            {callData.bloodAmount} cc
+      <Pressable
+        onPress={() =>
+          handlePress({
+            hospitalName: hospitalName,
+            date: callData.date,
+            time: callData.time,
+            address: callData.address,
+          })
+        }>
+        <View style={hospitalCardStyles.titleContainer}>
+          <Image
+            source={require('../../../../assets/icons/UserSOS/anonymousHospitalLogo.png')}
+          />
+          <View style={hospitalCardStyles.rightContainer}>
+            <Text style={hospitalCardStyles.titleText}>CẦN MÁU KHẨN CẤP</Text>
+            {/* <View style={hospitalCardStyles.break} /> */}
+            <Text style={hospitalCardStyles.bloodAmount}>
+              {callData.bloodAmount} cc
+            </Text>
+          </View>
+        </View>
+        <View style={hospitalCardStyles.textContainer}>
+          <Image
+            source={require('../../../../assets/icons/UserSOS/hospitalIcon.png')}
+          />
+          <Text style={hospitalCardStyles.textLabel}>Bệnh viện: </Text>
+          <Text style={hospitalCardStyles.textValue}>{hospitalName}</Text>
+        </View>
+        <View style={hospitalCardStyles.textContainer}>
+          <Image
+            source={require('../../../../assets/icons/UserSOS/timeIcon.png')}
+          />
+          <Text style={hospitalCardStyles.textLabel}>Hạn cuối: </Text>
+          <Text style={hospitalCardStyles.textValue}>
+            {callData.time} - {callData.date}
           </Text>
         </View>
-      </View>
-      <View style={hospitalCardStyles.textContainer}>
-        <Image
-          source={require('../../../../assets/icons/UserSOS/hospitalIcon.png')}
-        />
-        <Text style={hospitalCardStyles.textLabel}>Bệnh viện: </Text>
-        <Text style={hospitalCardStyles.textValue}>{hospitalName}</Text>
-      </View>
-      <View style={hospitalCardStyles.textContainer}>
-        <Image
-          source={require('../../../../assets/icons/UserSOS/timeIcon.png')}
-        />
-        <Text style={hospitalCardStyles.textLabel}>Hạn cuối: </Text>
-        <Text style={hospitalCardStyles.textValue}>
-          {callData.time} - {callData.date}
-        </Text>
-      </View>
-      <View style={hospitalCardStyles.textContainer}>
-        <Image
-          source={require('../../../../assets/icons/UserSOS/locationIcon.png')}
-        />
-        <Text style={hospitalCardStyles.textLabel}>Địa chỉ: </Text>
-        <Text style={hospitalCardStyles.textValue}>{callData.address}</Text>
-      </View>
+        <View style={hospitalCardStyles.textContainer}>
+          <Image
+            source={require('../../../../assets/icons/UserSOS/locationIcon.png')}
+          />
+          <Text style={hospitalCardStyles.textLabel}>Địa chỉ: </Text>
+          <Text style={hospitalCardStyles.textValue}>{callData.address}</Text>
+        </View>
+      </Pressable>
     </View>
   );
 };
