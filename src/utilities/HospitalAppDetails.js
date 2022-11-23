@@ -38,20 +38,20 @@ export const HospitalAppDetails = [
       />
     ),
   },
-  {
-    name: 'Notifications',
-    title: 'Thông Báo',
-    component: Notifications,
-    // icon: ({ color, size }) => (
-    //   <Image source={require('../assets/navNoti.png')} style={styles.img} />
-    icon: ({ color, size }) => (
-      <MaterialCommunityIcons
-        name="notification-clear-all"
-        color={color}
-        size={size}
-      />
-    ),
-  },
+  // {
+  //   name: 'Notifications',
+  //   title: 'Thông Báo',
+  //   component: Notifications,
+  //   // icon: ({ color, size }) => (
+  //   //   <Image source={require('../assets/navNoti.png')} style={styles.img} />
+  //   icon: ({ color, size }) => (
+  //     <MaterialCommunityIcons
+  //       name="notification-clear-all"
+  //       color={color}
+  //       size={size}
+  //     />
+  //   ),
+  // },
   {
     name: 'Settings',
     title: 'Cài Đặt',

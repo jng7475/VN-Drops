@@ -45,19 +45,19 @@ export const NavBarButtons = [
       // />
     ),
   },
-  {
-    name: 'Notifications',
-    title: 'Thông Báo',
-    component: Notifications,
-    icon: ({ color, size }) => (
-      <MaterialCommunityIcons
-        name="notification-clear-all"
-        color={color}
-        size={size}
-      />
-      // <Image source={require('../assets/navNoti.png')} style={styles.img} />
-    ),
-  },
+  // {
+  //   name: 'Notifications',
+  //   title: 'Thông Báo',
+  //   component: Notifications,
+  //   icon: ({ color, size }) => (
+  //     <MaterialCommunityIcons
+  //       name="notification-clear-all"
+  //       color={color}
+  //       size={size}
+  //     />
+  //     // <Image source={require('../assets/navNoti.png')} style={styles.img} />
+  //   ),
+  // },
   {
     name: 'Settings',
     title: 'Cài Đặt',

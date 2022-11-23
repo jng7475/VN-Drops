@@ -1,12 +1,19 @@
 import { View, Text, ScrollView, TouchableOpacity } from 'react-native';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { styles1 } from './styles';
-import UserInfor from './component/UserInfor';
+import UserInfo from './component/UserInfo';
 import AdvancedText from '../../components/advancedText';
 import MyText from '../../components/text';
 import Time from './component/Time';
+import { getUserList } from '../../api/UserSOSCRUD';
 
 export default function SOSManage() {
+  const [userList, setUserList] = useState([]);
+  useEffect(() => {
+    getUserList().then(list => {
+      setUserList(list);
+    });
+  }, []);
   const endHour = 16;
   const endMin = 30;
   // const currentTime = 'Bây giờ là' + { endHour } + 'h :' + { endMin };
@@ -26,14 +33,18 @@ export default function SOSManage() {
         <ScrollView
           style={styles1.infoWrapper}
           contentContainerStyle={styles1.infoScrollWrapper}>
-          <UserInfor />
-          <UserInfor />
-          <UserInfor />
-          <UserInfor />
-          <UserInfor />
+          {userList.map((appointment, index) => {
+            return (
+              <UserInfo
+                key={index}
+                userID={appointment.userID}
+                userNote={appointment.userNote}
+              />
+            );
+          })}
         </ScrollView>
       </View>
-      <View style={styles1.bottom}>
+      {/* <View style={styles1.bottom}>
         <View>
           <AdvancedText
             text="BẢNG QUẢN LÝ"
@@ -66,7 +77,7 @@ export default function SOSManage() {
             family="RobotoSlab-Bold"
           />
         </TouchableOpacity>
-      </View>
+      </View> */}
     </View>
   );
 }

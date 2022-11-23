@@ -6,13 +6,26 @@ import {
   TouchableOpacity,
   Pressable,
 } from 'react-native';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import MyText from '../../../components/text';
+import { getPersonalInfo } from '../../../api/GetPersonalInfo';
 
 const windowWidth = Dimensions.get('window').width;
 const windowHeight = Dimensions.get('window').height;
 
-export default function UserInfor() {
+export default function UserInfo({ userID, userNote }) {
+  const [name, setName] = useState('');
+  const [phone, setPhone] = useState('');
+  const [bloodType, setBloodType] = useState('');
+  useEffect(() => {
+    getPersonalInfo(userID).then(info => {
+      console.log(info);
+      setName(info.fullname);
+      setPhone(info.phoneNumber);
+      setBloodType(info.bloodType);
+    });
+  }, [userID]);
+
   const ConfirmButton = () => {
     if (confirm === false) {
       return (
@@ -42,11 +55,11 @@ export default function UserInfor() {
     setConfirm(current => !current);
   };
   const [confirm, setConfirm] = useState(false);
-  const name = 'Nguyen Nguyen Trung';
-  const phone = '090928638';
-  const address = '193 Nguyễn Lương Bằng';
-  const note =
-    'Tôi đang bận trong cuộc họp, tôi có thể hiến máu sau 4:00. Sức khỏe rất ổn định.';
+  // const name = 'Nguyen Nguyen Trung';
+  // const phone = '090928638';
+  // const address = '193 Nguyễn Lương Bằng';
+  // const note =
+  //   'Tôi đang bận trong cuộc họp, tôi có thể hiến máu sau 4:00. Sức khỏe rất ổn định.';
   const InforLines = props => {
     return (
       <View style={styles.InforLinesWrapper}>
@@ -74,9 +87,14 @@ export default function UserInfor() {
     <View style={styles.container}>
       <InforLines title="Tên người hiến máu: " des={name} />
       <InforLines title="Số điện thoại: " des={phone} />
-      <InforLines title="Địa chỉ: " des={address} />
+      <InforLines title="Nhóm máu: " des={bloodType} />
       <InforLines title="Lưu ý: " des="" />
-      <MyText text={note} family="RobotoSlab-Regular" size={16} color="black" />
+      <MyText
+        text={userNote}
+        family="RobotoSlab-Regular"
+        size={16}
+        color="black"
+      />
       <ConfirmButton />
     </View>
   );
