@@ -2,6 +2,7 @@ import { View, Text, TextInput, StyleSheet, Button, Alert } from 'react-native';
 import React from 'react';
 import { useEffect, useState } from 'react';
 import { getPersonalInfo } from '../../../../api/GetPersonalInfo';
+import { createUserSOSAppointment } from '../../../../api/CreateUserSOSAppointment';
 
 const Confirmation = ({ hospitalDetails, navigation, setSelected }) => {
   const [noteContent, setNoteContent] = useState('');
@@ -20,8 +21,17 @@ const Confirmation = ({ hospitalDetails, navigation, setSelected }) => {
     setSelected(false);
   };
   const handleConfirm = () => {
-    Alert.alert('Bạn đã đăng kí hiến máu khẩn cấp thành công');
-    navigation.navigate('MainHome');
+    if (fullname === '' || phoneNumber === '' || noteContent === '') {
+      Alert.alert('Vui lòng kiểm tra lại các mục chưa điền');
+    } else {
+      createUserSOSAppointment(
+        hospitalDetails.hospitalID,
+        hospitalDetails.callID,
+        noteContent,
+      );
+      // Alert.alert('Bạn đã đăng kí hiến máu khẩn cấp thành công');
+      // navigation.navigate('MainHome');
+    }
   };
 
   return (

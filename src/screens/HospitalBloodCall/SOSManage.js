@@ -1,5 +1,5 @@
 import { View, Text, ScrollView, TouchableOpacity } from 'react-native';
-import React from 'react';
+import React, { useEffect } from 'react';
 import { styles1 } from './styles';
 import UserInfor from './component/UserInfor';
 import AdvancedText from '../../components/advancedText';
@@ -7,6 +7,7 @@ import MyText from '../../components/text';
 import Time from './component/Time';
 
 export default function SOSManage() {
+  useEffect(() => {}, []);
   const endHour = 16;
   const endMin = 30;
   // const currentTime = 'Bây giờ là' + { endHour } + 'h :' + { endMin };

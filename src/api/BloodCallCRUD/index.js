@@ -56,12 +56,14 @@ export const getBloodCalls = async () => {
     .then(async querySnapshot => {
       const data = await Promise.all(
         querySnapshot.docs.map(async documentSnapshot => {
+          // console.log(documentSnapshot.id);
           let bloodCallDetails = {};
           const hospitalData = documentSnapshot.data();
           bloodCallDetails.hospitalName = hospitalData.hospitalName;
           // bloodCallDetails.calls = [];
           const id = documentSnapshot.id;
           // let details = [];
+          bloodCallDetails.hospitalID = id;
           bloodCallDetails.calls = await getBloodCallDetails(id);
           return bloodCallDetails;
         }),
@@ -89,4 +91,20 @@ const getBloodCallDetails = async id => {
       });
     });
   return bloodCallDetails;
+};
+
+export const getOneBloodCall = async (hospitalID, callID) => {
+  // console.log(hospitalID, 'aaa', callID);
+  const bloodCall = await firestore()
+    .collection('bloodCalls')
+    .doc(hospitalID)
+    .collection('calls')
+    .doc(callID)
+    .get()
+    .then(documentSnapshot => {
+      // console.log(documentSnapshot.data());
+      return documentSnapshot.data();
+    });
+  // console.log(bloodCall);
+  return bloodCall;
 };

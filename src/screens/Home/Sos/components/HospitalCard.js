@@ -1,7 +1,13 @@
 import { View, Pressable, Text, Image, StyleSheet } from 'react-native';
 import React from 'react';
 
-const HospitalCard = ({ hospitalName, callData, handlePress }) => {
+const HospitalCard = ({
+  hospitalID,
+  hospitalName,
+  callData,
+  callID,
+  handlePress,
+}) => {
   return (
     <View style={hospitalCardStyles.generalContainer}>
       <Pressable
@@ -11,6 +17,8 @@ const HospitalCard = ({ hospitalName, callData, handlePress }) => {
             date: callData.date,
             time: callData.time,
             address: callData.address,
+            hospitalID: hospitalID,
+            callID: callID,
           })
         }>
         <View style={hospitalCardStyles.titleContainer}>

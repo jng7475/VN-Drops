@@ -32,11 +32,14 @@ export default function Sos({ navigation }) {
           return (
             <View key={'hospital ' + index}>
               {hospital.calls.map((call, callIndex) => {
+                // console.log(call.callID);
                 return (
                   <HospitalCard
                     key={'call ' + callIndex}
                     hospitalName={hospital.hospitalName}
+                    hospitalID={hospital.hospitalID}
                     callData={call.callData}
+                    callID={call.callID}
                     handlePress={handlePress}
                   />
                 );
