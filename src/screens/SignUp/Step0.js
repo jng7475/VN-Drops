@@ -39,7 +39,7 @@ const Step0 = ({ navigation }) => {
       enabled={false}>
       <View style={styles.top}>
         <Image style={styles.logo} source={require('../../assets/logo.png')} />
-        <Text style={styles.welcomeText}>SIGN UP</Text>
+        <Text style={styles.welcomeText}>ĐĂNG KÝ</Text>
       </View>
       <View style={styles.bottom}>
         <View style={{ marginTop: 20 }}>
@@ -64,14 +64,14 @@ const Step0 = ({ navigation }) => {
           </TouchableOpacity>
         </View>
         <View style={styles.signUp}>
-          <Text>Already had an account? </Text>
+          <Text>Bạn đã có tài khoản? </Text>
           <TouchableOpacity onPress={handleLogIn}>
-            <Text>Login</Text>
+            <Text>Đăng Nhập</Text>
           </TouchableOpacity>
         </View>
         <View style={styles.buttonContainer}>
           <TouchableOpacity onPress={handleNext} style={styles.button}>
-            <Text style={styles.buttonText}>Next</Text>
+            <Text style={styles.buttonText}>Tiếp Theo</Text>
           </TouchableOpacity>
         </View>
       </View>

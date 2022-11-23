@@ -32,7 +32,7 @@ const LoginScreen = ({ navigation }) => {
       enabled={false}>
       <View style={styles.top}>
         <Image style={styles.logo} source={require('../../assets/logo.png')} />
-        <Text style={styles.welcomeText}>welcome to</Text>
+        <Text style={styles.welcomeText}>WELCOME TO</Text>
         <Text style={styles.VNDropText}>VN Drops</Text>
       </View>
       <View style={styles.middle}>
@@ -44,7 +44,7 @@ const LoginScreen = ({ navigation }) => {
             style={styles.input}
           />
           <TextInput
-            placeholder="Password"
+            placeholder="Mật khẩu"
             value={password}
             onChangeText={text => setPassword(text)}
             style={styles.input}
@@ -52,18 +52,18 @@ const LoginScreen = ({ navigation }) => {
           />
         </View>
         <View style={styles.forgotPassword}>
-          <Text style={styles.forgotPasswordText}>Forgot Password ?</Text>
+          <Text style={styles.forgotPasswordText}>Quên mật khẩu ?</Text>
         </View>
       </View>
 
       <View style={styles.bottom}>
         <View style={styles.buttonContainer}>
           <TouchableOpacity onPress={handleLogIn} style={styles.button}>
-            <Text style={styles.buttonText}>Login</Text>
+            <Text style={styles.buttonText}>Đăng Nhập</Text>
           </TouchableOpacity>
         </View>
         <View style={{ marginTop: 20 }}>
-          <Text>or connect using</Text>
+          <Text>hoặc đăng nhập với</Text>
         </View>
         <View style={styles.loginWith}>
           <TouchableOpacity style={styles.loginWithButton}>
@@ -74,9 +74,9 @@ const LoginScreen = ({ navigation }) => {
           </TouchableOpacity>
         </View>
         <View style={styles.signUp}>
-          <Text>Don't have an account ? </Text>
+          <Text>Chưa có tài khoản ? </Text>
           <TouchableOpacity onPress={handleSignUp}>
-            <Text>Sign up</Text>
+            <Text>Đăng ký</Text>
           </TouchableOpacity>
         </View>
       </View>

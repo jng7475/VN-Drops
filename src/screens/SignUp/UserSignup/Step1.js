@@ -76,7 +76,7 @@ const Step1 = ({ navigation, setStep, setUserDetails }) => {
 
       <View style={step1Styles.bottom}>
         <View style={{ marginTop: 20 }}>
-          <Text>or connect using</Text>
+          <Text>hoặc đăng nhập bằng</Text>
         </View>
         <View style={step1Styles.loginWith}>
           <TouchableOpacity style={step1Styles.loginWithButton}>
@@ -87,9 +87,9 @@ const Step1 = ({ navigation, setStep, setUserDetails }) => {
           </TouchableOpacity>
         </View>
         <View style={step1Styles.signUp}>
-          <Text>Already had an account? </Text>
+          <Text>Bạn đã có tài khoản? </Text>
           <TouchableOpacity onPress={handleLogIn}>
-            <Text>Login</Text>
+            <Text>Đăng nhập</Text>
           </TouchableOpacity>
         </View>
         <View style={step1Styles.buttonContainer}>

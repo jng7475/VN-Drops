@@ -38,7 +38,7 @@ const Step3 = ({ setStep, userDetails }) => {
       <View style={styles.bottom}>
         <View style={styles.buttonContainer}>
           <TouchableOpacity onPress={handleNext} style={styles.button}>
-            <Text style={styles.buttonText}>next</Text>
+            <Text style={styles.buttonText}>Tiếp theo</Text>
           </TouchableOpacity>
         </View>
       </View>

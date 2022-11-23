@@ -54,7 +54,7 @@ const Step2 = ({ setStep, setUserDetails }) => {
             style={styles.input}
           />
           <TextInput
-            placeholder="Phone Number"
+            placeholder="Số điện thoại"
             value={phone}
             onChangeText={text => setPhone(text)}
             style={styles.input}
@@ -66,7 +66,7 @@ const Step2 = ({ setStep, setUserDetails }) => {
       <View style={styles.bottom}>
         <View style={styles.buttonContainer}>
           <TouchableOpacity onPress={handleNext} style={styles.button}>
-            <Text style={styles.buttonText}>next</Text>
+            <Text style={styles.buttonText}>Tiếp theo</Text>
           </TouchableOpacity>
         </View>
       </View>

@@ -41,7 +41,7 @@ const Step1 = ({ setStep, setUserDetails }) => {
       <View style={styles.middle}>
         <View style={styles.InputContainer}>
           <TextInput
-            placeholder="Fullname"
+            placeholder="Tên đầy đủ"
             value={fullname}
             onChangeText={text => setFullname(text)}
             style={styles.input}
@@ -53,7 +53,7 @@ const Step1 = ({ setStep, setUserDetails }) => {
             style={styles.input}
           />
           <TextInput
-            placeholder="Address"
+            placeholder="Địa chỉ"
             value={address}
             onChangeText={text => setAddress(text)}
             style={styles.input}
@@ -64,7 +64,7 @@ const Step1 = ({ setStep, setUserDetails }) => {
       <View style={styles.bottom}>
         <View style={styles.buttonContainer}>
           <TouchableOpacity onPress={handleNext} style={styles.button}>
-            <Text style={styles.buttonText}>Next</Text>
+            <Text style={styles.buttonText}>Tiếp Theo</Text>
           </TouchableOpacity>
         </View>
       </View>

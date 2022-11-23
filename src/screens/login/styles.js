@@ -61,7 +61,7 @@ const styles = StyleSheet.create({
   buttonText: {
     color: '#450B0B',
     fontFamily: 'HindMadurai-Bold',
-    fontSize: 33,
+    fontSize: 25,
   },
   forgotPassword: {
     flex: 0.5,
