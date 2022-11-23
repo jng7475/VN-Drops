@@ -3,6 +3,7 @@ import React from 'react';
 import { useEffect, useState } from 'react';
 import { getPersonalInfo } from '../../../../api/GetPersonalInfo';
 import { createUserSOSAppointment } from '../../../../api/CreateUserSOSAppointment';
+import { handleUserSOS } from '../../../../api/HandleUserSOS';
 
 const Confirmation = ({ hospitalDetails, navigation, setSelected }) => {
   const [noteContent, setNoteContent] = useState('');
@@ -29,8 +30,9 @@ const Confirmation = ({ hospitalDetails, navigation, setSelected }) => {
         hospitalDetails.callID,
         noteContent,
       );
-      // Alert.alert('Bạn đã đăng kí hiến máu khẩn cấp thành công');
-      // navigation.navigate('MainHome');
+      handleUserSOS(hospitalDetails.hospitalID);
+      Alert.alert('Bạn đã đăng kí hiến máu khẩn cấp thành công');
+      navigation.navigate('MainHome');
     }
   };
 

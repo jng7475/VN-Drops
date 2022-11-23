@@ -8,12 +8,26 @@ export const createUserSOSAppointment = async (
   noteContent,
 ) => {
   const currentUserID = firebase.auth().currentUser?.uid;
-  console.log(currentUserID);
+  // console.log(currentUserID);
   const bloodCall = await getOneBloodCall(hospitalID, callID);
-  console.log('bbb', bloodCall);
-  await firestore().collection('userSOSAppointments').doc(hospitalID).set({
-    userID: currentUserID,
-    userNote: noteContent,
-    dateRegister: new Date(),
-  });
+  // console.log('bbb', bloodCall);
+  const tempDate = new Date();
+  const fullTime =
+    tempDate.getHours() + ' giờ ' + tempDate.getMinutes() + ' phút';
+  const fullDate =
+    tempDate.getDate() +
+    '/' +
+    (tempDate.getMonth() + 1) +
+    '/' +
+    tempDate.getFullYear();
+  await firestore()
+    .collection('userSOSAppointments')
+    .doc(hospitalID)
+    .collection('appointments')
+    .doc(currentUserID)
+    .set({
+      userID: currentUserID,
+      userNote: noteContent,
+      dateRegister: fullTime + ' - ' + fullDate,
+    });
 };
