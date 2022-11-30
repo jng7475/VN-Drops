@@ -18,7 +18,6 @@ const AppNavigation = ({ user }) => {
     };
     getUserInfo();
   }, [user]);
-
   if (userInfo.accountType === 'user') {
     return <UserAppStack />;
   } else if (userInfo.accountType === 'hospital') {

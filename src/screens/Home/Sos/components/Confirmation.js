@@ -1,7 +1,10 @@
 import { View, Text, TextInput, StyleSheet, Button, Alert } from 'react-native';
 import React from 'react';
 import { useEffect, useState } from 'react';
-import { getPersonalInfo } from '../../../../api/GetPersonalInfo';
+import {
+  getPersonalInfo,
+  setUserStatus,
+} from '../../../../api/GetPersonalInfo';
 import { createUserSOSAppointment } from '../../../../api/CreateUserSOSAppointment';
 import { handleUserSOS } from '../../../../api/HandleUserSOS';
 
@@ -31,6 +34,7 @@ const Confirmation = ({ hospitalDetails, navigation, setSelected }) => {
         noteContent,
       );
       handleUserSOS(hospitalDetails.hospitalID);
+      setUserStatus('sos');
       Alert.alert('Bạn đã đăng kí hiến máu khẩn cấp thành công');
       navigation.navigate('MainHome');
     }

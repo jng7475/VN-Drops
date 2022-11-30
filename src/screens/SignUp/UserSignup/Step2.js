@@ -11,13 +11,20 @@ import React, { useState, useContext } from 'react';
 import { AuthContext } from '../../../navigations/AuthProvider';
 import { step2Styles } from './styles';
 
-const Step2 = ({ userDetails }) => {
+const Step2 = ({ userDetails, setUserDetails }) => {
+
+  const [disease, setDisease] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
-
   const { register } = useContext(AuthContext);
 
   const handleSignUp = () => {
+    // setUserDetails({
+    //   ...userDetails,
+    //   sex: sex,
+    //   weight: weight,
+    // });
+    console.log(userDetails);
     if (userDetails && password) {
       register(userDetails, password, 'user');
     }
@@ -37,15 +44,33 @@ const Step2 = ({ userDetails }) => {
       </View>
       <View style={step2Styles.middle}>
         <View style={step2Styles.InputContainer}>
+          {/* <TextInput
+            placeholder="Giới tính"
+            value={sex}
+            onChangeText={text => setSex(text)}
+            style={step2Styles.input}
+          />
           <TextInput
-            placeholder="Password"
+            placeholder="Cân nặng (đơn vị kg)"
+            value={weight}
+            onChangeText={text => setWeight(text)}
+            style={step2Styles.input}
+          /> */}
+          <TextInput
+            placeholder="Các bệnh nền"
+            value={disease}
+            onChangeText={text => setDisease(text)}
+            style={step2Styles.input}
+          />
+          <TextInput
+            placeholder="Mật Khẩu"
             value={password}
             onChangeText={text => setPassword(text)}
             style={step2Styles.input}
             secureTextEntry
           />
           <TextInput
-            placeholder="Confirm Password"
+            placeholder="Xác nhận mật khẩu"
             value={confirmPassword}
             onChangeText={text => setConfirmPassword(text)}
             style={step2Styles.input}

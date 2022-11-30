@@ -87,6 +87,7 @@ const SOSForm = ({ navigation }) => {
       // console.log(status);
       if (status === 'success') {
         setModalText('Đã kêu gọi thành công!');
+        // navigation.navigate('HospitalMainHome');
       }
     } else {
       setModalText('Một hoặc nhiều chi tiết chưa được cung cấp!');

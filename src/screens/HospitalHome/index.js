@@ -34,6 +34,10 @@ const HospitalHome = () => {
         component={HosManage}
         options={{
           headerShown: true,
+          headerStyle: {
+            backgroundColor: 'red',
+          },
+          headerTintColor: '#fff',
         }}
       />
       <HospitalHomeStack.Screen
@@ -41,6 +45,10 @@ const HospitalHome = () => {
         component={HosSchedule}
         options={{
           headerShown: true,
+          headerStyle: {
+            backgroundColor: 'red',
+          },
+          headerTintColor: '#fff',
         }}
       />
     </HospitalHomeStack.Navigator>

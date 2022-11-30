@@ -5,6 +5,7 @@ import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityI
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import { firebase } from '@react-native-firebase/auth';
 import { sendMessageToRasa } from '../../api/RasaApi';
+import { getUserStatus } from '../../api/GetPersonalInfo';
 
 import styles from './styles';
 
@@ -57,18 +58,27 @@ const ChatScreen = ({ navigation }) => {
   };
 
   useEffect(() => {
-    setMessages([
-      {
-        _id: 0,
-        text: 'Hello! How can I help you?',
-        createdAt: new Date(),
-        user: {
-          _id: BOT_ID,
-          name: 'bot',
-          avatar: 'https://placeimg.com/140/140/any',
+    let initialMessage = '';
+    getUserStatus().then(res => {
+      console.log(res);
+      if (res === 'none') {
+        initialMessage = 'Không có thông tin gì mới!';
+      } else if (res === 'appointment') {
+        initialMessage = 'Bạn đã đặt lịch thành công!';
+      }
+      setMessages([
+        {
+          _id: 0,
+          text: initialMessage,
+          createdAt: new Date(),
+          user: {
+            _id: BOT_ID,
+            name: 'bot',
+            avatar: 'https://placeimg.com/140/140/any',
+          },
         },
-      },
-    ]);
+      ]);
+    });
   }, []);
 
   // const onSend = useCallback((newMessage = []) => {

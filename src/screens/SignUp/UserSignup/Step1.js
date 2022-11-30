@@ -63,7 +63,6 @@ const Step1 = ({ navigation, setStep, setUserDetails }) => {
             value={phone}
             onChangeText={text => setPhone(text)}
             style={step1Styles.input}
-            secureTextEntry
           />
           <TextInput
             placeholder="Địa chỉ thường trú (thành phố, quận, phường, số nhà)"

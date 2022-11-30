@@ -3,10 +3,26 @@ import { useEffect, useState } from 'react';
 import messaging from '@react-native-firebase/messaging';
 import MyText from '../../../../components/text';
 import React from 'react';
+import { getUserStatus } from '../../../../api/GetPersonalInfo';
 
 export default function ImportantInfo() {
   const [title, setTitle] = useState('');
-  const [message, setMessage] = useState('Không có thông tin!');
+  const [message, setMessage] = useState('');
+  useEffect(() => {
+    getUserStatus().then(res => {
+      // console.log(res);
+      if (res === 'none') {
+        setMessage('Không có thông tin gì mới!');
+      } else if (res === 'appointment') {
+        setMessage('Bạn đã đặt lịch thành công!');
+      } else if (res === 'after') {
+        setMessage('Bạn đã đặt lịch thành công!');
+      } else if (res === 'sos') {
+        setMessage('Bạn đã đặt lịch thành công!');
+      }
+    });
+    return () => {};
+  }, []);
 
   useEffect(() => {
     const unsubscribe = messaging().onMessage(async remoteMessage => {

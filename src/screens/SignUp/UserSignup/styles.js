@@ -126,7 +126,7 @@ export const step2Styles = StyleSheet.create({
     justifyContent: 'center',
   },
   bottom: {
-    flex: 1.5,
+    flex: 1,
     alignItems: 'center',
     justifyContent: 'flex-start',
   },
