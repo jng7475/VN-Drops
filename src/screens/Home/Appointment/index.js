@@ -25,10 +25,10 @@ const Appointment = ({ navigation }) => {
   const [userHealth, setUserHealth] = useState();
 
   const handleScheduleAppointment = async () => {
-    console.log(patientDetails);
+    // console.log(patientDetails);
     personalInfo = await getPersonalInfo();
     // setPersonalInfo(await getPersonalInfo());
-    console.log(personalInfo);
+    // console.log(personalInfo);
     setUserHealth(await getUserHealth());
     // console.log(personalInfo.userDetails); //thong tin ca nhan luc dang ky tai khoan
     // console.log(personalInfo); //thong tin dat lich

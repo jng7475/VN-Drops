@@ -61,6 +61,7 @@ const getEligibleUsers = async bloodType => {
                 // pass blood type through args
                 if (detailsData.userDetails.bloodType === bloodType) {
                   eligibleUsers[id] = 1;
+                  console.log(bloodType);
                 } else {
                   eligibleUsers[id] = -1;
                 }

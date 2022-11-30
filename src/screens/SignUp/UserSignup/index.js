@@ -8,7 +8,7 @@ const UserSignup = () => {
   return step === 1 ? (
     <Step1 setStep={setStep} setUserDetails={setUserDetails} />
   ) : (
-    <Step2 userDetails={userDetails} />
+    <Step2 userDetails={userDetails} setUserDetails={setUserDetails} />
   );
 };
 export default UserSignup;
