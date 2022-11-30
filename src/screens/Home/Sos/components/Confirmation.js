@@ -31,6 +31,7 @@ const Confirmation = ({ hospitalDetails, navigation, setSelected }) => {
         noteContent,
       );
       handleUserSOS(hospitalDetails.hospitalID);
+      // setUserStatus('sos');
       Alert.alert('Bạn đã đăng kí hiến máu khẩn cấp thành công');
       navigation.navigate('MainHome');
     }

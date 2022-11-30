@@ -23,3 +23,28 @@ export const getPersonalInfo = async userID => {
   // console.log(personalInfo);
   return personalInfo;
 };
+
+export const getUserStatus = async () => {
+  const currentUserID = firebase.auth().currentUser?.uid;
+  let status = '';
+  await firestore()
+    .collection('users')
+    .doc(currentUserID)
+    .get()
+    .then(documentSnapshot => {
+      const data = documentSnapshot.data();
+      // console.log(data.userDetails);
+      status = data.status;
+      // console.log(status);
+      // personalInfo = data.userDetails;
+    });
+  return status;
+};
+
+export const setUserStatus = async status => {
+  const currentUserID = firebase.auth().currentUser?.uid;
+  await firestore()
+    .collection('users')
+    .doc(currentUserID)
+    .update({ status: status });
+};
