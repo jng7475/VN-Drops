@@ -7,6 +7,7 @@ export const postUserDetails = async (userDetails, accountType) => {
     await firestore().collection('users').doc(currentUserID).set({
       email: userDetails.email,
       accountType: accountType,
+      status: 'none',
     });
     await firestore()
       .collection('users')
