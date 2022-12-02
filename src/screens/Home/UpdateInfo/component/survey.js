@@ -29,10 +29,11 @@ export default function Survey() {
   };
   return (
     <View style={{ width: '76%', paddingLeft: '3%', paddingTop: '3%' }}>
-      <QuestionsText text="1. Quý vị có hiến máu trong 3 tháng gần đây không" />
-      <QuestionsText text="2. Quý vị đã từng mắc các bệnh như :" />
+      <QuestionsText text="1. Cân nặng hiện tại của bạn có trên 45kg không " />
+      <QuestionsText text="2. Bạn có hiến máu trong 3 tháng gần đây không" />
+      <QuestionsText text="3. Bạn đã từng mắc các bệnh như :" />
       <DesciptionText text="Tâm thần , thần kinh , hô hấp, tiêu hoá, vàng da/ viêm gan, huyết áp ...?" />
-      <QuestionsText text="3. Trong 6 tháng gần đây, quý vị có:" />
+      <QuestionsText text="4. Trong 6 tháng gần đây, quý vị có:" />
       <Text>
         .........................................................................
       </Text>
@@ -43,7 +44,7 @@ export default function Survey() {
       <DesciptionText text="Tiêm vắc xin phòng bệnh " />
       <DesciptionText text="Có đến /ở vùng dịch lưu hành " />
       <DesciptionText text="Sốt xuất huyết , sốt rét , covid -19....? " />
-      <QuestionsText text="4. Trong 01 tuần gần đây , quý vị có:" />
+      <QuestionsText text="5. Trong 01 tuần gần đây , quý vị có:" />
       <DesciptionText text="Bị cúm , ho , nhức đầu , sốt ...? " />
       <DesciptionText text="Dùng thuốc kháng sinh Aspirin Corticoid? " />
       <DesciptionText text="Đi khám sức khoẻ , xét nghiệm? " />
@@ -51,7 +52,7 @@ export default function Survey() {
         .........................................................................
       </Text>
       <QuestionsText
-        text="5. Quý vị hiện là đối tượng tàn tật 
+        text="6. Bạn hiện là đối tượng tàn tật 
           hoặc hưởng trợ cấp tàn tật hoặc
           nạn nhân chất độc mầu da cam 
           không ?"
@@ -59,7 +60,7 @@ export default function Survey() {
       <Text>
         .........................................................................
       </Text>
-      <QuestionsText text="6. Câu hỏi dành cho phụ nữ：" />
+      <QuestionsText text="7. Câu hỏi dành cho phụ nữ：" />
       <DesciptionText text="Chị hiện có thai hoặc nuôi con dưới 12 tháng tuổi " />
     </View>
   );

@@ -12,6 +12,9 @@ export const YesNoBox = ({ setResult }) => {
         height: '100%',
       }}>
       <View style={{ marginTop: '10%' }}>
+        <Box setResult={setResult} field={'weight'} />
+      </View>
+      <View style={{ marginTop: '10%' }}>
         <Box setResult={setResult} field={'3-month-donation'} />
       </View>
       <View style={{ marginTop: '10%' }}>
@@ -26,7 +29,7 @@ export const YesNoBox = ({ setResult }) => {
       <View style={{ marginTop: '90%' }}>
         <Box setResult={setResult} field={'disability'} />
       </View>
-      <View style={{ marginTop: '65%' }}>
+      <View style={{ marginTop: '60%' }}>
         <Box setResult={setResult} field={'female-question'} />
       </View>
     </View>

@@ -4,7 +4,7 @@ import firestore from '@react-native-firebase/firestore';
 import { firebase } from '@react-native-firebase/auth';
 
 export const getUserHealth = async () => {
-  const currentUserID = firebase.auth().currentUser?.uid;
+  let currentUserID = firebase.auth().currentUser?.uid;
   let userHealth = {};
   await firestore()
     .collection('users')
@@ -12,9 +12,11 @@ export const getUserHealth = async () => {
     .collection('medicalProfile')
     .doc(currentUserID)
     .get()
-    .then(querySnapshot => {
-      const data = querySnapshot.data();
+    .then(async querySnapshot => {
+      const data = await querySnapshot.data();
       userHealth = data;
     });
+  console.log(userHealth.result);
+  console.log(1);
   return userHealth.result;
 };

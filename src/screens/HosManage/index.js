@@ -16,12 +16,12 @@ import DatePicker from '../Home/Appointment/components/DatePicker';
 import ResponseModal from '../Home/Appointment/components/ResponseModal';
 import { UpdateUserInfo } from '../../api/UpdateUserInfo';
 import { getUserHealth } from '../../api/GetUserHealth';
-
+import { getPersonalInfo } from '../../api/GetPersonalInfo';
 const windowWidth = Dimensions.get('window').width;
 const windowHeight = Dimensions.get('window').height;
 
 const HosManage = ({ navigation }) => {
-  const [id, setId] = useState('FbVjopjrsYYeTxjJHn6F2u88fmY2');
+  const [id, setId] = useState('R7QEaaDy5RV26wi4vE5U9FqHar82');
   const [weight, setWeight] = useState('');
   const [donateHistory, setDonateHistory] = useState('');
   const [bloodType, setBloodType] = useState('');
@@ -36,13 +36,22 @@ const HosManage = ({ navigation }) => {
   const [modalText, setModalText] = useState('');
 
   const handleSubmit = async () => {
+    // let newInfo = await getUserHealth(id);
+    console.log(1);
+    // let personalInfo = await getPersonalInfo(id);
+    console.log(2);
+    let newInfo = {
+      ...newInfo,
+      // personalInfo,
+    };
     if (
       weight !== '' &&
       donateHistory !== '' &&
       bloodType !== '' &&
       disease !== ''
     ) {
-      let newInfo = {
+      newInfo = {
+        ...newInfo,
         id: id,
         weight: weight,
         donateHistory: donateHistory,
@@ -63,9 +72,9 @@ const HosManage = ({ navigation }) => {
       // };
 
       const status = await UpdateUserInfo(newInfo);
-      // console.log(status);
+      console.log(status);
       if (status === 'success') {
-        setModalText('Đã kêu gọi thành công!');
+        setModalText('Đã cập nhật thông tin người dùng này');
         // navigation.navigate('HospitalMainHome');
       }
     } else {
