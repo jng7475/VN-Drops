@@ -22,10 +22,10 @@ const Activity = () => {
         <BeforeDonationScreen style={{ flex: 1 }} />
       ) : message === 'appointment' ? (
         <DuringDonationScreen style={{ flex: 1 }} />
-      ) : message === 'sos' ? (
-        <SOS style={{ flex: 1 }} />
-      ) : (
+      ) : message === 'after' ? (
         <AfterDonationScreen style={{ flex: 1 }} />
+      ) : (
+        <SOS style={{ flex: 1 }} />
       )}
 
       {/* <DuringDonationScreen style={{ flex: 1 }} /> */}

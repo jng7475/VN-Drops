@@ -23,7 +23,5 @@ export const handleUserSOS = async hospitalID => {
           },
         }),
       });
-    },
-    
-    );
+    });
 };

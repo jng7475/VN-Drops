@@ -21,18 +21,18 @@ export const NavBarButtons = [
       // />
     ),
   },
-  {
-    name: 'Profile',
-    title: 'Hồ Sơ',
-    component: Profile,
-    icon: ({ color, size }) => (
-      <MaterialCommunityIcons
-        name="face-man-profile"
-        color={color}
-        size={size}
-      />
-    ),
-  },
+  // {
+  //   name: 'Profile',
+  //   title: 'Hồ Sơ',
+  //   component: Profile,
+  //   icon: ({ color, size }) => (
+  //     <MaterialCommunityIcons
+  //       name="face-man-profile"
+  //       color={color}
+  //       size={size}
+  //     />
+  //   ),
+  // },
   {
     name: 'Chat',
     title: 'Trợ Lý',

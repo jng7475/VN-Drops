@@ -12,13 +12,19 @@ export default function ImportantInfo() {
     getUserStatus().then(res => {
       // console.log(res);
       if (res === 'none') {
-        setMessage('Không có thông tin gì mới!');
+        setMessage(
+          'Hãy cập nhật tình trạng sức khỏe của bạn để có thể đặt lịch hoặc hiến máu khẩn cấp',
+        );
       } else if (res === 'appointment') {
-        setMessage('Bạn đã đặt lịch thành công!');
+        setMessage(
+          'Bạn đã đặt lịch thành công. Theo dõi "Hoạt động" để được hướng dẫn.',
+        );
       } else if (res === 'after') {
-        setMessage('Bạn đã đặt lịch thành công!');
+        setMessage('Bạn đã hoàn thành hiến máu');
       } else if (res === 'sos') {
-        setMessage('Bạn đã đặt lịch thành công!');
+        setMessage(
+          'Đã xác nhận đăng ký hiến máu khẩn cấp. Một bệnh nhân đang chờ bạn. Hãy đến sớm nhất có thể nhé!',
+        );
       }
     });
     return () => {};

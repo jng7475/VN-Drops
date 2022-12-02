@@ -30,7 +30,7 @@ const UserAppStack = () => {
     const unsubscribe = messaging().onMessage(async remoteMessage => {
       const message =
         remoteMessage.notification.body +
-        '\nVui lòng vào tính năng Huy động máu SOS để có thêm thông tin!';
+        '\nVui lòng vào tính năng hiến máu khẩn cấp để có thêm thông tin!';
       Alert.alert(remoteMessage.notification.title, message);
     });
 

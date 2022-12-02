@@ -23,21 +23,21 @@ export const HospitalAppDetails = [
       <MaterialCommunityIcons name="home" color={color} size={size} />
     ),
   },
-  {
-    name: 'Profile',
-    title: 'Hồ Sơ',
-    component: Profile,
-    // icon: ({ color, size }) => (
-    //   <Image source={require('../assets/navProfile.png')} style={styles.img} />
-    // ),
-    icon: ({ color, size }) => (
-      <MaterialCommunityIcons
-        name="face-man-profile"
-        color={color}
-        size={size}
-      />
-    ),
-  },
+  // {
+  //   name: 'Profile',
+  //   title: 'Hồ Sơ',
+  //   component: Profile,
+  //   // icon: ({ color, size }) => (
+  //   //   <Image source={require('../assets/navProfile.png')} style={styles.img} />
+  //   // ),
+  //   icon: ({ color, size }) => (
+  //     <MaterialCommunityIcons
+  //       name="face-man-profile"
+  //       color={color}
+  //       size={size}
+  //     />
+  //   ),
+  // },
   // {
   //   name: 'Notifications',
   //   title: 'Thông Báo',
