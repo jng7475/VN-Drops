@@ -55,7 +55,7 @@ export default function DuringDonationScreen() {
           <Text style={styles.donateDayTitle}>
             Các thông tin về buổi hiến máu
           </Text>
-          <Infor title="Thời gian:" des="8h ngày 28/9/2022" />
+          <Infor title="Thời gian:" des="9h30 ngày 3/12/2022" />
           <Infor
             title="Địa điểm:"
             des="30 Tháng 4, Hoà Cường Bắc, Cẩm Lệ, Đà Nẵng     "

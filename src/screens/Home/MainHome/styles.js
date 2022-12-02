@@ -58,7 +58,8 @@ const styles = StyleSheet.create({
   importantNewsWrapper: {
     width: '80%',
     flex: 2.5,
-    backgroundColor: '#EEEDEB',
+    // backgroundColor: '#EEEDEB',
+    backgroundColor: 'white',
     borderRadius: 22,
     alignItems: 'center',
     justifyContent: 'center',
@@ -73,7 +74,8 @@ const styles = StyleSheet.create({
   importantNews: {
     width: '90%',
     flex: 1,
-    backgroundColor: '#EEEDEB',
+    // backgroundColor: '#EEEDEB',
+    backgroundColor: 'white',
     borderRadius: 22,
     marginVertical: '5%',
   },

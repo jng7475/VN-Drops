@@ -35,7 +35,10 @@ const Confirmation = ({ hospitalDetails, navigation, setSelected }) => {
       );
       handleUserSOS(hospitalDetails.hospitalID);
       setUserStatus('sos');
-      Alert.alert('Bạn đã đăng kí hiến máu khẩn cấp thành công');
+      Alert.alert(
+        'Bạn đã đăng kí hiến máu khẩn cấp thành công',
+        'Hãy đến hiến máu sớm nhất có thể. Sự sống của bệnh nhân đang trông cậy vào nguồn máu từ bạn',
+      );
       navigation.navigate('MainHome');
     }
   };

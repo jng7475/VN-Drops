@@ -62,9 +62,14 @@ const ChatScreen = ({ navigation }) => {
     getUserStatus().then(res => {
       console.log(res);
       if (res === 'none') {
-        initialMessage = 'Không có thông tin gì mới!';
+        initialMessage =
+          'Xin chào bạn. Hãy thường xuyên cập nhật tình trạng sức khỏe của bạn nhé';
       } else if (res === 'appointment') {
-        initialMessage = 'Bạn đã đặt lịch thành công!';
+        initialMessage =
+          'Bạn đã đặt lịch thành công! Hãy theo dõi hướng dẫn tại "Hoạt động". Hãy hỏi tôi bất kỳ điều gì bạn nhé!';
+      } else if (res === 'sos') {
+        initialMessage =
+          'Hãy đến địa điểm hiến máu sớm nhất có thể. Bạn có điều gì còn băn khoăn không ?';
       }
       setMessages([
         {

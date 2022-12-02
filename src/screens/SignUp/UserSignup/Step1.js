@@ -12,6 +12,7 @@ import { step1Styles } from './styles';
 import { useNavigation } from '@react-navigation/native';
 
 const Step1 = ({ navigation, setStep, setUserDetails }) => {
+  const [bloodType, setBloodType] = useState('');
   const [email, setEmail] = useState('');
   const [fullname, setFullname] = useState('');
   const [phone, setPhone] = useState('');
@@ -27,6 +28,7 @@ const Step1 = ({ navigation, setStep, setUserDetails }) => {
         fullname: fullname,
         phoneNumber: phone,
         homeAdress: homeAdress,
+        bloodType: bloodType,
       });
       setStep(step => step + 1);
     }
@@ -68,6 +70,12 @@ const Step1 = ({ navigation, setStep, setUserDetails }) => {
             placeholder="Địa chỉ thường trú (thành phố, quận, phường, số nhà)"
             value={homeAdress}
             onChangeText={text => setHomeAdress(text)}
+            style={step1Styles.input}
+          />
+          <TextInput
+            placeholder="Nhóm máu"
+            value={bloodType}
+            onChangeText={text => setBloodType(text)}
             style={step1Styles.input}
           />
         </View>

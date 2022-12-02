@@ -18,8 +18,12 @@ const SOSForm = ({ navigation }) => {
   const [dateValue, setDateValue] = useState(null);
   const [timeValue, setTimeValue] = useState(null);
   const [bloodAmount, setBloodAmount] = useState(null);
-  const [hospitalAddress, setHospitalAddress] = useState(null);
-  const [noteContent, setNoteContent] = useState('');
+  const [hospitalAddress, setHospitalAddress] = useState(
+    '30 tháng 4, Hoà Cường Bắc, Quận Hải Châu, Đà Nẵng',
+  );
+  const [noteContent, setNoteContent] = useState(
+    '30 tháng 4, Hoà Cường Bắc, Quận Hải Châu, Đà Nẵng',
+  );
   const [open, setOpen] = useState(false);
   const [bloodTypeChoice, setBloodTypeChoice] = useState(null);
   const [showDatePicker, setShowDatePicker] = useState(false);

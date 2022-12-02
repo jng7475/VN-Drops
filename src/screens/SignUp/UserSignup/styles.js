@@ -7,23 +7,23 @@ export const step1Styles = StyleSheet.create({
     backgroundColor: '#F5F5F5',
   },
   top: {
-    flex: 1,
+    // flex: 1,
     paddingVertical: 30,
     alignItems: 'center',
     justifyContent: 'space-between',
   },
   welcomeText: {
-    fontSize: 45,
+    fontSize: 40,
     fontFamily: 'Buenard-Bold',
     color: 'black',
   },
   middle: {
-    flex: 1.5,
+    flex: 2,
     alignItems: 'center',
     justifyContent: 'center',
   },
   bottom: {
-    flex: 1.5,
+    flex: 2,
     alignItems: 'center',
     justifyContent: 'flex-start',
   },
@@ -100,8 +100,8 @@ export const step1Styles = StyleSheet.create({
     flexDirection: 'row',
   },
   logo: {
-    width: 136,
-    height: 135,
+    width: 100,
+    height: 100,
   },
 });
 

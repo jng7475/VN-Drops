@@ -25,8 +25,9 @@ import { firebase } from '@react-native-firebase/auth';
 
 export const UpdateUserInfo = async newInfo => {
   console.log('UpdateUserInfo');
-  let currentUserID = 'FbVjopjrsYYeTxjJHn6F2u88fmY2';
+  let currentUserID = newInfo.id;
   if (currentUserID) {
+    console.log(currentUserID);
     await firestore()
       .collection('users')
       .doc(currentUserID)

@@ -12,18 +12,12 @@ import { AuthContext } from '../../../navigations/AuthProvider';
 import { step2Styles } from './styles';
 
 const Step2 = ({ userDetails, setUserDetails }) => {
-
   const [disease, setDisease] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
   const { register } = useContext(AuthContext);
 
   const handleSignUp = () => {
-    // setUserDetails({
-    //   ...userDetails,
-    //   sex: sex,
-    //   weight: weight,
-    // });
     console.log(userDetails);
     if (userDetails && password) {
       register(userDetails, password, 'user');
@@ -62,6 +56,12 @@ const Step2 = ({ userDetails, setUserDetails }) => {
             onChangeText={text => setDisease(text)}
             style={step2Styles.input}
           />
+          {/* <TextInput
+            placeholder="Nhóm máu"
+            value={bloodType}
+            onChangeText={text => setBloodType(text)}
+            style={step2Styles.input}
+          /> */}
           <TextInput
             placeholder="Mật Khẩu"
             value={password}
