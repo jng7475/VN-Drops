@@ -67,11 +67,12 @@ const hospitalCardStyles = StyleSheet.create({
   generalContainer: {
     borderWidth: 1,
     borderRadius: 5,
+    borderColor: '#E6A97D',
     marginLeft: '7%',
     marginRight: '7%',
     marginTop: '5%',
     marginBottom: '5%',
-    backgroundColor: '#EEEDEB',
+    backgroundColor: '#FDEAD9',
   },
   titleContainer: {
     flex: 1,

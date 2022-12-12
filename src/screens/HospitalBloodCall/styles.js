@@ -21,7 +21,7 @@ export const styles1 = StyleSheet.create({
   },
   infoWrapper: {
     width: '90%',
-    backgroundColor: '#ECE1E1',
+    backgroundColor: 'white',
   },
   infoScrollWrapper: {
     alignItems: 'center',

@@ -28,14 +28,20 @@ export default function BeforeDonationScreen() {
         <Text style={styles.title}>hiến máu</Text>
       </View>
       <View style={styles.top}>
-        <Text style={styles.topText}>Số lần hiến máu: 01</Text>
-        <Text style={styles.topText}>Lần cuối hiến máu: 19/9/2022</Text>
-        <Text style={styles.topText}>
-          Tình trạng sức khỏe hiện tại: Ổn định
-        </Text>
+        <View style={styles.containerFortop}>
+          <Text style={styles.topText}>Số lần hiến máu: 01</Text>
+          <Text style={styles.topText}>Lần cuối hiến máu: 19/9/2022</Text>
+          <Text style={styles.topText}>
+            Tình trạng sức khỏe hiện tại: Ổn định
+          </Text>
+        </View>
       </View>
       <View style={styles.middle}>
-        <View style={styles.midLeft}>
+        <Image
+          source={require('../../../../assets/activityImage2.png')}
+          style={{ width: '100%', height: '100%', resizeMode: 'contain' }}
+        />
+        {/* <View style={styles.midLeft}>
           <Text style={styles.yesNoText}> Trong một tuần qua: </Text>
           <Text style={styles.categories}> Bị cúm, ho, nhức đầu, sốt ... </Text>
           <Text style={styles.categories}> Dùng thuốc kháng sinh </Text>
@@ -51,29 +57,34 @@ export default function BeforeDonationScreen() {
           <YesNoBox />
           <YesNoBox />
           <YesNoBox />
-        </View>
+        </View> */}
         {/* <Image source={require('../../../../assets/screenshot.jpg')}/> */}
       </View>
       <View style={styles.bottom}>
         <View style={styles.bottomTop}>
-          <Image
+          {/* <Image
             style={{ maxHeight: '100%', resizeMode: 'contain' }}
             source={require('../../../../assets/bloodDemand(2).png')}
-          />
+          /> */}
           <View style={styles.bottomTopTextWrapper}>
             <Text style={styles.bottomTopText}>
-              Những tổ chức y tế đang{'\n'}cần máu :
+              Những tổ chức y tế đang cần máu :
             </Text>
             <TouchableOpacity
               onPress={moveToBloodDemand}
-              style={{ position: 'absolute', top: '55%', left: '45%' }}>
+              style={{ position: 'absolute', top: '80%', left: '40%' }}>
               <Text style={styles.clickHereText}>Xem tại đây</Text>
             </TouchableOpacity>
           </View>
         </View>
-        <Text style={styles.slogan}>
-          Mỗi giọt máu cho đi, một cuộc đời ở lại
-        </Text>
+
+        <Image
+          source={require('../../../../assets/newChatbot.png')}
+          style={{ position: 'absolute', left: '4%', bottom: '40%' }}
+        />
+        <TouchableOpacity style={{ paddingLeft: '10%' }}>
+          <Text style={styles.slogan}>Bạn còn thắc mắc? Giải đáp ngay!</Text>
+        </TouchableOpacity>
         <TouchableOpacity
           style={styles.signForDonation}
           onPress={moveToAppointment}>

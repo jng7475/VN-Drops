@@ -44,8 +44,8 @@ const styles = StyleSheet.create({
     marginTop: 0.04 * windowWidth,
   },
   text: {
-    fontFamily: 'RobotoSlab-SemiBold',
-    fontSize: 15,
+    fontFamily: 'NotoSans-Bold',
+    fontSize: 17,
     color: 'white',
     textAlign: 'center',
   },

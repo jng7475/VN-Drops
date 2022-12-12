@@ -5,7 +5,7 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#F6F6F6',
+    backgroundColor: 'white',
   },
   top: {
     width: '100%',
@@ -91,11 +91,11 @@ const styles = StyleSheet.create({
   midOthers: {
     flex: 1,
     width: '100%',
-    justifyContent: 'space-evenly',
+    justifyContent: 'center',
     alignItems: 'center',
-    flexDirection: 'row',
+    flexDirection: 'column',
     // backgroundColor: 'blue',
-    flexWrap: 'wrap',
+    // flexWrap: 'wrap',
   },
   newsText: {
     position: 'absolute',

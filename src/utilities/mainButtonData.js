@@ -21,7 +21,7 @@ export const mainButtonData = [
   // },
   {
     id: 'Activity',
-    text: 'Hoạt động',
+    text: 'Hoạt động hiến máu',
     imageLink: require('../assets/activity.png'),
   },
   // {
@@ -29,14 +29,14 @@ export const mainButtonData = [
   //   text: 'Nhu cầu nhận máu gần bạn',
   //   imageLink: require('../assets/bloodDemand.png'),
   // },
-  {
-    id: 'Achievement',
-    text: 'Ghi nhận - vinh danh',
-    imageLink: require('../assets/achievement.png'),
-  },
-  {
-    id: 'UpdateInfo',
-    text: 'Cập nhật - Khai báo trước khám',
-    imageLink: require('../assets/personalInfo.png'),
-  },
+  // {
+  //   id: 'Achievement',
+  //   text: 'Ghi nhận - vinh danh',
+  //   imageLink: require('../assets/achievement.png'),
+  // },
+  // {
+  //   id: 'UpdateInfo',
+  //   text: 'Cập nhật - Khai báo trước khám',
+  //   imageLink: require('../assets/personalInfo.png'),
+  // },
 ];

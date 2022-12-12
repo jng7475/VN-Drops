@@ -17,7 +17,10 @@ const CustomButton = ({ imageLink, text, id, navigation }) => {
   };
   return (
     <TouchableOpacity style={styles.container} onPress={handleNavigate}>
-      <Image style={{ maxHeight: 40, maxWidth: 40 }} source={imageLink} />
+      <Image
+        style={{ maxHeight: 40, maxWidth: 40, marginBottom: '5%' }}
+        source={imageLink}
+      />
       <View style={{ width: '80%' }}>
         <Text style={styles.text}>{text}</Text>
       </View>
@@ -27,21 +30,34 @@ const CustomButton = ({ imageLink, text, id, navigation }) => {
 
 const styles = StyleSheet.create({
   container: {
-    width: (windowWidth * 4) / 10,
-    height: (windowHeight * 1) / 10,
+    // width: (windowWidth * 4) / 10,
+    // height: (windowHeight * 1) / 10,
+    // borderRadius: 15,
+    // backgroundColor: '#E8F3FE',
+    // elevation: 15,
+    // shadowColor: '#000000',
+    // shadowOpacity: 0.5,
+    // alignItems: 'center',
+    // justifyContent: 'center',
+    // marginTop: 0.04 * windowWidth,
+    width: (windowWidth * 4.8) / 10,
+    height: (windowHeight * 1.3) / 10,
     borderRadius: 15,
-    backgroundColor: '#F5F5F5',
-    elevation: 15,
-    shadowColor: '#000000',
+    borderWidth: 1,
+    borderColor: 'white',
+    backgroundColor: '#E8F3FE',
+    elevation: 25,
+    shadowColor: 'black',
     shadowOpacity: 0.5,
     alignItems: 'center',
     justifyContent: 'center',
     marginTop: 0.04 * windowWidth,
   },
   text: {
-    fontFamily: 'RobotoSlab-SemiBold',
-    fontSize: 14,
+    fontFamily: 'NotoSans-SemiBold',
+    fontSize: 17,
     textAlign: 'center',
+    color: 'black',
   },
 });
 export default CustomButton;

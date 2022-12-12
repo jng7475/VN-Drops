@@ -26,7 +26,7 @@ export default function Sos({ navigation }) {
   }, []);
 
   return (
-    <ScrollView>
+    <ScrollView style={{ backgroundColor: '#F6F6F6' }}>
       {selected === false ? (
         bloodCalls.map((hospital, index) => {
           return (

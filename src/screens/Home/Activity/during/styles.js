@@ -32,9 +32,10 @@ const styles = StyleSheet.create({
   donateDayInfoWrapper: {
     width: '85%',
     height: '45%',
-    borderWidth: 1,
+    borderRadius: 10,
     marginVertical: 10,
     alignItems: 'center',
+    backgroundColor: '#FDEAD9',
   },
   donateDayTitle: {
     fontFamily: 'RobotoSlab-Bold',

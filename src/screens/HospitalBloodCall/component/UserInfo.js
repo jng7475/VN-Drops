@@ -104,7 +104,7 @@ const styles = StyleSheet.create({
   container: {
     borderRadius: 15,
     width: '90%',
-    backgroundColor: '#F5F5F5',
+    backgroundColor: '#FDEAD9',
     // height: windowHeight / 5,
     // justifyContent: 'center',
     alignItems: 'center',

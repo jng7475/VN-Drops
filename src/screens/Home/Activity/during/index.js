@@ -18,7 +18,7 @@ export default function DuringDonationScreen() {
     'Để đảm bảo sức khỏe của bạn và chất lượng hiến máu, bạn cần thực hiện chế độ ăn uống, nghỉ ngơi khoa học! Xem chi tiết từ hướng dẫn từ các chuyên gia tại đây: ';
   const Infor = props => {
     return (
-      <View style={{ flexDirection: 'row', width: '90%', margin: 5 }}>
+      <View style={{ flexDirection: 'row', width: '93%', margin: 5 }}>
         <View style={{ flex: 1 }}>
           <MyText
             family="RobotoSlab-Medium"
