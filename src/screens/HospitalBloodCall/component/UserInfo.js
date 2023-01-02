@@ -9,11 +9,17 @@ import {
 import React, { useState, useEffect } from 'react';
 import MyText from '../../../components/text';
 import { getPersonalInfo } from '../../../api/GetPersonalInfo';
+import { confirmSOSAppointment } from '../../../api/confirmSOSAppointment';
 
 const windowWidth = Dimensions.get('window').width;
 const windowHeight = Dimensions.get('window').height;
 
-export default function UserInfo({ userID, userNote }) {
+export default function UserInfo({
+  userID,
+  userNote,
+  appointmentID,
+  navigation,
+}) {
   const [name, setName] = useState('');
   const [phone, setPhone] = useState('');
   const [bloodType, setBloodType] = useState('');
@@ -52,7 +58,9 @@ export default function UserInfo({ userID, userNote }) {
     }
   };
   const handler = () => {
-    setConfirm(current => !current);
+    confirmSOSAppointment(userID, appointmentID);
+    navigation.navigate('HospitalMainHome');
+    // setConfirm(current => !current);
   };
   const [confirm, setConfirm] = useState(false);
   // const name = 'Nguyen Nguyen Trung';
@@ -88,7 +96,7 @@ export default function UserInfo({ userID, userNote }) {
       <InforLines title="Tên người hiến máu: " des={name} />
       <InforLines title="Số điện thoại: " des={phone} />
       <InforLines title="Nhóm máu: " des={bloodType} />
-      <InforLines title="Lưu ý: " des="" />
+      <InforLines title="Lưu ý của người đăng ký: " des={userNote} />
       <MyText
         text={userNote}
         family="RobotoSlab-Regular"

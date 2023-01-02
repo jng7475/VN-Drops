@@ -38,7 +38,7 @@ export default function Survey() {
         .........................................................................
       </Text>
       <DesciptionText text="Sút cân không rõ nguyên nhân " />
-      <DesciptionText text="Phẩu thuật? " />
+      <DesciptionText text="Phẫu thuật? " />
       <DesciptionText text="Được truyền máu? " />
       <DesciptionText text="Sử dụng ma tuý , tiêm chích " />
       <DesciptionText text="Tiêm vắc xin phòng bệnh " />

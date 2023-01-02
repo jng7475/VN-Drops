@@ -3,7 +3,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import React from 'react';
 import MainHomeScreen from './MainHome/index';
 // import Appointment from './Appointment';
-import Appointment from './Appointment/test';
+import Appointment from './Appointment/index';
 import Activity from './Activity';
 import Achievement from './Achievement';
 import Nearby from './Nearby';

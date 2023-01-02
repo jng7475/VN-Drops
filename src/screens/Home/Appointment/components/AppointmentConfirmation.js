@@ -43,7 +43,7 @@ const AppointmentConfirmation = ({
         'Bạn đã đăng kí hiến máu thành công',
         'Hãy đến hiến máu sớm nhất có thể. Sự sống của bệnh nhân đang trông cậy vào nguồn máu từ bạn',
       );
-      // navigation.navigate('MainHome');
+      navigation.navigate('MainHome');
     }
   };
 
