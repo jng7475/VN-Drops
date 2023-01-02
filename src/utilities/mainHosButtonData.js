@@ -11,9 +11,9 @@ export const mainHosButtonData = [
     image: require('../assets/hosScheduleImage.png'),
     id: 'HosSchedule',
   },
-  {
-    text: 'Quản lý thông tin người dùng',
-    image: require('../assets/hosManageImage.png'),
-    id: 'HosManage',
-  },
+  // {
+  //   text: 'Quản lý thông tin người dùng',
+  //   image: require('../assets/hosManageImage.png'),
+  //   id: 'HosManage',
+  // },
 ];
