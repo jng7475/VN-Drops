@@ -7,7 +7,7 @@ import MyText from '../../components/text';
 import Time from './component/Time';
 import { getUserList } from '../../api/UserSOSCRUD';
 
-export default function SOSManage() {
+export default function SOSManage({ navigation }) {
   const [userList, setUserList] = useState([]);
   useEffect(() => {
     getUserList().then(list => {
@@ -39,6 +39,8 @@ export default function SOSManage() {
                 key={index}
                 userID={appointment.userID}
                 userNote={appointment.userNote}
+                appointmentID={appointment.bloodCallID}
+                navigation={navigation}
               />
             );
           })}

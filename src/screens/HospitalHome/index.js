@@ -33,6 +33,7 @@ const HospitalHome = () => {
         name="HosManage"
         component={HosManage}
         options={{
+          title: 'DANH SÁCH ĐĂNG KÝ HIẾN MÁU',
           headerShown: true,
           headerStyle: {
             backgroundColor: 'red',

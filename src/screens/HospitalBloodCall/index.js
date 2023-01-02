@@ -33,7 +33,7 @@ const HospitalBloodCall = ({ navigation }) => {
   return choice === 'SOSForm' ? (
     <SOSForm navigation={navigation} />
   ) : (
-    <SOSManage />
+    <SOSManage navigation={navigation} />
   );
   // <ChoosingPage
   //   text={'Kêu gọi hiến máu khẩn cấp'}
