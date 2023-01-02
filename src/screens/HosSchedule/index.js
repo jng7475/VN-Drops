@@ -72,7 +72,7 @@ const HosSchedule = ({ navigation }) => {
       noteContent !== '' &&
       // bloodTypeChoice !== null &&
       dateValue !== null &&
-      timeValue !== null &&
+      // timeValue !== null &&
       hospitalAddress !== null &&
       orgName !== null
     ) {
