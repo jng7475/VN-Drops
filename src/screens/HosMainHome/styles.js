@@ -20,10 +20,11 @@ const styles = StyleSheet.create({
     right: width / 5,
   },
   bottom: {
-    marginTop: '6%',
+    // marginTop: '10%',
     width: '100%',
     justifyContent: 'center',
     alignItems: 'center',
+    flex: 1,
     // backgroundColor: 'blue',
   },
 });

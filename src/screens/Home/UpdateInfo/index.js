@@ -1,4 +1,11 @@
-import { View, Text, Image, ScrollView, TouchableOpacity } from 'react-native';
+import {
+  View,
+  Text,
+  Image,
+  ScrollView,
+  TouchableOpacity,
+  Alert,
+} from 'react-native';
 import React, { useState } from 'react';
 import styles from './styles';
 import MyText from '../../../components/text.js';
@@ -35,6 +42,7 @@ const UpdateInfo = ({ navigation }) => {
     HealthReport(result);
     console.log('call health report');
     navigation.navigate('MainHome');
+    Alert.alert('Đã cập nhật thông tin sức khỏe thành công');
   };
   //////////////////////////////////////////////////////
   return (

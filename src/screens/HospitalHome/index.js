@@ -29,7 +29,7 @@ const HospitalHome = () => {
           headerTintColor: '#fff',
         }}
       />
-      <HospitalHomeStack.Screen
+      {/* <HospitalHomeStack.Screen
         name="HosManage"
         component={HosManage}
         options={{
@@ -40,7 +40,7 @@ const HospitalHome = () => {
           },
           headerTintColor: '#fff',
         }}
-      />
+      /> */}
       <HospitalHomeStack.Screen
         name="HosSchedule"
         component={HosSchedule}

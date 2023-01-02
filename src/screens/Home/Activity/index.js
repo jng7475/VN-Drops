@@ -8,6 +8,15 @@ import SOS from './SOS';
 
 const Activity = () => {
   const [message, setMessage] = useState('');
+  //
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setMessage(message);
+    }, 1000);
+
+    return () => clearInterval(interval);
+  }, [message]);
+
   useEffect(() => {
     getUserStatus().then(res => {
       // console.log(res);

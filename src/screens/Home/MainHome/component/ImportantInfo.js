@@ -8,6 +8,7 @@ import { getUserStatus } from '../../../../api/GetPersonalInfo';
 export default function ImportantInfo() {
   const [title, setTitle] = useState('');
   const [message, setMessage] = useState('');
+
   useEffect(() => {
     getUserStatus().then(res => {
       // console.log(res);
