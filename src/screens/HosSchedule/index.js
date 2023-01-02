@@ -13,11 +13,12 @@ import { handleSOSCall } from '../../api/HandleSOSCall';
 import DropDownPicker from 'react-native-dropdown-picker';
 import DatePicker from '../Home/Appointment/components/DatePicker';
 import ResponseModal from '../Home/Appointment/components/ResponseModal';
+import { createRegularBloodCall } from '../../api/BloodCallCRUD';
 
 const HosSchedule = ({ navigation }) => {
   const [dateValue, setDateValue] = useState(null);
   const [timeValue, setTimeValue] = useState(null);
-  const [bloodAmount, setBloodAmount] = useState(null);
+  const [orgName, setOrgName] = useState(null);
   const [hospitalAddress, setHospitalAddress] = useState(null);
   const [noteContent, setNoteContent] = useState('');
   const [open, setOpen] = useState(false);
@@ -69,22 +70,23 @@ const HosSchedule = ({ navigation }) => {
   const handleSubmit = async () => {
     if (
       noteContent !== '' &&
-      bloodTypeChoice !== null &&
+      // bloodTypeChoice !== null &&
       dateValue !== null &&
       timeValue !== null &&
-      hospitalAddress !== null
+      hospitalAddress !== null &&
+      orgName !== null
     ) {
       // navigation.navigate('Step2');
       const details = {
         date: dateValue,
-        time: timeValue,
-        bloodAmount: bloodAmount,
+        // time: timeValue,
+        // bloodAmount: bloodAmount,
         address: hospitalAddress,
-        bloodType: bloodTypeChoice,
+        orgName: orgName,
         note: noteContent,
       };
-      const status = await handleSOSCall(details);
-      // console.log(status);
+      // console.log(details);
+      const status = await createRegularBloodCall(details);
       if (status === 'success') {
         setModalText('Đã kêu gọi thành công!');
         // navigation.navigate('HospitalMainHome');
@@ -101,31 +103,37 @@ const HosSchedule = ({ navigation }) => {
 
   return (
     <ScrollView contentContainerStyle={contentContainerStyle}>
-      <Text style={generalStyles.topTitle}>KÊU GỌI HIẾN MÁU DÀI HẠN</Text>
+      <View style={inputStyles.container}>
+        <Image
+          source={require('../../assets/icons/SOSForm/bloodAmountInput.png')}
+        />
+        <TextInput
+          placeholder={'Tên đơn vị tổ chức hiến máu'}
+          value={orgName}
+          onChangeText={text => setOrgName(text)}
+          style={inputStyles.textInput}
+        />
+      </View>
       <View>
-        <Pressable onPress={() => handleShowDatePicker('time')}>
-          {/* <Text>Thời gian kết thúc kêu gọi</Text> */}
+        {/* <Pressable onPress={() => handleShowDatePicker('time')}>
           <View pointerEvents="none" style={inputStyles.container}>
             <Image
               source={require('../../assets/icons/SOSForm/timeInput.png')}
             />
-            {/* {icon} */}
             <TextInput
-              placeholder={'Thời gian kết thúc kêu gọi'}
+              placeholder={'Thời gian hiến máu'}
               value={timeValue}
               style={inputStyles.textInput}
             />
           </View>
-        </Pressable>
+        </Pressable> */}
         <Pressable onPress={() => handleShowDatePicker('date')}>
-          {/* <Text>Chọn ngày cuối cùng cần hiến máu</Text> */}
           <View pointerEvents="none" style={inputStyles.container}>
             <Image
               source={require('../../assets/icons/SOSForm/timeInput.png')}
             />
-            {/* {icon} */}
             <TextInput
-              placeholder={'Ngày kết thúc kêu gọi'}
+              placeholder={'Ngày hiến máu'}
               value={dateValue}
               style={inputStyles.textInput}
             />
@@ -140,19 +148,6 @@ const HosSchedule = ({ navigation }) => {
         )}
       </View>
       <View style={inputStyles.container}>
-        {/* {icon} */}
-        <Image
-          source={require('../../assets/icons/SOSForm/bloodAmountInput.png')}
-        />
-        <TextInput
-          placeholder={'Nhập lượng máu cần kêu gọi với đơn vị cc'}
-          value={bloodAmount}
-          onChangeText={text => setBloodAmount(text)}
-          style={inputStyles.textInput}
-        />
-      </View>
-      <View style={inputStyles.container}>
-        {/* {icon} */}
         <Image
           source={require('../../assets/icons/SOSForm/locationInput.png')}
         />
@@ -164,7 +159,7 @@ const HosSchedule = ({ navigation }) => {
         />
       </View>
       {/* <Text>Chọn nhóm máu cần kêu gọi</Text> */}
-      <DropDownPicker
+      {/* <DropDownPicker
         open={open}
         value={bloodTypeChoice}
         items={bloodTypeOptions}
@@ -176,7 +171,7 @@ const HosSchedule = ({ navigation }) => {
         containerStyle={containerStyles}
         placeholder="Chọn nhóm máu"
         showArrowIcon={false}
-      />
+      /> */}
       {/* <Text>Lưu ý</Text> */}
       <View style={noteStyles.container}>
         {/* {icon} */}

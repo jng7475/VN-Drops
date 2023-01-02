@@ -73,7 +73,7 @@ const getEligibleUsers = async bloodType => {
   return eligibleUsers;
 };
 
-const getHospitalInfo = async () => {
+export const getHospitalInfo = async () => {
   let hospitalName = '';
   const hospitalID = firebase.auth().currentUser?.uid;
   await firestore()

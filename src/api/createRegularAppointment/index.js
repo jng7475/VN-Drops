@@ -2,18 +2,18 @@ import firestore from '@react-native-firebase/firestore';
 import { firebase } from '@react-native-firebase/auth';
 import { getOneBloodCall } from '../BloodCallCRUD';
 
-export const createUserSOSAppointment = async (
+export const createRegularAppointment = async (
   hospitalID,
   callID,
   noteContent,
 ) => {
   const currentUserID = firebase.auth().currentUser?.uid;
   // console.log(currentUserID);
-  const bloodCall = await getOneBloodCall(hospitalID, callID);
+  // const bloodCall = await getOneBloodCall(hospitalID, callID);
   // console.log('bbb', bloodCall);
   const tempDate = new Date();
-  const fullTime =
-    tempDate.getHours() + ' giờ ' + tempDate.getMinutes() + ' phút';
+  // const fullTime =
+  //   tempDate.getHours() + ' giờ ' + tempDate.getMinutes() + ' phút';
   const fullDate =
     tempDate.getDate() +
     '/' +
@@ -21,14 +21,14 @@ export const createUserSOSAppointment = async (
     '/' +
     tempDate.getFullYear();
   await firestore()
-    .collection('userSOSAppointments')
+    .collection('userRegularAppointments')
     .doc(hospitalID)
     .collection('appointments')
     .doc(currentUserID)
     .set({
       userID: currentUserID,
       userNote: noteContent,
-      dateRegistered: fullTime + ' - ' + fullDate,
-      bloodCallID: callID,
+      dateRegistered: fullDate,
+      appointmentID: callID,
     });
 };
