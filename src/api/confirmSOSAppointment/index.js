@@ -3,7 +3,7 @@ import { firebase } from '@react-native-firebase/auth';
 
 export const confirmSOSAppointment = async (userID, appointmentID) => {
   const currentUserID = firebase.auth().currentUser?.uid;
-  // console.log(userID, appointmentID);
+  console.log(userID, appointmentID);
   await firestore()
     .collection('confirmedSOSAppointments')
     .doc(currentUserID)
@@ -12,16 +12,37 @@ export const confirmSOSAppointment = async (userID, appointmentID) => {
     .set({
       appointmentID: appointmentID,
     });
+};
+export const endSOSCall = async () => {
+  const currentUserID = firebase.auth().currentUser?.uid;
   await firestore()
     .collection('userSOSAppointments')
     .doc(currentUserID)
     .collection('appointments')
-    .doc(userID)
-    .delete();
+    .get()
+    .then(detailsQuerySnapshot => {
+      detailsQuerySnapshot.docs.forEach(callDocumentSnapshot => {
+        callDocumentSnapshot.ref.delete();
+      });
+    });
   await firestore()
     .collection('bloodCalls')
     .doc(currentUserID)
     .collection('calls')
-    .doc(appointmentID)
-    .delete();
+    .get()
+    .then(detailsQuerySnapshot => {
+      detailsQuerySnapshot.docs.forEach(callDocumentSnapshot => {
+        callDocumentSnapshot.ref.delete();
+      });
+    });
+  await firestore()
+    .collection('confirmedSOSAppointments')
+    .doc(currentUserID)
+    .collection('appointments')
+    .get()
+    .then(detailsQuerySnapshot => {
+      detailsQuerySnapshot.docs.forEach(callDocumentSnapshot => {
+        callDocumentSnapshot.ref.delete();
+      });
+    });
 };

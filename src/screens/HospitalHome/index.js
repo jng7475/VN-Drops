@@ -45,7 +45,7 @@ const HospitalHome = () => {
         name="HosSchedule"
         component={HosSchedule}
         options={{
-          title: 'TẠO LỊCH HIẾN MÁU',
+          title: 'HIẾN MÁU ĐỊNH KỲ',
           headerShown: true,
           headerStyle: {
             backgroundColor: 'red',
