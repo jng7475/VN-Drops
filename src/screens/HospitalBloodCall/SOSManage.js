@@ -6,6 +6,8 @@ import AdvancedText from '../../components/advancedText';
 import MyText from '../../components/text';
 import Time from './component/Time';
 import { getUserList } from '../../api/UserSOSCRUD';
+import { setUserStatus } from '../../api/GetPersonalInfo';
+import { endSOSCall } from '../../api/confirmSOSAppointment';
 
 export default function SOSManage({ navigation }) {
   const [userList, setUserList] = useState([]);
@@ -19,7 +21,11 @@ export default function SOSManage({ navigation }) {
   // const currentTime = 'Bây giờ là' + { endHour } + 'h :' + { endMin };
   const totalBlood = 1000;
   const alreadyHaveBlood = 500;
-  const handler = () => {};
+  const endSOSCallHandler = () => {
+    setUserStatus('none');
+    endSOSCall();
+    navigation.navigate('HospitalMainHome');
+  };
   const ManageLines = ({ text }) => {
     return (
       <View style={{ width: '100%' }}>
@@ -44,6 +50,14 @@ export default function SOSManage({ navigation }) {
               />
             );
           })}
+          <TouchableOpacity style={endingButton} onPress={endSOSCallHandler}>
+            <MyText
+              text="KẾT THÚC KÊU GỌI"
+              size={16}
+              color="#FFFFFF"
+              family="RobotoSlab-Bold"
+            />
+          </TouchableOpacity>
         </ScrollView>
       </View>
       {/* <View style={styles1.bottom}>
@@ -83,3 +97,13 @@ export default function SOSManage({ navigation }) {
     </View>
   );
 }
+
+const endingButton = {
+  // position: 'absolute',
+  justifyContent: 'center',
+  alignItems: 'center',
+  paddingVertical: '5%',
+  width: '50%',
+  backgroundColor: '#C00000',
+  borderRadius: 10,
+};

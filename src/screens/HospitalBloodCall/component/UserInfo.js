@@ -8,7 +8,7 @@ import {
 } from 'react-native';
 import React, { useState, useEffect } from 'react';
 import MyText from '../../../components/text';
-import { getPersonalInfo } from '../../../api/GetPersonalInfo';
+import { getPersonalInfo, setUserStatus } from '../../../api/GetPersonalInfo';
 import { confirmSOSAppointment } from '../../../api/confirmSOSAppointment';
 
 const windowWidth = Dimensions.get('window').width;
@@ -25,7 +25,7 @@ export default function UserInfo({
   const [bloodType, setBloodType] = useState('');
   useEffect(() => {
     getPersonalInfo(userID).then(info => {
-      console.log(info);
+      // console.log(info);
       setName(info.fullname);
       setPhone(info.phoneNumber);
       setBloodType(info.bloodType);
@@ -58,9 +58,12 @@ export default function UserInfo({
     }
   };
   const handler = () => {
-    confirmSOSAppointment(userID, appointmentID);
-    navigation.navigate('HospitalMainHome');
-    // setConfirm(current => !current);
+    if (confirm === false) {
+      confirmSOSAppointment(userID, appointmentID);
+      setUserStatus('sos');
+    }
+    setConfirm(current => !current);
+    // navigation.navigate('HospitalMainHome');
   };
   const [confirm, setConfirm] = useState(false);
   // const name = 'Nguyen Nguyen Trung';
@@ -97,12 +100,12 @@ export default function UserInfo({
       <InforLines title="Số điện thoại: " des={phone} />
       <InforLines title="Nhóm máu: " des={bloodType} />
       <InforLines title="Lưu ý của người đăng ký: " des={userNote} />
-      <MyText
+      {/* <MyText
         text={userNote}
         family="RobotoSlab-Regular"
         size={16}
         color="black"
-      />
+      /> */}
       <ConfirmButton />
     </View>
   );

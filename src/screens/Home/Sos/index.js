@@ -13,7 +13,6 @@ export default function Sos({ navigation }) {
     setSelected(true);
     setHospitalDetails(hospitalInfo);
   };
-
   useEffect(() => {
     getBloodCalls()
       .then(data => {
@@ -27,6 +26,15 @@ export default function Sos({ navigation }) {
 
   return (
     <ScrollView style={{ backgroundColor: '#F6F6F6' }}>
+      {bloodCalls.length === 0 ? (
+        <View>
+          <Text>
+            Không có cuộc huy động SOS nào. Vui lòng kiểm tra lại sau.
+          </Text>
+        </View>
+      ) : (
+        <></>
+      )}
       {selected === false ? (
         bloodCalls.map((hospital, index) => {
           return (

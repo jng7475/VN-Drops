@@ -15,6 +15,13 @@ export const confirmRegularAppointment = async (userID, appointmentID) => {
     .collection('userRegularAppointments')
     .doc(currentUserID)
     .collection('appointments')
-    .doc(userID)
-    .delete();
+    .get()
+    .then(detailsQuerySnapshot => {
+      detailsQuerySnapshot.docs.forEach(callDocumentSnapshot => {
+        const id = callDocumentSnapshot.id;
+        if (id === userID) {
+          callDocumentSnapshot.ref.delete();
+        }
+      });
+    });
 };
