@@ -9,8 +9,6 @@ import {
 import Geolocation from '@react-native-community/geolocation';
 import { setCurrentAddress } from '../../api/SetCurrentAddress';
 import { getCurrentAddress } from '../../api/GetCurrentAddress';
-import firebase from 'firebase/app';
-import 'firebase/database';
 
 const { width, height } = Dimensions.get('window');
 const ASPECT_RATIO = width / height;
@@ -26,7 +24,6 @@ const Settings = () => {
   const [fakeState, setFakeState] = useState(0);
   const [error, setError] = useState(null);
   const [mapRegion, setMapRegion] = useState({});
-
 
   const checkLocationPermission = async () => {
     const hasPermission = await PermissionsAndroid.check(
