@@ -9,7 +9,7 @@ export const createRegularAppointment = async (
 ) => {
   const currentUserID = firebase.auth().currentUser?.uid;
   // console.log(currentUserID);
-  // const bloodCall = await getOneBloodCall(hospitalID, callID);
+  // const bloDateodCall = await getOneBloodCall(hospitalID, callID);
   // console.log('bbb', bloodCall);
   const tempDate = new Date();
   // const fullTime =

@@ -108,7 +108,7 @@ const CreateSchedule = ({ navigation }) => {
           source={require('../../assets/icons/SOSForm/bloodAmountInput.png')}
         />
         <TextInput
-          placeholder={'Tên đơn vị tổ chức hiến máu'}
+          placeholder={'Các đơn vị tham gia hiến máu'}
           value={orgName}
           onChangeText={text => setOrgName(text)}
           style={inputStyles.textInput}
