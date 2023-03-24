@@ -48,3 +48,29 @@ export const setUserStatus = async status => {
     .doc(currentUserID)
     .update({ status: status });
 };
+
+
+export const getUserReady = async () => {
+  const currentUserID = firebase.auth().currentUser?.uid;
+  let ready = '';
+  await firestore()
+    .collection('users')
+    .doc(currentUserID)
+    .get()
+    .then(documentSnapshot => {
+      const data = documentSnapshot.data();
+      // console.log(data.userDetails);
+      ready = data.ready;
+      // console.log(status);
+      // personalInfo = data.userDetails;
+    });
+  return ready;
+};
+
+export const setUserReady = async ready => {
+  const currentUserID = firebase.auth().currentUser?.uid;
+  await firestore()
+    .collection('users')
+    .doc(currentUserID)
+    .set({ ready: ready });
+};

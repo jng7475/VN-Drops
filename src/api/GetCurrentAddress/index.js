@@ -12,8 +12,8 @@ export const getCurrentAddress = async userID => {
     .get()
     .then(doc => {
       currentAddress = doc.data();
-      console.log('get this address: ', currentUserID);
+      // console.log('get this address: ', currentUserID);
     });
-  console.log(currentAddress.currentAddress);
+  // console.log(currentAddress.currentAddress);
   return currentAddress.currentAddress;
 };
