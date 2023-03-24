@@ -12,8 +12,8 @@ import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import { firebase } from '@react-native-firebase/auth';
 import { sendMessageToRasa } from '../../api/RasaApi';
 import { getUserStatus } from '../../api/GetPersonalInfo';
-// import QRCode from 'react-native-qrcode-svg';
-// import styles from './styles';
+
+import QRCodeScanner from 'react-native-qrcode-scanner';
 
 // import QRCodeScanner from 'react-native-qrcode-scanner';
 import { RNCamera } from 'react-native-camera';
@@ -26,24 +26,24 @@ const ChatScreen = ({ navigation }) => {
   };
 
   return (
-    // <QRCodeScanner
-    //   onRead={onSuccess}
-    //   flashMode={RNCamera.Constants.FlashMode.torch}
-    //   topContent={
-    //     <Text style={styles.centerText}>
-    //       Go to <Text style={styles.textBold}>wikipedia.org/wiki/QR_code</Text>
-    //       on your computer and scan the QR code.
-    //     </Text>
-    //   }
-    //   bottomContent={
-    //     <TouchableOpacity style={styles.buttonTouchable}>
-    //       <Text style={styles.buttonText}>OK. Got it!</Text>
-    //     </TouchableOpacity>
-    //   }
-    // />
-    <View>
-      <Text>nothing</Text>
-    </View>
+    <QRCodeScanner
+      onRead={onSuccess}
+      flashMode={RNCamera.Constants.FlashMode.torch}
+      topContent={
+        <Text style={styles.centerText}>
+          Go to <Text style={styles.textBold}>wikipedia.org/wiki/QR_code</Text>
+          on your computer and scan the QR code.
+        </Text>
+      }
+      bottomContent={
+        <TouchableOpacity style={styles.buttonTouchable}>
+          <Text style={styles.buttonText}>OK. Got it!</Text>
+        </TouchableOpacity>
+      }
+    />
+    // <View>
+    //   <Text>nothing</Text>
+    // </View>
   );
 };
 
