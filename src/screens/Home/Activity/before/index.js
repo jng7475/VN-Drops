@@ -11,6 +11,9 @@ export default function BeforeDonationScreen() {
   const moveToAppointment = () => {
     navigation.navigate('Appointment');
   };
+  const moveToChabot = () => {
+    navigation.navigate('Chat');
+  };
   const space = '   ';
   const YesNoBox = () => {
     return (
@@ -82,7 +85,7 @@ export default function BeforeDonationScreen() {
           source={require('../../../../assets/newChatbot.png')}
           style={{ position: 'absolute', left: '4%', bottom: '40%' }}
         />
-        <TouchableOpacity style={{ paddingLeft: '10%' }}>
+        <TouchableOpacity style={{ paddingLeft: '10%' }} onPress={moveToChabot}>
           <Text style={styles.slogan}>Bạn còn thắc mắc? Giải đáp ngay!</Text>
         </TouchableOpacity>
         <TouchableOpacity

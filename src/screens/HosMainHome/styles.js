@@ -13,7 +13,7 @@ const styles = StyleSheet.create({
   title: {
     width: '60%',
     borderRadius: 10,
-    backgroundColor: '#DAC5C5',
+    backgroundColor: '#FFCCCC',
     padding: 10,
     position: 'absolute',
     bottom: '-5%',

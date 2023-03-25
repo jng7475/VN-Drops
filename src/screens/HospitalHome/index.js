@@ -10,23 +10,36 @@ const HospitalHomeStack = createNativeStackNavigator();
 
 const HospitalHome = () => {
   return (
-    <HospitalHomeStack.Navigator initialRouteName="HospitalMainHome">
+    <HospitalHomeStack.Navigator
+      initialRouteName="HospitalMainHome"
+      screenOptions={{
+        headerTitleAlign: 'center',
+        fontFamily: 'Lato-Bold',
+      }}>
       <HospitalHomeStack.Screen
         name="HospitalMainHome"
         component={HospitalMainHome}
         options={{
           headerShown: false,
+          headerStyle: {
+            backgroundColor: '#C91414',
+          },
         }}
       />
       <HospitalHomeStack.Screen
         name="Kêu gọi khẩn cấp"
         component={HospitalBloodCall}
         options={{
+          title: 'KÊU GỌI MÁU KHẨN CẤP',
           headerShown: true,
           headerStyle: {
-            backgroundColor: 'red',
+            backgroundColor: '#C91414',
           },
-          headerTintColor: '#fff',
+          headerTintColor: '#FFFFFF',
+          headerTitleStyle: {
+            fontFamily: 'Lato-Bold',
+            fontSize: 21,
+          },
         }}
       />
       {/* <HospitalHomeStack.Screen
@@ -45,10 +58,10 @@ const HospitalHome = () => {
         name="HosSchedule"
         component={HosSchedule}
         options={{
-          title: 'HIẾN MÁU ĐỊNH KỲ',
+          title: 'TẠO LỊCH HIẾN MÁU',
           headerShown: true,
           headerStyle: {
-            backgroundColor: 'red',
+            backgroundColor: '#C91414',
           },
           headerTintColor: '#fff',
         }}

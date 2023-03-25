@@ -4,7 +4,7 @@ import styles from './styles';
 import AdvancedText from '../../components/advancedText';
 import { mainHosButtonData } from '../../utilities/mainHosButtonData';
 import MainButton from './component/mainButton';
-
+import MyText from '../../components/text';
 export default function HospitalHomeScreen({ navigation }) {
   const mainButtons = mainHosButtonData.map((value, index) => {
     return (

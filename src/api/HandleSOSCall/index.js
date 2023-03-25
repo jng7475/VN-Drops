@@ -1,6 +1,7 @@
 import firestore from '@react-native-firebase/firestore';
 import { firebase } from '@react-native-firebase/auth';
 import { createBloodCall } from '../BloodCallCRUD';
+// import getMostEligibleUsers from '../../api/getEligibleUser';
 
 export async function handleSOSCall(callDetails) {
   // get eligible users based on blood type (for now)
@@ -57,7 +58,9 @@ const getEligibleUsers = async bloodType => {
             .then(detailsQuerySnapshot => {
               detailsQuerySnapshot.docs.forEach(detailsDocumentSnapshot => {
                 const detailsData = detailsDocumentSnapshot.data();
-                /*NEED WORK HERE*/
+                // const getUserPriorityQueue = getMostEligibleUsers(
+                //   detailsData.userDetails,
+                // );
                 // pass blood type through args
                 if (detailsData.userDetails.bloodType === bloodType) {
                   eligibleUsers[id] = 1;
@@ -84,7 +87,7 @@ export const getHospitalInfo = async () => {
     .then(detailsQuerySnapshot => {
       detailsQuerySnapshot.docs.forEach(detailsDocumentSnapshot => {
         const detailsData = detailsDocumentSnapshot.data();
-        /*NEED WORK HERE*/
+
         // pass blood type through args
         hospitalName = detailsData.userDetails.fullname;
       });

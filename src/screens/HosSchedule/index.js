@@ -21,19 +21,23 @@ const HosSchedule = ({ navigation }) => {
   });
   if (choice === null) {
     return (
-      <View style={{ flexDirection: 'row' }}>
-        <ChoosingPage
-          text={'Lên lịch hiến máu định kỳ'}
-          id={'CreateSchedule'}
-          // navigation={navigation}
-          setChoice={setChoice}
-        />
-        <ChoosingPage
-          text={'Quản lý hiến máu định kỳ'}
-          id={'HosManage'}
-          // navigation={navigation}
-          setChoice={setChoice}
-        />
+      <View style={{ flexDirection: 'column' }}>
+        <View>
+          <ChoosingPage
+            text={'Lên lịch hiến máu định kỳ'}
+            id={'CreateSchedule'}
+            // navigation={navigation}
+            setChoice={setChoice}
+          />
+        </View>
+        <View>
+          <ChoosingPage
+            text={'Quản lý hiến máu định kỳ'}
+            id={'HosManage'}
+            // navigation={navigation}
+            setChoice={setChoice}
+          />
+        </View>
       </View>
     );
   }

@@ -43,8 +43,13 @@ const HospitalAppStack = () => {
         options={{
           headerShown: false,
           tabBarLabel: button.title,
-          tabBarLabelStyle: { fontFamily: 'HindMadurai-Medium', fontSize: 12 },
+          tabBarLabelStyle: {
+            fontFamily: 'HindMadurai-Medium',
+            fontSize: 12,
+            color: 'black',
+          },
           tabBarIcon: button.icon,
+          tabBarActiveTintColor: '#C91414',
         }}
       />
     );

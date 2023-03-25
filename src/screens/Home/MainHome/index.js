@@ -5,6 +5,7 @@ import {
   Image,
   ScrollView,
   Dimensions,
+  FlatList,
 } from 'react-native';
 import React, { useState } from 'react';
 import styles from './styles';
@@ -21,6 +22,19 @@ const windowWidth = Dimensions.get('window').width - 20;
 const windowHeight = Dimensions.get('window').height;
 
 const MainHomeScreen = ({ navigation }) => {
+  const [reload, setReload] = useState(false);
+
+  const handleScroll = event => {
+    const scrollPosition = event.nativeEvent.contentOffset.y;
+    if (scrollPosition === 0) {
+      setReload(true);
+    }
+  };
+
+  const reloadPage = () => {
+    setReload(false);
+    navigation.replace('MainHomeScreen');
+  };
   const MainButton = mainButtonData.map((value, index) => {
     return (
       <CustomButton
@@ -43,7 +57,11 @@ const MainHomeScreen = ({ navigation }) => {
     );
   });
   return (
-    <View style={styles.container}>
+    <View
+      style={styles.container}
+      onScroll={handleScroll}
+      scrollEventThrottle={16}
+      scrollEnabled={true}>
       <View style={styles.curvedLine} />
       <View style={styles.top}>
         <View style={styles.homeTitleWrapper}>
@@ -82,6 +100,14 @@ const MainHomeScreen = ({ navigation }) => {
           style={{ marginTop: '8%', width: windowWidth * 5 }}>
           {NewsPiece}
         </ScrollView>
+        {/* <FlatList
+          horizontal
+          data={NewsInfo}
+          keyExtractor={item => item.id.toString()}
+          renderItem={NewsPiece}
+          showsHorizontalScrollIndicator={false}
+          contentContainerStyle={{ paddingHorizontal: 10 }}
+        /> */}
       </View>
     </View>
   );
