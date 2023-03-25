@@ -14,36 +14,62 @@ import { sendMessageToRasa } from '../../api/RasaApi';
 import { getUserStatus } from '../../api/GetPersonalInfo';
 
 import QRCodeScanner from 'react-native-qrcode-scanner';
+import QRCode from 'react-native-qrcode-svg';
 
 // import QRCodeScanner from 'react-native-qrcode-scanner';
 import { RNCamera } from 'react-native-camera';
+import { getPersonalInfo } from '../../api/GetPersonalInfo';
 
 const ChatScreen = ({ navigation }) => {
-  const onSuccess = e => {
-    Linking.openURL(e.data).catch(err =>
-      console.error('An error occured', err),
-    );
-  };
-
-  return (
-    <QRCodeScanner
-      onRead={onSuccess}
-      flashMode={RNCamera.Constants.FlashMode.torch}
-      topContent={
-        <Text style={styles.centerText}>
-          Go to <Text style={styles.textBold}>wikipedia.org/wiki/QR_code</Text>
-          on your computer and scan the QR code.
+  const currentUserID = firebase.auth().currentUser?.uid;
+  const [otherID, setOtherID] = useState('');
+  const [userInfo, setUserInfo] = useState({}); //info of the scanned code
+  const allInfo = Object.entries(userInfo).map(([key, value]) => {
+    return (
+      <View key={key}>
+        <Text>
+          {key}: {value}
         </Text>
-      }
-      bottomContent={
-        <TouchableOpacity style={styles.buttonTouchable}>
-          <Text style={styles.buttonText}>OK. Got it!</Text>
+      </View>
+    );
+  });
+  useEffect(() => {
+    if (otherID) {
+      getPersonalInfo(otherID).then(info => {
+        setUserInfo(info);
+      });
+    }
+  }, [otherID]);
+  const onSuccess = async QRcode => {
+    await setOtherID(QRcode.data);
+  };
+  return (
+    <>
+      <QRCodeScanner
+        onRead={onSuccess}
+        flashMode={RNCamera.Constants.FlashMode.torch}
+        topContent={
+          <Text style={styles.centerText}>
+            Go to{' '}
+            <Text style={styles.textBold}>wikipedia.org/wiki/QR_code</Text>
+            on your computer and scan the QR code.
+          </Text>
+        }
+        bottomContent={
+          <TouchableOpacity style={styles.buttonTouchable}>
+            <Text style={styles.buttonText}>OK. Got it!</Text>
+          </TouchableOpacity>
+        }
+        style={{ height: '30%' }}
+      />
+      <View style={{ flex: 1, paddingTop: '20%' }}>
+        <TouchableOpacity>
+          <Text>{userInfo.fullname}</Text>
+          {allInfo}
         </TouchableOpacity>
-      }
-    />
-    // <View>
-    //   <Text>nothing</Text>
-    // </View>
+        <QRCode value={currentUserID} size={200} />
+      </View>
+    </>
   );
 };
 
