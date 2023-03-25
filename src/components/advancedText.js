@@ -10,7 +10,7 @@ const AdvancedText = props => {
         color: props.color,
         textAlign: props.align,
         textShadowOffset: { width: 1, height: 5 },
-        textShadowRadius: 10,
+        textShadowRadius: props.shadow,
       }}>
       {props.text}
     </Text>

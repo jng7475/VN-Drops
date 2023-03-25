@@ -45,4 +45,6 @@ export const styles1 = StyleSheet.create({
     backgroundColor: '#C00000',
     borderRadius: 10,
   },
+
+  
 });

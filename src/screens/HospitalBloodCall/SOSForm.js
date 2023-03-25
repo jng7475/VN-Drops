@@ -7,6 +7,8 @@ import {
   Pressable,
   ScrollView,
   Image,
+  Touchable,
+  TouchableOpacity,
 } from 'react-native';
 import React, { useEffect, useState } from 'react';
 import { handleSOSCall } from '../../api/HandleSOSCall';
@@ -14,6 +16,8 @@ import DropDownPicker from 'react-native-dropdown-picker';
 import DatePicker from '../Home/Appointment/components/DatePicker';
 import ResponseModal from '../Home/Appointment/components/ResponseModal';
 import { setUserStatus } from '../../api/GetPersonalInfo';
+import { source } from 'deprecated-react-native-prop-types/DeprecatedImagePropType';
+import MyText from '../../components/text';
 
 const SOSForm = ({ navigation }) => {
   const [dateValue, setDateValue] = useState(null);
@@ -105,69 +109,85 @@ const SOSForm = ({ navigation }) => {
     setShowDatePicker(true);
   };
 
+  const TextInputTitle = props => {
+    return (
+      <View style={inputStyles.textInputTitle}>
+        <View>
+          <Image source={props.image} style={{ maxHeight: '100%' }} />
+        </View>
+        <Text style={{ fontFamily: 'notoSans-Bold', fontSize: 15 }}>
+          {props.text}
+        </Text>
+      </View>
+    );
+  };
   return (
     <ScrollView contentContainerStyle={contentContainerStyle}>
       <Text style={generalStyles.topTitle}>KÊU GỌI NGAY!</Text>
       <View>
-        <Pressable onPress={() => handleShowDatePicker('time')}>
-          {/* <Text>Thời gian kết thúc kêu gọi</Text> */}
-          <View pointerEvents="none" style={inputStyles.container}>
-            <Image
-              source={require('../../assets/icons/SOSForm/timeInput.png')}
+        <View
+          style={{
+            flex: 1,
+          }}>
+          <View style={{ flex: 1 }}>
+            <TextInputTitle
+              text="Địa điểm"
+              image={require('../../assets/icons/SOSForm/destination.png')}
             />
-            {/* {icon} */}
-            <TextInput
-              placeholder={'Thời gian kết thúc kêu gọi'}
-              value={timeValue}
-              style={inputStyles.textInput}
-            />
+            <View style={inputStyles.container}>
+              <TextInput
+                placeholder={'Nhập địa chỉ đầy đủ của bệnh viện'}
+                value={hospitalAddress}
+                onChangeText={text => setHospitalAddress(text)}
+                style={inputStyles.textInput}
+              />
+            </View>
           </View>
-        </Pressable>
-        <Pressable onPress={() => handleShowDatePicker('date')}>
-          {/* <Text>Chọn ngày cuối cùng cần hiến máu</Text> */}
-          <View pointerEvents="none" style={inputStyles.container}>
-            <Image
-              source={require('../../assets/icons/SOSForm/timeInput.png')}
+        </View>
+        {/* */}
+        <View style={{ flex: 1 }}>
+          <Pressable onPress={() => handleShowDatePicker('date')}>
+            {/* <Text>Chọn ngày cuối cùng cần hiến máu</Text> */}
+            <TextInputTitle
+              text="Số lượng (ml)"
+              image={require('../../assets/icons/SOSForm/bloodAmount.png')}
             />
-            {/* {icon} */}
-            <TextInput
-              placeholder={'Ngày kết thúc kêu gọi'}
-              value={dateValue}
-              style={inputStyles.textInput}
+            <View pointerEvents="none" style={inputStyles.container}>
+              <TextInput
+                placeholder={'Ngày kết thúc kêu gọi'}
+                value={dateValue}
+                style={inputStyles.textInput}
+              />
+            </View>
+          </Pressable>
+          {showDatePicker && (
+            <DatePicker
+              setValue={mode === 'date' ? setDateValue : setTimeValue}
+              setShow={setShowDatePicker}
+              mode={mode}
             />
-          </View>
-        </Pressable>
-        {showDatePicker && (
-          <DatePicker
-            setValue={mode === 'date' ? setDateValue : setTimeValue}
-            setShow={setShowDatePicker}
-            mode={mode}
-          />
-        )}
+          )}
+        </View>
       </View>
-      <View style={inputStyles.container}>
+      <View>
         {/* {icon} */}
-        <Image
+        {/* <Image
           source={require('../../assets/icons/SOSForm/bloodAmountInput.png')}
-        />
-        <TextInput
-          placeholder={'Nhập lượng máu cần kêu gọi với đơn vị cc'}
-          value={bloodAmount}
-          onChangeText={text => setBloodAmount(text)}
-          style={inputStyles.textInput}
-        />
-      </View>
-      <View style={inputStyles.container}>
-        {/* {icon} */}
-        <Image
-          source={require('../../assets/icons/SOSForm/locationInput.png')}
-        />
-        <TextInput
-          placeholder={'Nhập địa chỉ đầy đủ của bệnh viện'}
-          value={hospitalAddress}
-          onChangeText={text => setHospitalAddress(text)}
-          style={inputStyles.textInput}
-        />
+        /> */}
+        <View style={{ flex: 1 }}>
+          <TextInputTitle
+            text="Nhóm máu"
+            image={require('../../assets/icons/SOSForm/bloodGroup.png')}
+          />
+          <View style={inputStyles.container}>
+            <TextInput
+              placeholder={'Nhập lượng máu cần kêu gọi với đơn vị cc'}
+              value={bloodAmount}
+              onChangeText={text => setBloodAmount(text)}
+              style={inputStyles.textInput}
+            />
+          </View>
+        </View>
       </View>
       {/* <Text>Chọn nhóm máu cần kêu gọi</Text> */}
       <DropDownPicker
@@ -184,18 +204,40 @@ const SOSForm = ({ navigation }) => {
         showArrowIcon={false}
       />
       {/* <Text>Lưu ý</Text> */}
-      <View style={noteStyles.container}>
-        {/* {icon} */}
-        <TextInput
-          placeholder="Nhập lời nhắn"
-          value={noteContent}
-          onChangeText={text => setNoteContent(text)}
-          style={noteStyles.textInput}
-          multiline={true}
-        />
+      <View>
+        <View style={{ flex: 1 }}>
+          <TextInputTitle
+            text="Lưu ý"
+            image={require('../../assets/icons/SOSForm/note.png')}
+          />
+        </View>
+        <View style={{ flex: 1 }}>
+          <View style={noteStyles.container}>
+            <TextInput
+              placeholder="Nhập lời nhắn"
+              value={noteContent}
+              onChangeText={text => setNoteContent(text)}
+              style={noteStyles.textInput}
+              multiline={true}
+            />
+          </View>
+        </View>
       </View>
-      <View style={submitButtonStyles}>
-        <Button title="xác nhận" onPress={handleSubmit} color={'#951515'} />
+      <View
+        style={{
+          height: '8%',
+          alignItems: 'center',
+          justifyContent: 'center',
+        }}>
+        <TouchableOpacity onPress={handleSubmit} style={submitButtonStyles}>
+          <MyText text="Xác Nhận" family="Lato-Bold" size={18} color="white" />
+        </TouchableOpacity>
+        {/* <Button
+          title="xác nhận"
+          onPress={handleSubmit}
+          color={'#951515'}
+          style={{ borderRadius: 30 }}
+        /> */}
       </View>
       <ResponseModal
         modalVisible={modalVisible}
@@ -212,13 +254,21 @@ export default SOSForm;
 const generalStyles = StyleSheet.create({
   topTitle: {
     textAlign: 'center',
-    fontSize: 18,
-    color: '#C05757',
+    fontSize: 28,
+    color: '#C91414',
+    fontFamily: 'Lato-Bold',
+    marginVertical: '6%',
   },
 });
 
 const dropdownStyles = {
-  backgroundColor: '#EEEDEB',
+  backgroundColor: '#dde0e5',
+  paddingTop: 10,
+  paddingRight: 10,
+  paddingBottom: 10,
+  paddingLeft: 15,
+  width: '90%',
+  marginLeft: '5%',
 };
 const containerStyles = {
   marginLeft: '5%',
@@ -233,19 +283,25 @@ const inputStyles = StyleSheet.create({
   container: {
     // flex: 1,
     flexDirection: 'row',
-    marginLeft: '5%',
-    marginRight: '5%',
-    marginTop: '5%',
-    marginBottom: '5%',
-    borderBottomColor: '#BAAFAF', // Add this to specify bottom border color
-    borderBottomWidth: 1,
+    marginLeft: '9%',
+    marginRight: '9%',
+    marginBottom: '9%',
+    // borderBottomWidth: 1,
+    backgroundColor: '#dde0e5',
+    borderRadius: 30,
   },
   textInput: {
     flex: 1,
     paddingTop: 10,
     paddingRight: 10,
     paddingBottom: 10,
-    paddingLeft: 10,
+    paddingLeft: 15,
+  },
+  textInputTitle: {
+    marginLeft: '9%',
+    marginRight: '9%',
+    flexDirection: 'row',
+    paddingBottom: '1%',
   },
 });
 
@@ -257,22 +313,24 @@ const contentContainerStyle = {
 const noteStyles = StyleSheet.create({
   container: {
     flex: 1,
-    flexDirection: 'row',
     marginLeft: '5%',
     marginRight: '5%',
-    marginTop: '5%',
-    marginBottom: '5%',
+    marginBottom: '10%',
     borderBottomColor: '#BAAFAF', // Add this to specify bottom border color
-    borderBottomWidth: 1,
+    width: '90%',
+    paddingLeft: 15,
+    paddingRight: 15,
   },
+  eachInput: {},
   textInput: {
     flex: 1,
     // paddingTop: 10,
     paddingRight: 10,
     // paddingBottom: 10,
-    paddingLeft: 0,
-    backgroundColor: '#EEEDEB',
+    paddingLeft: 15,
+    backgroundColor: '#dde0e5',
     textAlignVertical: 'top',
+    borderRadius: 20,
   },
 });
 
@@ -281,6 +339,25 @@ const submitButtonStyles = {
   marginRight: '5%',
   marginTop: '5%',
   marginBottom: '5%',
-  width: '90%',
-  // backgroundColor: '#951515',
+  width: '60%',
+  height: '100%',
+  borderRadius: 50,
+  backgroundColor: '#C00000',
+  justifyContent: 'center',
+  alignItems: 'center',
 };
+
+// <Pressable onPress={() => handleShowDatePicker('time')}>
+//             {/* <Text>Thời gian kết thúc kêu gọi</Text> */}
+//             <TextInputTitle
+//               text="Địa điểm"
+//               image={require('../../assets/icons/SOSForm/destination.png')}
+//             />
+//             <View pointerEvents="none" style={inputStyles.container}>
+//               <TextInput
+//                 placeholder={'Thời gian kết thúc kêu gọi'}
+//                 value={timeValue}
+//                 style={inputStyles.textInput}
+//               />
+//             </View>
+//           </Pressable>

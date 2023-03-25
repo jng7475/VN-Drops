@@ -2,12 +2,12 @@ import React from 'react';
 
 export const mainHosButtonData = [
   {
-    text: 'Kêu gọi máu khấn cấp SOS',
-    image: require('../assets/SOS.png'),
+    text: 'Kêu gọi máu khấn cấp',
+    image: require('../assets/sos2.png'),
     id: 'Kêu gọi khẩn cấp',
   },
   {
-    text: 'Lên lịch hiến máu định kỳ',
+    text: 'Tạo lịch hiến máu',
     image: require('../assets/hosScheduleImage.png'),
     id: 'HosSchedule',
   },
