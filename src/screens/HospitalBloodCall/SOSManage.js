@@ -8,6 +8,7 @@ import Time from './component/Time';
 import { getUserList } from '../../api/UserSOSCRUD';
 import { setUserStatus } from '../../api/GetPersonalInfo';
 import { endSOSCall } from '../../api/confirmSOSAppointment';
+import Map from './component/Map';
 
 export default function SOSManage({ navigation }) {
   const [userList, setUserList] = useState([]);
@@ -50,15 +51,24 @@ export default function SOSManage({ navigation }) {
               />
             );
           })}
+
+
+        </ScrollView>
+      </View>
+      <View style={styles1.bottom}>
+        <View style={{ flex: 1, width: '100%' }}>
+          <Map />
+        </View>
+        <View style={{ flex: 0.2 }}>
           <TouchableOpacity style={endingButton} onPress={endSOSCallHandler}>
             <MyText
               text="KẾT THÚC KÊU GỌI"
-              size={16}
+              size={12}
               color="#FFFFFF"
               family="RobotoSlab-Bold"
             />
           </TouchableOpacity>
-        </ScrollView>
+        </View>
       </View>
       {/* <View style={styles1.bottom}>
         <View>
@@ -103,7 +113,9 @@ const endingButton = {
   justifyContent: 'center',
   alignItems: 'center',
   paddingVertical: '5%',
+  paddingHorizontal: '5%',
   width: '50%',
   backgroundColor: '#C00000',
   borderRadius: 10,
+  marginTop: '6%',
 };

@@ -6,18 +6,21 @@ export const styles1 = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: 'white',
+    alignItems: 'center',
+    justifyContent: 'center',
   },
   top: {
-    flex: 1,
+    flex: 0.5,
     alignItems: 'center',
     justifyContent: 'center',
     paddingVertical: '6%',
     // backgroundColor: '#ECE1E1',
   },
   bottom: {
-    flex: 0.3,
+    flex: 1,
+    width: '80%',
     alignItems: 'center',
-    backgroundColor: '#ECEBE1',
+    // backgroundColor: '#ECEBE1',
   },
   infoWrapper: {
     width: '90%',

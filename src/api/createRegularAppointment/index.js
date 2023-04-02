@@ -27,7 +27,7 @@ export const createRegularAppointment = async (
     .doc(currentUserID)
     .set({
       userID: currentUserID,
-      userNote: noteContent,
+      // userNote: noteContent,
       dateRegistered: fullDate,
       appointmentID: callID,
     });

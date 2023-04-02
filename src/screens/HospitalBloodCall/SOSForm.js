@@ -27,7 +27,7 @@ const SOSForm = ({ navigation }) => {
     '30 tháng 4, Hoà Cường Bắc, Quận Hải Châu, Đà Nẵng',
   );
   const [noteContent, setNoteContent] = useState(
-    '30 tháng 4, Hoà Cường Bắc, Quận Hải Châu, Đà Nẵng',
+    'Hãy đến giúp bệnh nhân ngay!',
   );
   const [open, setOpen] = useState(false);
   const [bloodTypeChoice, setBloodTypeChoice] = useState(null);
@@ -79,14 +79,15 @@ const SOSForm = ({ navigation }) => {
     if (
       noteContent !== '' &&
       bloodTypeChoice !== null &&
-      dateValue !== null &&
-      timeValue !== null &&
-      hospitalAddress !== null
+      // dateValue !== null &&
+      // timeValue !== null &&
+      hospitalAddress !== null &&
+      bloodAmount !== null
     ) {
       // navigation.navigate('Step2');
       const details = {
-        date: dateValue,
-        time: timeValue,
+        // date: dateValue,
+        // time: timeValue,
         bloodAmount: bloodAmount,
         address: hospitalAddress,
         bloodType: bloodTypeChoice,
@@ -112,7 +113,7 @@ const SOSForm = ({ navigation }) => {
   const TextInputTitle = props => {
     return (
       <View style={inputStyles.textInputTitle}>
-        <View>
+        <View style={{ marginRight: '1.5%' }}>
           <Image source={props.image} style={{ maxHeight: '100%' }} />
         </View>
         <Text style={{ fontFamily: 'notoSans-Bold', fontSize: 15 }}>
@@ -146,27 +147,18 @@ const SOSForm = ({ navigation }) => {
         </View>
         {/* */}
         <View style={{ flex: 1 }}>
-          <Pressable onPress={() => handleShowDatePicker('date')}>
-            {/* <Text>Chọn ngày cuối cùng cần hiến máu</Text> */}
-            <TextInputTitle
-              text="Số lượng (ml)"
-              image={require('../../assets/icons/SOSForm/bloodAmount.png')}
+          <TextInputTitle
+            text="Số lượng"
+            image={require('../../assets/icons/SOSForm/bloodAmount.png')}
+          />
+          <View style={inputStyles.container}>
+            <TextInput
+              placeholder={'Số lượng máu với đơn vị là cc'}
+              value={bloodAmount}
+              onChangeText={text => setBloodAmount(text)}
+              style={inputStyles.textInput}
             />
-            <View pointerEvents="none" style={inputStyles.container}>
-              <TextInput
-                placeholder={'Ngày kết thúc kêu gọi'}
-                value={dateValue}
-                style={inputStyles.textInput}
-              />
-            </View>
-          </Pressable>
-          {showDatePicker && (
-            <DatePicker
-              setValue={mode === 'date' ? setDateValue : setTimeValue}
-              setShow={setShowDatePicker}
-              mode={mode}
-            />
-          )}
+          </View>
         </View>
       </View>
       <View>
@@ -174,7 +166,7 @@ const SOSForm = ({ navigation }) => {
         {/* <Image
           source={require('../../assets/icons/SOSForm/bloodAmountInput.png')}
         /> */}
-        <View style={{ flex: 1 }}>
+        {/* <View style={{ flex: 1 }}>
           <TextInputTitle
             text="Nhóm máu"
             image={require('../../assets/icons/SOSForm/bloodGroup.png')}
@@ -187,9 +179,13 @@ const SOSForm = ({ navigation }) => {
               style={inputStyles.textInput}
             />
           </View>
-        </View>
+        </View> */}
       </View>
       {/* <Text>Chọn nhóm máu cần kêu gọi</Text> */}
+      <TextInputTitle
+        text="Nhóm máu kêu gọi"
+        image={require('../../assets/icons/SOSForm/bloodGroup.png')}
+      />
       <DropDownPicker
         open={open}
         value={bloodTypeChoice}
