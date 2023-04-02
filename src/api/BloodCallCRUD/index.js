@@ -20,8 +20,8 @@ export const createBloodCall = async (callDetails, hospitalName) => {
       .doc(currentUserID)
       .collection('calls')
       .add({
-        date: callDetails.date,
-        time: callDetails.time,
+        // date: callDetails.date,
+        // time: callDetails.time,
         bloodAmount: callDetails.bloodAmount,
         address: callDetails.address,
         bloodType: callDetails.bloodType,
@@ -133,7 +133,7 @@ export const createRegularBloodCall = async callDetails => {
         // time: callDetails.time,
         address: callDetails.address,
         note: callDetails.note,
-        orgName: callDetails.orgName,
+        // orgName: callDetails.orgName,
       })
       .catch(err => {
         console.log(err);
@@ -150,10 +150,10 @@ export const createRegularBloodCall = async callDetails => {
       .collection('calls')
       .add({
         date: callDetails.date,
-        // time: callDetails.time,
+        time: callDetails.time,
         address: callDetails.address,
         note: callDetails.note,
-        orgName: callDetails.orgName,
+        // orgName: callDetails.orgName,
       })
       .catch(err => {
         console.log(err);

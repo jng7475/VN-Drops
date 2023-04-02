@@ -5,7 +5,6 @@ import { getOneBloodCall } from '../BloodCallCRUD';
 export const createUserSOSAppointment = async (
   hospitalID,
   callID,
-  noteContent,
 ) => {
   const currentUserID = firebase.auth().currentUser?.uid;
   // console.log(currentUserID);
@@ -27,7 +26,6 @@ export const createUserSOSAppointment = async (
     .doc(currentUserID)
     .set({
       userID: currentUserID,
-      userNote: noteContent,
       dateRegistered: fullTime + ' - ' + fullDate,
       bloodCallID: callID,
     });

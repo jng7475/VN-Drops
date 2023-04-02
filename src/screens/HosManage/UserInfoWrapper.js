@@ -34,7 +34,7 @@ export default function UserInfoWrapper({
           <MyText
             text={props.title}
             family="RobotoSlab-Bold"
-            size={16}
+            size={14}
             color="black"
           />
         </View>
@@ -42,7 +42,7 @@ export default function UserInfoWrapper({
           <MyText
             text={props.des}
             family="RobotoSlab-Regular"
-            size={15}
+            size={12.5}
             color="black"
           />
         </View>
@@ -66,7 +66,6 @@ export default function UserInfoWrapper({
       <Pressable style={styles.container} onPress={handleOnpress}>
         <InforLines title="Tên người hiến máu: " des={name} />
         <InforLines title="Số điện thoại: " des={phone} />
-        <InforLines title="Lưu ý của người đăng ký: " des={userNote} />
       </Pressable>
     </View>
   );
@@ -75,19 +74,19 @@ export default function UserInfoWrapper({
 const styles = StyleSheet.create({
   container: {
     borderRadius: 15,
-    width: '90%',
+    width: '100%',
     backgroundColor: '#FDEAD9',
     // height: windowHeight / 5,
     // justifyContent: 'center',
     alignItems: 'center',
     marginTop: 10,
     marginBottom: windowHeight / 20,
-    paddingTop: 5,
-    paddingBottom: windowHeight / 18,
+    paddingVertical: '3%',
+    paddingLeft: '3%',
   },
   InforLinesWrapper: {
     paddingTop: 5,
-    paddingHorizontal: 5,
+    // paddingHorizontal: 5,
     marginVertical: 5,
     width: '100%',
     flexDirection: 'row',
@@ -96,7 +95,7 @@ const styles = StyleSheet.create({
     position: 'absolute',
     justifyContent: 'center',
     alignItems: 'center',
-    paddingVertical: '8%',
+    paddingVertical: '4%',
     bottom: -windowHeight / 35,
     width: '35%',
     backgroundColor: '#C00000',

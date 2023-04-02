@@ -7,6 +7,7 @@ import {
   Pressable,
   ScrollView,
   Image,
+  TouchableOpacity,
 } from 'react-native';
 import React, { useEffect, useState } from 'react';
 import { handleSOSCall } from '../../api/HandleSOSCall';
@@ -14,15 +15,21 @@ import DropDownPicker from 'react-native-dropdown-picker';
 import DatePicker from '../Home/Appointment/components/DatePicker';
 import ResponseModal from '../Home/Appointment/components/ResponseModal';
 import { createRegularBloodCall } from '../../api/BloodCallCRUD';
+import { source } from 'deprecated-react-native-prop-types/DeprecatedImagePropType';
+import MyText from '../../components/text';
 
-const CreateSchedule = ({ navigation }) => {
+const SOSForm = ({ navigation }) => {
   const [dateValue, setDateValue] = useState(null);
   const [timeValue, setTimeValue] = useState(null);
-  const [orgName, setOrgName] = useState(null);
-  const [hospitalAddress, setHospitalAddress] = useState(null);
-  const [noteContent, setNoteContent] = useState('');
+  const [bloodAmount, setBloodAmount] = useState('1000');
+  const [hospitalAddress, setHospitalAddress] = useState(
+    '30 tháng 4, Hoà Cường Bắc, Quận Hải Châu, Đà Nẵng',
+  );
+  const [noteContent, setNoteContent] = useState(
+    'Tổ chức trong khoảng thời gian 8h-11h',
+  );
   const [open, setOpen] = useState(false);
-  const [bloodTypeChoice, setBloodTypeChoice] = useState(null);
+  const [bloodTypeChoice, setBloodTypeChoice] = useState('O');
   const [showDatePicker, setShowDatePicker] = useState(false);
   const [mode, setMode] = useState('date');
   const [bloodTypeOptions, setBloodTypeOptions] = useState([
@@ -68,98 +75,150 @@ const CreateSchedule = ({ navigation }) => {
   const [modalText, setModalText] = useState('');
 
   const handleSubmit = async () => {
+    console.log('handleSubmit');
+
     if (
       noteContent !== '' &&
-      // bloodTypeChoice !== null &&
+      bloodTypeChoice !== null &&
       dateValue !== null &&
       // timeValue !== null &&
       hospitalAddress !== null &&
-      orgName !== null
+      bloodAmount !== null
     ) {
       // navigation.navigate('Step2');
       const details = {
         date: dateValue,
         // time: timeValue,
-        // bloodAmount: bloodAmount,
+        bloodAmount: bloodAmount,
         address: hospitalAddress,
-        orgName: orgName,
+        bloodType: bloodTypeChoice,
         note: noteContent,
       };
-      // console.log(details);
+      console.log(details);
+      // await createRegularBloodCall(details)
       const status = await createRegularBloodCall(details);
+      console.log(status);
       if (status === 'success') {
         setModalText('Đã kêu gọi thành công!');
-        // navigation.navigate('HospitalMainHome');
+        // setUserStatus('sos');
       }
     } else {
       setModalText('Một hoặc nhiều chi tiết chưa được cung cấp!');
     }
     setModalVisible(true);
+    if (modalText === 'Đã kêu gọi thành công!') navigation.navigate('HospitalMainHome');
+
   };
   const handleShowDatePicker = showMode => {
     setMode(showMode);
     setShowDatePicker(true);
   };
 
+  const TextInputTitle = props => {
+    return (
+      <View style={inputStyles.textInputTitle}>
+        <View style={{ marginRight: '1.5%' }}>
+          <Image source={props.image} style={{ maxHeight: '100%' }} />
+        </View>
+        <Text style={{ fontFamily: 'notoSans-Bold', fontSize: 15 }}>
+          {props.text}
+        </Text>
+      </View>
+    );
+  };
   return (
     <ScrollView contentContainerStyle={contentContainerStyle}>
-      <View style={inputStyles.container}>
-        <Image
-          source={require('../../assets/icons/SOSForm/bloodAmountInput.png')}
-        />
-        <TextInput
-          placeholder={'Các đơn vị tham gia hiến máu'}
-          value={orgName}
-          onChangeText={text => setOrgName(text)}
-          style={inputStyles.textInput}
-        />
+      <Text style={generalStyles.topTitle}>KÊU GỌI NGAY!</Text>
+      <View>
+        <View
+          style={{
+            flex: 1,
+          }}>
+          <View style={{ flex: 1 }}>
+            <TextInputTitle
+              text="Địa điểm"
+              image={require('../../assets/icons/SOSForm/destination.png')}
+            />
+            <View style={inputStyles.container}>
+              <TextInput
+                placeholder={'Nhập địa chỉ đầy đủ của bệnh viện'}
+                value={hospitalAddress}
+                onChangeText={text => setHospitalAddress(text)}
+                style={inputStyles.textInput}
+              />
+            </View>
+          </View>
+        </View>
+        {/* */}
+        <View style={{ flex: 1 }}>
+          <TextInputTitle
+            text="Số lượng"
+            image={require('../../assets/icons/SOSForm/bloodAmount.png')}
+          />
+          <View style={inputStyles.container}>
+            <TextInput
+              placeholder={'Số lượng máu với đơn vị là cc'}
+              value={bloodAmount}
+              onChangeText={text => setBloodAmount(text)}
+              style={inputStyles.textInput}
+            />
+          </View>
+        </View>
+        <View style={{ flex: 1 }}>
+
+          <Pressable onPress={() => handleShowDatePicker('date')}>
+            <TextInputTitle
+              text="Thời gian"
+              image={require('../../assets/icons/SOSForm/timeInput.png')}
+            />
+            <View pointerEvents="none" style={inputStyles.container}>
+              {/* <Image
+                source={require('../../assets/icons/SOSForm/timeInput.png')}
+              /> */}
+              <TextInput
+                placeholder={'Ngày hiến máu'}
+                value={dateValue}
+                style={inputStyles.textInput}
+              />
+            </View>
+          </Pressable>
+          {showDatePicker && (
+            <DatePicker
+              setValue={mode === 'date' ? setDateValue : setTimeValue}
+              setShow={setShowDatePicker}
+              mode={mode}
+            />
+          )}
+        </View>
       </View>
       <View>
-        {/* <Pressable onPress={() => handleShowDatePicker('time')}>
-          <View pointerEvents="none" style={inputStyles.container}>
-            <Image
-              source={require('../../assets/icons/SOSForm/timeInput.png')}
-            />
-            <TextInput
-              placeholder={'Thời gian hiến máu'}
-              value={timeValue}
-              style={inputStyles.textInput}
-            />
-          </View>
-        </Pressable> */}
-        <Pressable onPress={() => handleShowDatePicker('date')}>
-          <View pointerEvents="none" style={inputStyles.container}>
-            <Image
-              source={require('../../assets/icons/SOSForm/timeInput.png')}
-            />
-            <TextInput
-              placeholder={'Ngày hiến máu'}
-              value={dateValue}
-              style={inputStyles.textInput}
-            />
-          </View>
-        </Pressable>
-        {showDatePicker && (
-          <DatePicker
-            setValue={mode === 'date' ? setDateValue : setTimeValue}
-            setShow={setShowDatePicker}
-            mode={mode}
+
+
+        {/* {icon} */}
+        {/* <Image
+          source={require('../../assets/icons/SOSForm/bloodAmountInput.png')}
+        /> */}
+        {/* <View style={{ flex: 1 }}>
+          <TextInputTitle
+            text="Nhóm máu"
+            image={require('../../assets/icons/SOSForm/bloodGroup.png')}
           />
-        )}
-      </View>
-      <View style={inputStyles.container}>
-        <Image
-          source={require('../../assets/icons/SOSForm/locationInput.png')}
-        />
-        <TextInput
-          placeholder={'Nhập địa chỉ đầy đủ của bệnh viện'}
-          value={hospitalAddress}
-          onChangeText={text => setHospitalAddress(text)}
-          style={inputStyles.textInput}
-        />
+          <View style={inputStyles.container}>
+            <TextInput
+              placeholder={'Nhập lượng máu cần kêu gọi với đơn vị cc'}
+              value={bloodAmount}
+              onChangeText={text => setBloodAmount(text)}
+              style={inputStyles.textInput}
+            />
+          </View>
+        </View> */}
       </View>
       {/* <Text>Chọn nhóm máu cần kêu gọi</Text> */}
-      {/* <DropDownPicker
+      <TextInputTitle
+        text="Nhóm máu kêu gọi"
+        image={require('../../assets/icons/SOSForm/bloodGroup.png')}
+      />
+      <DropDownPicker
         open={open}
         value={bloodTypeChoice}
         items={bloodTypeOptions}
@@ -171,20 +230,36 @@ const CreateSchedule = ({ navigation }) => {
         containerStyle={containerStyles}
         placeholder="Chọn nhóm máu"
         showArrowIcon={false}
-      /> */}
+      />
       {/* <Text>Lưu ý</Text> */}
-      <View style={noteStyles.container}>
-        {/* {icon} */}
-        <TextInput
-          placeholder="Nhập lời nhắn"
-          value={noteContent}
-          onChangeText={text => setNoteContent(text)}
-          style={noteStyles.textInput}
-          multiline={true}
-        />
+      <View>
+        <View style={{ flex: 1 }}>
+          <TextInputTitle
+            text="Lưu ý"
+            image={require('../../assets/icons/SOSForm/note.png')}
+          />
+        </View>
+        <View style={{ flex: 1 }}>
+          <View style={noteStyles.container}>
+            <TextInput
+              placeholder="Nhập lời nhắn"
+              value={noteContent}
+              onChangeText={text => setNoteContent(text)}
+              style={noteStyles.textInput}
+              multiline={true}
+            />
+          </View>
+        </View>
       </View>
-      <View style={submitButtonStyles}>
-        <Button title="xác nhận" onPress={handleSubmit} color={'#951515'} />
+      <View
+        style={{
+          height: '8%',
+          alignItems: 'center',
+          justifyContent: 'center',
+        }}>
+        <TouchableOpacity onPress={handleSubmit} style={submitButtonStyles}>
+          <MyText text="Xác Nhận" family="Lato-Bold" size={18} color="white" />
+        </TouchableOpacity>
       </View>
       <ResponseModal
         modalVisible={modalVisible}
@@ -196,18 +271,26 @@ const CreateSchedule = ({ navigation }) => {
   );
 };
 
-export default CreateSchedule;
+export default SOSForm;
 
 const generalStyles = StyleSheet.create({
   topTitle: {
     textAlign: 'center',
-    fontSize: 18,
-    color: '#C05757',
+    fontSize: 28,
+    color: '#C91414',
+    fontFamily: 'Lato-Bold',
+    marginVertical: '6%',
   },
 });
 
 const dropdownStyles = {
-  backgroundColor: '#EEEDEB',
+  backgroundColor: '#dde0e5',
+  paddingTop: 10,
+  paddingRight: 10,
+  paddingBottom: 10,
+  paddingLeft: 15,
+  width: '90%',
+  marginLeft: '5%',
 };
 const containerStyles = {
   marginLeft: '5%',
@@ -222,19 +305,25 @@ const inputStyles = StyleSheet.create({
   container: {
     // flex: 1,
     flexDirection: 'row',
-    marginLeft: '5%',
-    marginRight: '5%',
-    marginTop: '5%',
-    marginBottom: '5%',
-    borderBottomColor: '#BAAFAF', // Add this to specify bottom border color
-    borderBottomWidth: 1,
+    marginLeft: '9%',
+    marginRight: '9%',
+    marginBottom: '9%',
+    // borderBottomWidth: 1,
+    backgroundColor: '#dde0e5',
+    borderRadius: 30,
   },
   textInput: {
     flex: 1,
     paddingTop: 10,
     paddingRight: 10,
     paddingBottom: 10,
-    paddingLeft: 10,
+    paddingLeft: 15,
+  },
+  textInputTitle: {
+    marginLeft: '9%',
+    marginRight: '9%',
+    flexDirection: 'row',
+    paddingBottom: '1%',
   },
 });
 
@@ -246,22 +335,24 @@ const contentContainerStyle = {
 const noteStyles = StyleSheet.create({
   container: {
     flex: 1,
-    flexDirection: 'row',
     marginLeft: '5%',
     marginRight: '5%',
-    marginTop: '5%',
-    marginBottom: '5%',
+    marginBottom: '10%',
     borderBottomColor: '#BAAFAF', // Add this to specify bottom border color
-    borderBottomWidth: 1,
+    width: '90%',
+    paddingLeft: 15,
+    paddingRight: 15,
   },
+  eachInput: {},
   textInput: {
     flex: 1,
     // paddingTop: 10,
     paddingRight: 10,
     // paddingBottom: 10,
-    paddingLeft: 0,
-    backgroundColor: '#EEEDEB',
+    paddingLeft: 15,
+    backgroundColor: '#dde0e5',
     textAlignVertical: 'top',
+    borderRadius: 20,
   },
 });
 
@@ -270,6 +361,11 @@ const submitButtonStyles = {
   marginRight: '5%',
   marginTop: '5%',
   marginBottom: '5%',
-  width: '90%',
-  // backgroundColor: '#951515',
+  width: '60%',
+  height: '100%',
+  borderRadius: 50,
+  backgroundColor: '#C00000',
+  justifyContent: 'center',
+  alignItems: 'center',
 };
+

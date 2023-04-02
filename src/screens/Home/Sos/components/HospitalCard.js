@@ -8,16 +8,18 @@ const HospitalCard = ({
   callID,
   handlePress,
 }) => {
+
   return (
     <View style={hospitalCardStyles.generalContainer}>
       <Pressable
         onPress={() =>
           handlePress({
             hospitalName: hospitalName,
-            date: callData.date,
-            time: callData.time,
+            // date: callData.date,
+            // time: callData.time,
             address: callData.address,
             hospitalID: hospitalID,
+            note: callData.note,
             callID: callID,
           })
         }>
@@ -40,7 +42,7 @@ const HospitalCard = ({
           <Text style={hospitalCardStyles.textLabel}>Bệnh viện: </Text>
           <Text style={hospitalCardStyles.textValue}>{hospitalName}</Text>
         </View>
-        <View style={hospitalCardStyles.textContainer}>
+        {/* <View style={hospitalCardStyles.textContainer}>
           <Image
             source={require('../../../../assets/icons/UserSOS/timeIcon.png')}
           />
@@ -48,13 +50,20 @@ const HospitalCard = ({
           <Text style={hospitalCardStyles.textValue}>
             {callData.time} - {callData.date}
           </Text>
-        </View>
+        </View> */}
         <View style={hospitalCardStyles.textContainer}>
           <Image
             source={require('../../../../assets/icons/UserSOS/locationIcon.png')}
           />
           <Text style={hospitalCardStyles.textLabel}>Địa chỉ: </Text>
           <Text style={hospitalCardStyles.textValue}>{callData.address}</Text>
+        </View>
+        <View style={hospitalCardStyles.textContainer}>
+          <Image
+            source={require('../../../../assets/icons/SOSForm/note.png')}
+          />
+          <Text style={hospitalCardStyles.textLabel}>Lưu ý: </Text>
+          <Text style={hospitalCardStyles.textValue}>{callData.note}</Text>
         </View>
       </Pressable>
     </View>

@@ -2,9 +2,10 @@ import React from 'react';
 import HospitalHome from '../screens/HospitalHome';
 import Profile from '../screens/Profile';
 import Notifications from '../screens/Notifications';
-import Settings from '../screens/Settings';
+import HosSettings from '../screens/HosSettings';
 import { Image, StyleSheet } from 'react-native';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+import HosQrCode from '../screens/HosQrCode';
 
 export const HospitalAppDetails = [
   {
@@ -53,9 +54,24 @@ export const HospitalAppDetails = [
   //   ),
   // },
   {
+    name: 'HosQrCode',
+    title: 'Quét QR',
+    component: HosQrCode,
+    // icon: ({ color, size }) => (
+    //   <Image source={require('../assets/navSetting.png')} style={styles.img} />
+    // ),
+    icon: ({ color, size }) => (
+      <MaterialCommunityIcons
+        name="qrcode-scan"
+        color={color}
+        size={size}
+      />
+    ),
+  },
+  {
     name: 'Settings',
     title: 'Cài Đặt',
-    component: Settings,
+    component: HosSettings,
     // icon: ({ color, size }) => (
     //   <Image source={require('../assets/navSetting.png')} style={styles.img} />
     // ),
@@ -67,6 +83,7 @@ export const HospitalAppDetails = [
       />
     ),
   },
+  
 ];
 
 const styles = StyleSheet.create({

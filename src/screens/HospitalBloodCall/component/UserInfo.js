@@ -74,11 +74,11 @@ export default function UserInfo({
   const InforLines = props => {
     return (
       <View style={styles.InforLinesWrapper}>
-        <View style={{ width: '50%' }}>
+        <View style={{ width: '50%', marginRight: '2%' }}>
           <MyText
             text={props.title}
             family="RobotoSlab-Bold"
-            size={16}
+            size={14}
             color="black"
           />
         </View>
@@ -86,7 +86,7 @@ export default function UserInfo({
           <MyText
             text={props.des}
             family="RobotoSlab-Regular"
-            size={15}
+            size={12.5}
             color="black"
           />
         </View>
@@ -99,14 +99,14 @@ export default function UserInfo({
       <InforLines title="Tên người hiến máu: " des={name} />
       <InforLines title="Số điện thoại: " des={phone} />
       <InforLines title="Nhóm máu: " des={bloodType} />
-      <InforLines title="Lưu ý của người đăng ký: " des={userNote} />
+      {/* <InforLines title="Lưu ý: " des={userNote} /> */}
       {/* <MyText
         text={userNote}
         family="RobotoSlab-Regular"
         size={16}
         color="black"
       /> */}
-      <ConfirmButton />
+      {/* <ConfirmButton /> */}
     </View>
   );
 }
@@ -122,10 +122,11 @@ const styles = StyleSheet.create({
     marginTop: 10,
     marginBottom: windowHeight / 20,
     paddingTop: 5,
-    paddingBottom: windowHeight / 18,
+    paddingBottom: windowHeight / 30,
+    paddingVertical: '1%',
   },
   InforLinesWrapper: {
-    paddingHorizontal: 5,
+    paddingHorizontal: '5%',
     marginVertical: 5,
     width: '100%',
     flexDirection: 'row',

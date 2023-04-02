@@ -2,13 +2,13 @@ import firestore from '@react-native-firebase/firestore';
 import { firebase } from '@react-native-firebase/auth';
 import { createBloodCall } from '../BloodCallCRUD';
 // import getMostEligibleUsers from '../../api/getEligibleUser';
-
 export async function handleSOSCall(callDetails) {
   // get eligible users based on blood type (for now)
   const eligibleUsers = await getEligibleUsers(callDetails.bloodType);
   const hospitalName = await getHospitalInfo();
   const messageTitle = 'Thông báo khẩn cấp từ bệnh viện ' + hospitalName;
   const message = callDetails.note;
+
   await createBloodCall(callDetails, hospitalName);
   await firestore()
     .collection('FCMToken')
