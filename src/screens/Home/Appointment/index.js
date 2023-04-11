@@ -1,11 +1,18 @@
-import { View, Text, ScrollView, Alert, Modal, TouchableOpacity } from 'react-native';
+import {
+  View,
+  Text,
+  ScrollView,
+  Alert,
+  Modal,
+  TouchableOpacity,
+} from 'react-native';
 import React, { useEffect, useState } from 'react';
 import { getRegularBloodCalls } from '../../../api/BloodCallCRUD';
 import AppointmentCard from './components/AppointmentCard';
 import AppointmentConfirmation from './components/AppointmentConfirmation';
 import ResponseModal from '../../Home/Appointment/components/ResponseModal';
 import { setUserStatus } from '../../../api/GetPersonalInfo';
-import styles from './styles'
+import styles from './styles';
 import { createRegularAppointment } from '../../../api/createRegularAppointment';
 
 const Appointment = ({ navigation }) => {
@@ -16,13 +23,23 @@ const Appointment = ({ navigation }) => {
   const [modalVisible, setModalVisible] = useState(false);
   const [modalText, setModalText] = useState('Đã đặt lịch thành công');
 
-  const confirmedHandler = async (hospitalInfo) => {
+  const confirmedHandler = async hospitalInfo => {
     console.log('confirm');
-    await createRegularAppointment({hospitalID: '11', callID: '11', noteContent: 'd'});
-    // navigation.navigate('MainHome');
+    await createRegularAppointment(
+      hospitalDetails.hospitalID,
+      hospitalDetails.callID,
+    );
+    setUserStatus('appointment');
+    setModalVisible(false);
+    Alert.alert(
+      'Bạn đã đăng kí hiến máu thành công',
+      'Hãy đến hiến máu sớm nhất có thể. Sự sống của bệnh nhân đang trông cậy vào nguồn máu từ bạn',
+    );
+    navigation.navigate('MainHome');
   };
-  const handlePress = () => {
+  const handlePress = hospitalInfo => {
     setModalVisible(true);
+    setHospitalDetails(hospitalInfo);
   };
   useEffect(() => {
     getRegularBloodCalls()
@@ -68,12 +85,10 @@ const Appointment = ({ navigation }) => {
                 LƯU Ý: Thời gian đăng ký tham gia hiến máu tại các địa điểm
                 trên: từ 7h đến 10h
               </Text>
-
             </View>
           </View>
         );
-      })
-      }
+      })}
       <Modal
         animationType="slide"
         transparent={true}
@@ -81,22 +96,19 @@ const Appointment = ({ navigation }) => {
         onRequestClose={() => {
           Alert.alert('Modal has been closed.');
           setModalVisible(!modalVisible);
-        }}
-      >
+        }}>
         <View style={styles.centeredView}>
           <View style={styles.modalView}>
             <Text style={styles.modalText}>Bạn có chắc chắn muốn đăng ký</Text>
             <View style={styles.buttonContainer}>
               <TouchableOpacity
                 style={styles.cancelButton}
-                onPress={() => setModalVisible(false)}
-              >
+                onPress={() => setModalVisible(false)}>
                 <Text style={styles.buttonText}>Hủy</Text>
               </TouchableOpacity>
               <TouchableOpacity
                 style={styles.okButton}
-                onPress={confirmedHandler}
-              >
+                onPress={confirmedHandler}>
                 <Text style={styles.buttonText}>Đồng ý</Text>
               </TouchableOpacity>
             </View>

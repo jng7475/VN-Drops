@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import {
   StyleSheet,
   SafeAreaView,
@@ -10,13 +10,19 @@ import {
   Switch,
 } from 'react-native';
 import FeatherIcon from 'react-native-vector-icons/Feather';
+import { AuthContext } from '../../navigations/AuthProvider';
 
 const SECTIONS = [
   {
     header: 'Thông tin tài khoản',
     icon: 'settings',
     items: [
-      { icon: 'edit', color: '#fe9400', label: 'Quản lý thông tin cá nhân', type: 'link' },
+      {
+        icon: 'edit',
+        color: '#fe9400',
+        label: 'Quản lý thông tin cá nhân',
+        type: 'link',
+      },
       { icon: 'bookmark', color: '#ef476f', label: 'Lịch sử', type: 'link' },
     ],
   },
@@ -27,13 +33,12 @@ const SECTIONS = [
       { icon: 'lock', color: '#7F7F7F', label: 'Bảo mật', type: 'link' },
       { icon: 'settings', color: '#7F7F7F', label: 'Cài đặt', type: 'link' },
       { icon: 'help-circle', color: '#007afe', label: 'Hỗ trợ', type: 'link' },
-
     ],
   },
 ];
 
-
 export default function HosSettings() {
+  const { signOut } = useContext(AuthContext);
   return (
     <SafeAreaView style={{ flex: 1 }}>
       <ScrollView contentContainerStyle={styles.container}>
@@ -43,7 +48,7 @@ export default function HosSettings() {
               // handle onPress
             }}>
             <View style={styles.profileAvatarWrapper}>
-              <Image 
+              <Image
                 source={require('../../assets/profile.png')}
                 style={styles.profileAvatar}
               />
@@ -62,9 +67,7 @@ export default function HosSettings() {
           <View style={styles.profileBody}>
             <Text style={styles.profileName}>Bệnh viện Vinmec</Text>
 
-            <Text style={styles.profileAddress}>
-            vinmec@gmail.com
-            </Text>
+            <Text style={styles.profileAddress}>vinmec@gmail.com</Text>
           </View>
         </View>
 
@@ -87,12 +90,15 @@ export default function HosSettings() {
 
                     <View style={styles.rowSpacer} />
 
-                    {type === 'boolean' && <Switch         
-                      trackColor={{false: '#767577', true: '#e06666'}}
-                      thumbColor={value ? '#cc0000' : '#f4f3f4'}
-                      ios_backgroundColor="#3e3e3e"
-                      onValueChange={value}
-                      value={value} />}
+                    {type === 'boolean' && (
+                      <Switch
+                        trackColor={{ false: '#767577', true: '#e06666' }}
+                        thumbColor={value ? '#cc0000' : '#f4f3f4'}
+                        ios_backgroundColor="#3e3e3e"
+                        onValueChange={value}
+                        value={value}
+                      />
+                    )}
 
                     {type === 'link' && (
                       <FeatherIcon
@@ -109,13 +115,10 @@ export default function HosSettings() {
         ))}
 
         <View style={styles.button1}>
-          <TouchableOpacity
-            style={styles.button}
-            onPress={()=>{}}>
+          <TouchableOpacity style={styles.button} onPress={signOut()}>
             <Text style={{ color: '#CF1C1C' }}>Logout</Text>
           </TouchableOpacity>
         </View>
-    
       </ScrollView>
     </SafeAreaView>
   );
@@ -212,6 +215,6 @@ const styles = StyleSheet.create({
   button: {
     backgroudColor: '#CF1C1C',
     padding: 10,
-    alignItems: 'center'
+    alignItems: 'center',
   },
 });
