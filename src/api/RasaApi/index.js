@@ -44,6 +44,10 @@ export const sendMessageToChatGPT = async (name, msg) => {
       model: 'gpt-3.5-turbo',
       messages: [
         {
+          role: 'system',
+          content: 'tôi muốn câu trả lời tối đa 100 từ',
+        },
+        {
           role: 'user',
           content: msg,
         },
