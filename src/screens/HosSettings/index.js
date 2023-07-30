@@ -115,7 +115,7 @@ export default function HosSettings() {
         ))}
 
         <View style={styles.button1}>
-          <TouchableOpacity style={styles.button} onPress={signOut()}>
+          <TouchableOpacity style={styles.button} onPress={()=>signOut()}>
             <Text style={{ color: '#CF1C1C' }}>Logout</Text>
           </TouchableOpacity>
         </View>
@@ -211,6 +211,7 @@ const styles = StyleSheet.create({
   button1: {
     padding: 10,
     alignItems: 'center',
+    // backgroundColor: 'red',
   },
   button: {
     backgroudColor: '#CF1C1C',
