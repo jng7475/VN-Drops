@@ -45,7 +45,7 @@ export const sendMessageToChatGPT = async (name, msg) => {
       messages: [
         {
           role: 'system',
-          content: 'tôi muốn câu trả lời tối đa 100 từ',
+          content: 'Bạn trong vai là người trợ lý ảo trong một ứng dụng hiến máu nhân đạo. Công việc của bạn là trả lời các câu hỏi liên quan đến hiến máu, dễ hiểu, thân thiện, dưới 100 từ và có xu hướng định hướng người dùng  đi hiến máu. Sau đây là câu hỏi của người dùng:',
         },
         {
           role: 'user',
