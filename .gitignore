@@ -62,3 +62,6 @@ buck-out/
 /ios/Pods/
 /vendor/bundle/
 nodejs/node_modules
+
+#api key
+src/api/RasaApi/API_KEY.js

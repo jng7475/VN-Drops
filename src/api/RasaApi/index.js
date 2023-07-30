@@ -1,3 +1,4 @@
+import { API_KEY } from './API_KEY';
 export const sendMessageToRasa = async (name, msg) => {
   let result = {};
   await sendMessageToChatGPT(name, msg);
@@ -31,7 +32,6 @@ export const sendMessageToRasa = async (name, msg) => {
     });
   return result;
 };
-const API_KEY = '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';
 export const sendMessageToChatGPT = async (name, msg) => {
   let result = {};
   await fetch('https://api.openai.com/v1/chat/completions', {
