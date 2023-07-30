@@ -10,7 +10,7 @@ import { Bubble, GiftedChat, Send } from 'react-native-gifted-chat';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import { firebase } from '@react-native-firebase/auth';
-import { sendMessageToRasa } from '../../api/RasaApi';
+import { sendMessageToRasa, sendMessageToChatGPT } from '../../api/RasaApi';
 import { getUserStatus } from '../../api/GetPersonalInfo';
 
 import QRCodeScanner from 'react-native-qrcode-scanner';
@@ -83,7 +83,7 @@ const ChatScreen = ({ navigation }) => {
   const BOT_ID = 'bot_id';
 
   const handleSend = async (name, msg) => {
-    await sendMessageToRasa(name, msg).then(response => {
+    await sendMessageToChatGPT(name, msg).then(response => {
       // console.log('send message', response);
       if (response.status === 'error') {
         const newMessage = {
@@ -93,7 +93,7 @@ const ChatScreen = ({ navigation }) => {
           user: {
             _id: BOT_ID,
             name: 'bot',
-            avatar: 'https://placeimg.com/140/140/any',
+            avatar: 'https://picsum.photos/140/140',
           },
         };
         setMessages(previousMessages =>
@@ -102,7 +102,7 @@ const ChatScreen = ({ navigation }) => {
         return;
       }
 
-      const text = response.response[0].text;
+      const text = response.response;
       // console.log(text);
       console.log('id', messageID);
       const newMessage = {
@@ -112,7 +112,7 @@ const ChatScreen = ({ navigation }) => {
         user: {
           _id: BOT_ID,
           name: 'bot',
-          avatar: 'https://placeimg.com/140/140/any',
+          avatar: 'https://picsum.photos/140/140',
         },
       };
       setMessages(previousMessages =>
@@ -134,6 +134,8 @@ const ChatScreen = ({ navigation }) => {
       } else if (res === 'sos') {
         initialMessage =
           'Hãy đến địa điểm hiến máu sớm nhất có thể. Bạn có điều gì còn băn khoăn không ?';
+      } else {
+        initialMessage = 'Xin chào, tôi có thể giúp gì cho bạn hôm nay?';
       }
       setMessages([
         {
@@ -143,7 +145,7 @@ const ChatScreen = ({ navigation }) => {
           user: {
             _id: BOT_ID,
             name: 'bot',
-            avatar: 'https://placeimg.com/140/140/any',
+            avatar: 'https://picsum.photos/140/140',
           },
         },
       ]);

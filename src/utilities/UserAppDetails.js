@@ -8,6 +8,7 @@ import Settings from '../screens/Settings';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import { Image, StyleSheet } from 'react-native';
+import TestChatScreen from '../screens/Chat/test';
 
 export const NavBarButtons = [
   {
