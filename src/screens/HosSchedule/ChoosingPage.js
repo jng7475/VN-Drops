@@ -30,7 +30,8 @@ const styles = StyleSheet.create({
     width: (windowWidth * 5) / 10,
     height: (windowHeight * 1.2) / 10,
     borderRadius: 15,
-    backgroundColor: '#F5F5F5',
+    backgroundColor: 'lightyellow',
+    // backgroundColor: '#F5F5F5',
     elevation: 15,
     shadowColor: '#000000',
     shadowOpacity: 0.5,
@@ -39,8 +40,9 @@ const styles = StyleSheet.create({
     marginTop: 0.04 * windowWidth,
   },
   text: {
-    fontFamily: 'RobotoSlab-SemiBold',
+    fontFamily: 'Khand-Bold',
     fontSize: 14,
     textAlign: 'center',
+    fontWeight: 'bold',
   },
 });

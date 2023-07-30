@@ -39,7 +39,7 @@ const HosQrCode = ({ navigation }) => {
     // Set an interval to scan every 10 seconds
     const intervalId = setInterval(() => {
       setScanned(false);
-    }, 10000);
+    }, 10000000);
 
     // Clear the interval when the component unmounts
     return () => clearInterval(intervalId);

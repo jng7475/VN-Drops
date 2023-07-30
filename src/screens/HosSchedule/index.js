@@ -21,7 +21,7 @@ const HosSchedule = ({ navigation }) => {
   });
   if (choice === null) {
     return (
-      <View style={{ flexDirection: 'column' }}>
+      <View style={{ height: '100%', flexDirection: 'column', justifyContent: 'center', alignItems: 'center'}}>
         <View>
           <ChoosingPage
             text={'Lên lịch hiến máu định kỳ'}
